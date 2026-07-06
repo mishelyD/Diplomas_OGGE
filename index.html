@@ -986,7 +986,25 @@ Cancelar
 <p class="text-sm text-text-secondary mt-1">Portal de Administración de Diplomas</p>
 </div>
 <div id="login-error" class="text-sm text-danger-text bg-danger-bg px-3 py-2 rounded-lg mb-4 hidden"></div>
-<button id="btn-login-github" onclick="loginWithGithub()" class="w-full flex items-center justify-center gap-3 px-5 py-3 bg-[#24292e] hover:bg-[#1b1f23] text-white rounded-lg font-semibold text-sm transition-colors shadow-sm">
+<!-- Email/Password Login -->
+<form id="login-form" onsubmit="loginWithEmail(event)">
+<div class="mb-3 text-left">
+<label class="text-sm font-medium text-text-secondary block mb-1">Correo electrónico</label>
+<input id="login-email" type="email" required class="w-full px-3 py-2 border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm" placeholder="tu@correo.com">
+</div>
+<div class="mb-4 text-left">
+<label class="text-sm font-medium text-text-secondary block mb-1">Contraseña</label>
+<input id="login-password" type="password" required class="w-full px-3 py-2 border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm" placeholder="••••••••">
+</div>
+<button type="submit" class="w-full bg-primary hover:bg-primary-hover text-on-primary py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors shadow-sm">
+Entrar
+</button>
+<div class="mt-3 text-xs text-text-secondary">
+¿No tienes cuenta? <a href="#" onclick="showSignup(event)" class="text-primary hover:underline">Regístrate</a>
+</div>
+</form>
+<hr class="my-4 border-border-subtle">
+<button onclick="loginWithGithub()" class="w-full flex items-center justify-center gap-3 px-5 py-2.5 bg-[#24292e] hover:bg-[#1b1f23] text-white rounded-lg font-semibold text-sm transition-colors shadow-sm">
 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
 <span>Iniciar sesión con GitHub</span>
 </button>
@@ -994,12 +1012,75 @@ Cancelar
 <span class="material-symbols-outlined animate-spin align-middle text-[18px]">sync</span> Conectando...
 </p>
 </div>
+<!-- Signup Form -->
+<div id="signup-form" class="hidden">
+<div class="mb-6">
+<h1 class="font-headline text-xl font-bold text-primary">Crear cuenta</h1>
+<p class="text-sm text-text-secondary mt-1">Regístrate para usar el sistema</p>
+</div>
+<div id="signup-error" class="text-sm text-danger-text bg-danger-bg px-3 py-2 rounded-lg mb-4 hidden"></div>
+<form onsubmit="signupWithEmail(event)">
+<div class="mb-3 text-left">
+<label class="text-sm font-medium text-text-secondary block mb-1">Correo electrónico</label>
+<input id="signup-email" type="email" required class="w-full px-3 py-2 border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm" placeholder="tu@correo.com">
+</div>
+<div class="mb-4 text-left">
+<label class="text-sm font-medium text-text-secondary block mb-1">Contraseña</label>
+<input id="signup-password" type="password" required minlength="6" class="w-full px-3 py-2 border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm" placeholder="Mínimo 6 caracteres">
+</div>
+<button type="submit" class="w-full bg-primary hover:bg-primary-hover text-on-primary py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors shadow-sm">
+Crear cuenta
+</button>
+<div class="mt-3 text-xs text-text-secondary">
+¿Ya tienes cuenta? <a href="#" onclick="showLogin(event)" class="text-primary hover:underline">Inicia sesión</a>
+</div>
+</form>
+</div>
+</div>
 </div>
 <script>
 // --- Auth & Supabase Sync (single-row JSONB per user) ---
 var loginOverlay = document.getElementById('login-overlay');
+var loginForm = document.getElementById('login-form');
+var signupForm = document.getElementById('signup-form');
 var loginError = document.getElementById('login-error');
+var signupError = document.getElementById('signup-error');
 var loginLoading = document.getElementById('login-loading');
+
+function showLoginError(msg) { loginError.textContent = msg; loginError.classList.remove('hidden'); }
+function hideLoginError() { loginError.classList.add('hidden'); }
+function showSignupError(msg) { signupError.textContent = msg; signupError.classList.remove('hidden'); }
+function hideSignupError() { signupError.classList.add('hidden'); }
+
+function showLogin(e) { if(e)e.preventDefault(); loginForm.classList.remove('hidden'); signupForm.classList.add('hidden'); hideLoginError(); hideSignupError(); }
+function showSignup(e) { if(e)e.preventDefault(); loginForm.classList.add('hidden'); signupForm.classList.remove('hidden'); hideLoginError(); hideSignupError(); }
+
+async function loginWithEmail(event) {
+event.preventDefault(); hideLoginError();
+if (!supabaseClient) { showLoginError('Supabase no configurado.'); return; }
+var email = document.getElementById('login-email').value;
+var password = document.getElementById('login-password').value;
+loginLoading.classList.remove('hidden');
+try {
+var { error } = await supabaseClient.auth.signInWithPassword({ email: email, password: password });
+if (error) showLoginError(error.message);
+} catch(e) { showLoginError('Error: ' + e.message); }
+loginLoading.classList.add('hidden');
+}
+
+async function signupWithEmail(event) {
+event.preventDefault(); hideSignupError();
+if (!supabaseClient) { showSignupError('Supabase no configurado.'); return; }
+var email = document.getElementById('signup-email').value;
+var password = document.getElementById('signup-password').value;
+loginLoading.classList.remove('hidden');
+try {
+var { error } = await supabaseClient.auth.signUp({ email: email, password: password });
+if (error) showSignupError(error.message);
+else showSignupError('Cuenta creada. Revisa tu correo para confirmar.');
+} catch(e) { showSignupError('Error: ' + e.message); }
+loginLoading.classList.add('hidden');
+}
 
 function showLoginError(msg) { loginError.textContent = msg; loginError.classList.remove('hidden'); }
 function hideLoginError() { loginError.classList.add('hidden'); }
