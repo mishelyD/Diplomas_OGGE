@@ -1,0 +1,2534 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script id="tailwind-config">try{
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "error-container": "#ffdad6",
+                "on-tertiary-container": "#4a3f00",
+                "on-primary": "#ffffff",
+                "inverse-on-surface": "#f2f0f1",
+                "secondary-fixed": "#dfe3e8",
+                "primary-fixed": "#d9e2ff",
+                "inverse-surface": "#303031",
+                "surface": "#faf9fa",
+                "secondary-container": "#dfe3e8",
+                "surface-dim": "#dbdadb",
+                "secondary-fixed-dim": "#c2c7cc",
+                "secondary": "#5a5f63",
+                "tertiary-container": "#bfab49",
+                "on-primary-container": "#e7ebff",
+                "on-error-container": "#93000a",
+                "surface-container-high": "#e9e8e9",
+                "on-surface": "#1b1c1d",
+                "on-secondary-container": "#606569",
+                "tertiary-fixed-dim": "#dcc661",
+                "on-tertiary-fixed": "#211b00",
+                "on-secondary": "#ffffff",
+                "surface-container-highest": "#e3e2e3",
+                "primary": "#094cb2",
+                "background": "#faf9fa",
+                "outline-variant": "#c3c6d5",
+                "error": "#ba1a1a",
+                "on-background": "#1b1c1d",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-fixed-variant": "#524600",
+                "tertiary": "#6d5e00",
+                "surface-tint": "#2259bf",
+                "on-secondary-fixed-variant": "#42474b",
+                "surface-variant": "#e3e2e3",
+                "on-primary-fixed": "#001946",
+                "primary-container": "#3366cc",
+                "on-secondary-fixed": "#171c20",
+                "tertiary-fixed": "#f9e37a",
+                "surface-container": "#efedee",
+                "on-primary-fixed-variant": "#00419d",
+                "inverse-primary": "#b1c5ff",
+                "on-tertiary": "#ffffff",
+                "outline": "#737784",
+                "surface-container-low": "#f5f3f4",
+                "on-error": "#ffffff",
+                "primary-fixed-dim": "#b1c5ff",
+                "surface-bright": "#faf9fa",
+                "on-surface-variant": "#434653",
+                
+                "warning-bg": "#fef3c7",
+                "warning-text": "#b45309",
+                "success-bg": "#dcfce7",
+                "success-text": "#15803d",
+                "danger-bg": "#fee2e2",
+                "danger-text": "#b91c1c",
+                
+                "surface-card": "#ffffff",
+                "surface-bg": "#faf9fa",
+                "border-subtle": "#e3e2e3",
+                "text-secondary": "#5a5f63",
+                "text-table": "#1b1c1d",
+                "hover-state": "rgba(0,0,0,0.04)"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "header-height": "64px",
+                "stack-md": "16px",
+                "stack-lg": "32px",
+                "sidebar-width": "260px",
+                "stack-sm": "8px",
+                "margin-canvas": "32px",
+                "gutter-table": "16px"
+        },
+        "fontFamily": {
+                "headline": ["Noto Serif", "serif"],
+                "display": ["Noto Serif", "serif"],
+                "body": ["Noto Serif", "serif"],
+                "label": ["Noto Serif", "serif"],
+                "body-md": ["Noto Serif", "serif"],
+                "section-title-mobile": ["Noto Serif", "serif"],
+                "label-caps": ["Noto Serif", "serif"],
+                "table-data": ["Noto Serif", "serif"],
+                "kpi-metric": ["Noto Serif", "serif"],
+                "section-title": ["Noto Serif", "serif"]
+        },
+        "fontSize": {
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "section-title-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "table-data": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "kpi-metric": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "section-title": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+        }
+      },
+    },
+  }
+}catch(_e){}</script>
+<script>
+// --- Supabase Config ---
+// Rellena estos valores desde tu proyecto en https://supabase.com
+const SUPABASE_URL = 'https://jsuaqefarjrfmnwdlnxy.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzdWFxZWZhcmpyZm1ud2Rsbnh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMyODY4MjgsImV4cCI6MjA5ODg2MjgyOH0.Egi0QdD65YcwiSnxpfFNq5sfJAALcLC1RiErlquzKuw';
+let supabaseClient = null;
+let currentUser = null;
+if (SUPABASE_URL && SUPABASE_ANON_KEY) {
+try {
+supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+} catch(e){ console.warn('Supabase init failed, using localStorage fallback', e); }
+}
+</script>
+<style>
+/* Post-it Notes */
+.nota-card {
+width: 100%;
+aspect-ratio: 1 / 1;
+max-height: 260px;
+padding: 16px;
+border-radius: 4px;
+box-shadow: 4px 4px 10px rgba(0,0,0,0.12), 1px 1px 3px rgba(0,0,0,0.08);
+display: flex;
+flex-direction: column;
+position: relative;
+transition: transform 0.15s ease, box-shadow 0.15s ease;
+cursor: default;
+overflow: hidden;
+}
+.nota-card:hover {
+transform: scale(1.03) !important;
+box-shadow: 6px 6px 14px rgba(0,0,0,0.18);
+z-index: 10;
+}
+.nota-titulo {
+font-weight: 700;
+font-size: 14px;
+line-height: 1.3;
+margin-bottom: 6px;
+word-wrap: break-word;
+overflow: hidden;
+}
+.nota-cuerpo {
+font-size: 13px;
+line-height: 1.4;
+flex: 1;
+overflow-y: auto;
+word-wrap: break-word;
+color: rgba(0,0,0,0.7);
+}
+.nota-delete {
+position: absolute;
+top: 4px;
+right: 4px;
+width: 26px;
+height: 26px;
+border-radius: 50%;
+border: none;
+background: rgba(0,0,0,0.06);
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0;
+transition: opacity 0.15s;
+font-size: 16px;
+color: rgba(0,0,0,0.45);
+}
+.nota-card:hover .nota-delete {
+opacity: 1;
+}
+.nota-delete:hover {
+background: rgba(0,0,0,0.15);
+color: #b91c1c;
+}
+/* Modal for adding/editing */
+#nota-modal {
+position: fixed;
+inset: 0;
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: center;
+background: rgba(0,0,0,0.35);
+}
+#nota-modal.hidden { display: none; }
+#nota-modal > div {
+background: #fff;
+border-radius: 8px;
+width: 100%;
+max-width: 420px;
+margin: 0 16px;
+box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+#nota-modal > div {
+background: #fff;
+border-radius: 8px;
+width: 100%;
+max-width: 420px;
+margin: 0 16px;
+box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+/* Responsive sidebar */
+@media (max-width: 1023px) {
+#sidebar { transform: translateX(-100%); transition: transform 0.3s ease-in-out; }
+#sidebar.open { transform: translateX(0); }
+#sidebar-backdrop { display: none; }
+#sidebar.open ~ #sidebar-backdrop, #sidebar-backdrop.open { display: block; }
+}
+@media (min-width: 1024px) {
+#sidebar { transform: none !important; }
+#sidebar-backdrop { display: none !important; }
+}
+</style></head><body class="bg-surface-bg text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
+<!-- SideNavBar -->
+<nav id="sidebar" class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col py-6 px-4 z-50">
+<div class="mb-6 px-4 flex flex-col items-center gap-2">
+<img src="https://aulavirtualeupg.unfv.edu.pe/pluginfile.php/1/theme_academi/logo/1770824832/LOGO_EDIT_POS.png" alt="Logo" class="h-16 w-auto object-contain">
+<div class="text-center">
+<div class="border border-primary rounded-lg px-5 py-2">
+<p class="font-section-title text-[14px] text-primary font-semibold tracking-wider">AREA DE DIPLOMA</p>
+</div>
+</div>
+</div>
+<ul class="flex flex-col gap-2 flex-grow text-on-surface-variant">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="solicitud">
+<span class="material-symbols-outlined">note_add</span>
+<span class="">Solicitud</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="expediente">
+<span class="material-symbols-outlined">folder</span>
+<span class="">Expediente</span>
+</a>
+</li>
+<li class="">
+<button id="seg-sa-toggle" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg w-full text-left">
+<span class="material-symbols-outlined">track_changes</span>
+<span class="flex-grow">Seguimiento SA</span>
+<span class="material-symbols-outlined text-text-secondary transition-transform" id="seg-sa-arrow">expand_more</span>
+</button>
+<ul id="seg-sa-submenu" class="ml-4 flex flex-col gap-0.5 border-l border-outline-variant pl-2 hidden">
+<li><a class="flex items-center gap-3 px-4 py-2 text-sm bg-surface-container-low text-text-secondary hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="seguimiento-sa-envios"><span class="material-symbols-outlined text-[18px]">send</span>Envíos</a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 text-sm bg-surface-container-low text-text-secondary hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="seguimiento-sa-agrupamiento"><span class="material-symbols-outlined text-[18px]">group_work</span>Agrupamiento</a></li>
+</ul>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="seguimiento-sg-ogt">
+<span class="material-symbols-outlined">assignment</span>
+<span class="">Envio a Direccion</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="ocracc">
+<span class="material-symbols-outlined">document_scanner</span>
+<span class="">OCRACC</span>
+</a>
+</li>
+<li class="">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="notas">
+<span class="material-symbols-outlined">sticky_note_2</span>
+<span class="">Notas</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="reporte">
+<span class="material-symbols-outlined">assessment</span>
+<span class="">Reporte</span>
+</a>
+</li>
+
+<li class="mt-auto">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="configuracion">
+<span class="material-symbols-outlined">settings</span>
+<span class="">Configuración</span>
+</a>
+</li></ul>
+</nav>
+<!-- Backdrop for mobile sidebar -->
+<div id="sidebar-backdrop" class="fixed inset-0 bg-black/40 z-40 hidden lg:hidden"></div>
+<!-- Main Content Area -->
+<main class="ml-0 lg:ml-sidebar-width min-h-screen flex flex-col bg-surface-bg">
+<!-- TopNavBar -->
+    <header class="fixed top-0 right-0 w-full lg:w-[calc(100%-260px)] h-header-height bg-surface border-b border-outline-variant z-40 flex justify-between items-center px-4 lg:px-margin-canvas">
+<!-- Hamburger + Search -->
+<div class="flex items-center gap-3 flex-1 max-w-xl">
+<button id="menu-toggle" class="p-2 text-text-secondary hover:text-primary hover:bg-hover-state rounded-lg transition-all lg:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="relative group flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-primary">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm transition-all text-on-surface shadow-sm" placeholder="Buscar..." type="text">
+</div>
+</div>
+<!-- Actions -->
+<button onclick="logout()" class="hidden lg:flex items-center gap-2 px-3 py-1.5 text-sm text-text-secondary hover:text-primary hover:bg-hover-state rounded-lg transition-colors" title="Cerrar sesión">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+</button>
+</div>
+</header>
+<!-- Canvas Body -->
+<div class="mt-header-height px-4 lg:px-margin-canvas py-4 lg:py-margin-canvas flex-grow flex flex-col gap-stack-lg justify-start">
+<!-- Page: Dashboard -->
+<div id="page-dashboard" class="page flex flex-col gap-stack-lg">
+<section>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">Dashboard</h2>
+<p class="text-text-secondary text-sm mt-1">Resumen del sistema.</p>
+</section>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">note_add</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Solicitudes</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-solicitudes">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">folder</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Expedientes</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-expedientes">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">track_changes</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Seguimientos SA</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-seguimientos">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">assignment</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Envíos Dirección</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-envios">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">document_scanner</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">OCRACC</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-ocracc">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">sticky_note_2</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Notas</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-notas">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm md:col-span-2">
+<div class="flex items-center gap-3 text-primary mb-3"><span class="material-symbols-outlined text-[28px]">bar_chart</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Seguimientos SA por Estado</span></div>
+<div id="kpi-sa-chart" class="flex items-end gap-2 h-20"></div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm md:col-span-2">
+<div class="flex items-center gap-3 text-primary mb-3"><span class="material-symbols-outlined text-[28px]">warning</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Alertas OCRACC</span></div>
+<div class="text-sm text-text-secondary" id="kpi-alertas">Sin alertas</div>
+</div>
+</div>
+</div>
+<!-- Page: Solicitud -->
+<div id="page-solicitud" class="page flex flex-col gap-stack-lg" style="display:none">
+<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">Registrar Solicitud</h2>
+<p class="text-text-secondary text-sm mt-1">Ingrese los datos del nuevo trámite académico.</p>
+</div>
+</section>
+<!-- Form -->
+<section class="bg-surface-card rounded-lg border border-border-subtle p-6 shadow-sm">
+<form id="form-solicitud" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT (N° Trámite)</label>
+<input id="input-nt" type="number" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: 456778" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
+<input id="input-fecha" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
+<select id="input-estado" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<option value="Completo">Completo</option>
+<option value="Observado">Observado</option>
+<option value="Pendiente">Pendiente</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5" id="comentario-container" style="display:none">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Comentario</label>
+<textarea id="input-comentario" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface resize-none" rows="2" placeholder="Describa la observación..."></textarea>
+</div>
+<div class="flex items-end gap-3">
+<button type="submit" id="sol-submit-btn" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span> Registrar
+</button>
+<button type="button" id="sol-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">
+Cancelar
+</button>
+</div>
+</form>
+</section>
+<!-- Solicitudes Table -->
+<section class="bg-surface-card rounded-lg border border-border-subtle flex flex-col flex-grow overflow-hidden shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
+<h3 class="font-semibold text-primary">Solicitudes Registradas</h3>
+<span id="solicitud-count" class="text-sm text-text-secondary">0 registros</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[700px]">
+<thead>
+<tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider">NT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider">Fecha Recepción</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider">Estado</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider">Comentario</th>
+<th class="py-3 px-6"></th>
+</tr>
+</thead>
+<tbody id="tabla-solicitudes" class="font-table-data text-table-data text-text-table divide-y divide-border-subtle">
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- End Page: Solicitud -->
+
+<!-- Page: Expediente -->
+<div id="page-expediente" class="page flex flex-col gap-stack-lg" style="display:none">
+<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">Registrar Expediente</h2>
+<p class="text-text-secondary text-sm mt-1">Datos del egresado y trámite de grado.</p>
+</div>
+</section>
+<!-- Form -->
+<section class="bg-surface-card rounded-lg border border-border-subtle p-6 shadow-sm">
+<form id="form-expediente" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 items-end">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Código de estudiante</label>
+<input id="exp-dni" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="12345678" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Apellidos y Nombres</label>
+<input id="exp-nombres" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Pérez López, Juan Carlos" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Tipo de Grado</label>
+<select id="exp-tipo-grado" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<option value="Maestría">Maestría</option>
+<option value="Doctorado">Doctorado</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Nombre del Grado</label>
+<input id="exp-nombre-grado" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: Educación con mención en Docencia" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Área</label>
+<select id="exp-area" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<option value="">Seleccionar...</option>
+<option value="Ciencias de la Empresa">Ciencias de la Empresa</option>
+<option value="Humanidades y Ciencias Basicas">Humanidades y Ciencias Basicas</option>
+<option value="Derecho y Ciencias Políticas">Derecho y Ciencias Políticas</option>
+<option value="Ingeniería, Arquitectura y Ciencias Básicas">Ingeniería, Arquitectura y Ciencias Básicas</option>
+<option value="Ciencias de la Salud">Ciencias de la Salud</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Matrícula</label>
+<input id="exp-fecha-matricula" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Egreso</label>
+<input id="exp-fecha-egreso" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Total de Créditos</label>
+<input id="exp-creditos" type="number" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: 48" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Sustentación</label>
+<input id="exp-fecha-sustentacion" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Calificación Sustentación</label>
+<select id="exp-calificacion" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<option value="Aprobado por excelencia">Aprobado por excelencia</option>
+<option value="Aprobado por Mayoria">Aprobado por Mayoria</option>
+<option value="Aprobado por Unanimidad">Aprobado por Unanimidad</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NTs Asociados</label>
+<div class="relative">
+<input id="exp-nts-buscar" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Buscar NT para asociar..." autocomplete="off">
+<div id="exp-nts-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
+</div>
+<div id="exp-nts-seleccionados" class="flex flex-wrap gap-1.5 min-h-[28px]"></div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado de Datos en el SD</label>
+<select id="exp-estado-datos" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<option value="Correcto">Correcto</option>
+<option value="Observado">Observado</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5" id="exp-obs-container" style="display:none">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Comentario de Observación</label>
+<textarea id="exp-obs-comentario" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface resize-none" rows="2" placeholder="Describa la observación de los datos..."></textarea>
+</div>
+<div class="flex items-end gap-3 md:col-span-2">
+<button type="submit" id="exp-submit-btn" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">assignment</span> Registrar Expediente
+</button>
+<button type="button" id="exp-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">
+Cancelar
+</button>
+</div>
+</form>
+</section>
+<!-- Expedientes Table -->
+<section class="bg-surface-card rounded-lg border border-border-subtle flex flex-col flex-grow overflow-hidden shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
+<h3 class="font-semibold text-primary">Expedientes Registrados</h3>
+<span id="expediente-count" class="text-sm text-text-secondary">0 registros</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[900px]">
+<thead>
+<tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Código de estudiante</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Apellidos y Nombres</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Grado</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Área</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Sustentación</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Calificación</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">NTs</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Check</th>
+<th class="py-3 px-4"></th>
+</tr>
+</thead>
+<tbody id="tabla-expedientes" class="font-table-data text-table-data text-text-table divide-y divide-border-subtle">
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- End Page: Expediente -->
+
+<!-- Page: Seguimiento SA - Envios -->
+<div id="page-seguimiento-sa-envios" class="page flex flex-col gap-stack-lg" style="display:none">
+<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">Seguimiento SA — Envíos</h2>
+<p class="text-text-secondary text-sm mt-1">Registre y realice el seguimiento de los trámites ante Secretaría Académica.</p>
+</div>
+</section>
+<!-- Form Registro / Edicion -->
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<button id="seg-toggle-form" class="w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer hover:bg-hover-state transition-colors">
+<h3 class="font-semibold text-primary">Registrar Seguimiento</h3>
+<span id="seg-toggle-icon" class="material-symbols-outlined text-text-secondary transition-transform">expand_more</span>
+</button>
+<div id="seg-form-body" class="px-6 pb-6 pt-2 hidden">
+<form id="form-seguimiento" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4 items-end">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Código de estudiante del Egresado</label>
+<input id="seg-dni" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="12345678" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Apellidos y Nombres</label>
+<input id="seg-nombres" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Pérez López, Juan Carlos" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NTs Asociados</label>
+<div class="relative">
+<input id="seg-nts-buscar" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Buscar NT para asociar..." autocomplete="off">
+<div id="seg-nts-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
+</div>
+<div id="seg-nts-seleccionados" class="flex flex-wrap gap-1.5 min-h-[28px]"></div>
+</div>
+<div class="flex flex-col gap-1.5 md:col-span-2 lg:col-span-2">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Programa</label>
+<div class="flex gap-3">
+<select id="seg-tipo" class="w-2/5 px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<option value="">Tipo</option>
+<option value="Maestría">Maestría</option>
+<option value="Doctorado">Doctorado</option>
+</select>
+<input id="seg-nombre-programa" type="text" class="flex-1 px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Nombre del programa (ej: Gestión Educativa)" list="nombres-programa-list">
+<datalist id="nombres-programa-list">
+<option value="Gestión Educativa">
+<option value="Docencia Universitaria">
+<option value="Investigación y Docencia">
+<option value="Educación Infantil">
+<option value="Administración de la Educación">
+<option value="Ciencias de la Educación">
+<option value="Ciencias de la Salud">
+<option value="Gestión Pública">
+<option value="Psicología">
+<option value="Derecho">
+</datalist>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT SA</label>
+<input id="seg-nt-sa" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="NT enviado a Secretaría Académica">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Entrega Sec. Académica</label>
+<input id="seg-fecha-entrega" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Número de Oficio</label>
+<input id="seg-oficio" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: OFICIO-2024-001">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
+<input id="seg-fecha-recepcion" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Nombre Resolución Directoral</label>
+<input id="seg-resolucion" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: RD-2024-001-UNFV">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
+<select id="seg-estado" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<option value="">— Seleccione —</option>
+<option value="COMPLETO">COMPLETO</option>
+<option value="Observado">Observado</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5 md:col-span-2 lg:col-span-2" id="seg-obs-container" style="display:none">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Motivos de Observación</label>
+<textarea id="seg-obs-comentario" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface resize-none" rows="2" placeholder="Describa los motivos de la observación..."></textarea>
+</div>
+<div class="flex items-end gap-3 md:col-span-2 lg:col-span-4">
+<button type="submit" id="seg-submit-btn" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span> Registrar Seguimiento
+</button>
+<button type="button" id="seg-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">
+Cancelar
+</button>
+</div>
+</form>
+</div>
+</section>
+<!-- Tabla de Seguimiento -->
+<section class="bg-surface-card rounded-lg border border-border-subtle flex flex-col overflow-hidden shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
+<h3 class="font-semibold text-primary">Trámites en Seguimiento</h3>
+<span id="seg-count" class="text-sm text-text-secondary">0 registros</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[1000px]">
+<thead>
+<tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Código de estudiante</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">NT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Apellidos y Nombres</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Programa</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">NT SA</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Entrega Sec. Acad.</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">N° Oficio</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Recepción</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">N° Resol. Directoral</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Estado</th>
+<th class="py-3 px-3"></th>
+</tr>
+</thead>
+<tbody id="tabla-seguimiento" class="font-table-data text-table-data text-text-table divide-y divide-border-subtle">
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- End Page: Seguimiento SA - Envios -->
+
+<!-- Page: Seguimiento SA - Agrupamiento -->
+<div id="page-seguimiento-sa-agrupamiento" class="page flex flex-col gap-stack-lg" style="display:none">
+<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">Seguimiento SA — Agrupamiento</h2>
+<p class="text-text-secondary text-sm mt-1">Agrupación de egresados por resolución directoral.</p>
+</div>
+</section>
+<section class="flex flex-col gap-4">
+<div id="agrup-container" class="flex flex-col gap-4"></div>
+</section>
+</div>
+
+<!-- Page: Envio a Direccion -->
+<div id="page-seguimiento-sg-ogt" class="page flex flex-col gap-stack-lg" style="display:none">
+<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">Envio a Direccion</h2>
+<p class="text-text-secondary text-sm mt-1">Registro y seguimiento de envíos a Dirección.</p>
+</div>
+</section>
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50">
+<h3 class="font-semibold text-primary">Registrar Envío</h3>
+</div>
+<form id="form-envio-direccion" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT OGT</label>
+<input id="ed-nt-ogt" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="NT de OGT" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Oficio</label>
+<input id="ed-oficio" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: OFICIO-2024-001">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Resolución Directoral</label>
+<input id="ed-resolucion" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: RD-2024-001-UNFV" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a Dirección</label>
+<input id="ed-fecha-envio" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Recepción del Oficio</label>
+<input id="ed-fecha-recepcion" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
+<select id="ed-estado" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<option value="Pendiente de recepcion">Pendiente de recepcion</option>
+<option value="Recepcionado">Recepcionado</option>
+<option value="Enviado a SG-OGT">Enviado a SG-OGT</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5" id="ed-fecha-sg-container" style="display:none">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a SG-OGT</label>
+<input id="ed-fecha-sg" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+</div>
+<div class="flex items-end gap-3 md:col-span-2 lg:col-span-3">
+<button type="submit" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span> Registrar Envío
+</button>
+<button type="button" id="ed-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">Cancelar</button>
+</div>
+</form>
+</section>
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
+<h3 class="font-semibold text-primary">Egresados de la Resolución</h3>
+<span id="ed-egresados-count" class="text-sm text-text-secondary">0 egresados</span>
+</div>
+<div id="ed-egresados-container" class="p-4">
+<p class="text-center text-text-secondary py-4">Ingrese un número de resolución para ver los egresados.</p>
+</div>
+</section>
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
+<h3 class="font-semibold text-primary">Envíos Registrados</h3>
+<span id="ed-count" class="text-sm text-text-secondary">0 registros</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">NT OGT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">N° Oficio</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Resolución</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Envío</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Recepción</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Envío SG-OGT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Estado</th>
+<th class="py-3 px-3"></th>
+</tr>
+</thead>
+<tbody id="tabla-envios-direccion" class="font-table-data text-table-data text-text-table divide-y divide-border-subtle"></tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- End Page: Envio a Direccion -->
+
+<!-- Page: OCRACC -->
+<div id="page-ocracc" class="page flex flex-col gap-stack-lg" style="display:none">
+<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">OCRACC</h2>
+<p class="text-text-secondary text-sm mt-1">Registro de solicitudes y recepción de certificados.</p>
+</div>
+</section>
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50">
+<h3 class="font-semibold text-primary">Registrar Solicitud OCRACC</h3>
+</div>
+<form id="form-ocracc" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Oficio</label>
+<input id="oc-oficio" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: OFICIO-2024-001" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT OCRACC</label>
+<input id="oc-nt" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="NT de OCRACC" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío de Solicitud</label>
+<input id="oc-fecha-envio" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Recepción Certificados</label>
+<input id="oc-fecha-recepcion" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
+<select id="oc-estado" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<option value="Pendiente">Pendiente</option>
+<option value="CERTIFICADOS RECEPCIONADOS">CERTIFICADOS RECEPCIONADOS</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Alerta (días)</label>
+<input id="oc-alerta" type="number" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: 30" value="30">
+</div>
+<div class="flex flex-col gap-1.5 md:col-span-2 lg:col-span-3">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Egresados</label>
+<div class="relative">
+<input id="oc-egresado-input" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Buscar por código de estudiante..." autocomplete="off">
+<div id="oc-egresados-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
+</div>
+<div id="oc-egresados-chips" class="flex flex-wrap gap-1.5 mt-2 min-h-[28px]"></div>
+</div>
+<div class="flex items-end gap-3 md:col-span-2 lg:col-span-3">
+<button type="submit" id="oc-submit-btn" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span> Registrar Solicitud
+</button>
+<button type="button" id="oc-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">Cancelar</button>
+</div>
+</form>
+</section>
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm overflow-x-auto">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
+<h3 class="font-semibold text-primary">Solicitudes Registradas</h3>
+<span id="solicitud-count" class="text-sm text-text-secondary">0 solicitudes</span>
+</div>
+<table class="w-full text-left border-collapse min-w-[1000px]">
+<thead>
+<tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">N° Oficio</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">NT OCRACC</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Envío</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Días Trans.</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Alerta</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Recepción</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Estado</th>
+<th class="py-3 px-3"></th>
+</tr>
+</thead>
+<tbody id="tabla-ocracc" class="font-table-data text-table-data text-text-table divide-y divide-border-subtle"></tbody>
+</table>
+</section>
+</div>
+<!-- End Page: OCRACC -->
+
+<!-- Page: Notas -->
+<div id="page-notas" class="page flex flex-col gap-stack-lg" style="display:none">
+<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">Notas</h2>
+<p class="text-text-secondary text-sm mt-1">Notas adhesivas personales.</p>
+</div>
+<button id="nt-btn-nueva" class="bg-primary text-on-primary px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span> + Nueva Nota
+</button>
+</section>
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm p-5">
+<div id="nt-grid" class="grid gap-5" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
+</section>
+</div>
+<!-- End Page: Notas -->
+
+<!-- Modal Notas (fuera del page para que funcione con position:fixed) -->
+<div id="nota-modal" class="hidden">
+<div class="p-5">
+<h3 id="nt-modal-title" class="font-semibold text-primary text-base mb-4">Nueva Nota</h3>
+<div class="flex flex-col gap-3">
+<input id="nt-input-titulo" type="text" class="w-full px-3 py-2.5 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Título">
+<textarea id="nt-input-cuerpo" class="w-full px-3 py-2.5 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface resize-y" rows="5" placeholder="Escribe tu nota aquí..."></textarea>
+</div>
+<div class="flex justify-end gap-3 mt-5">
+<button id="nt-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle">Cancelar</button>
+<button id="nt-save-btn" class="bg-primary text-on-primary px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm">Guardar</button>
+</div>
+</div>
+</div>
+
+<!-- Page: Reporte -->
+<div id="page-reporte" class="page flex flex-col gap-stack-lg" style="display:none">
+<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">Reporte</h2>
+<p class="text-text-secondary text-sm mt-1">Expedientes enviados a SG-OGT por área y mes.</p>
+</div>
+</section>
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm overflow-x-auto">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
+<h3 class="font-semibold text-primary">Matriz de Envíos SG-OGT</h3>
+<button onclick="renderReporte()" class="text-sm font-semibold text-primary hover:text-primary-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">refresh</span> Actualizar
+</button>
+</div>
+<table class="w-full text-left border-collapse min-w-[1100px]">
+<thead>
+<tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider sticky left-0 bg-surface-bg/80 backdrop-blur-sm">ÁREA</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">ENE</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">FEB</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">MAR</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">ABR</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">MAY</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">JUN</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">JUL</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">AGO</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">SEP</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">OCT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">NOV</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">DIC</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider text-center">TOTAL</th>
+</tr>
+</thead>
+<tbody id="tabla-reporte" class="font-table-data text-table-data text-text-table divide-y divide-border-subtle"></tbody>
+</table>
+</section>
+</div>
+<!-- End Page: Reporte -->
+
+<!-- Page: Configuracion -->
+<div id="page-configuracion" class="page flex flex-col gap-stack-lg" style="display:none">
+<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">Configuración</h2>
+<p class="text-text-secondary text-sm mt-1">Exportar e importar datos.</p>
+</div>
+</section>
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50">
+<h3 class="font-semibold text-primary">Exportar Datos</h3>
+</div>
+<div class="p-4 flex gap-3">
+<button id="btn-export-json" class="bg-primary text-on-primary px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span> Exportar JSON
+</button>
+<button id="btn-export-excel" class="bg-[#217346] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#1a5c38] transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">table_chart</span> Exportar Excel
+</button>
+</div>
+</section>
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50">
+<h3 class="font-semibold text-primary">Importar Datos</h3>
+</div>
+<div class="p-4">
+<p class="text-sm text-text-secondary mb-3">Selecciona un archivo JSON previamente exportado para restaurar los datos.</p>
+<input id="btn-import-json" type="file" accept=".json" class="block w-full text-sm text-text-secondary file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-on-primary hover:file:bg-primary/90 cursor-pointer">
+</div>
+</section>
+</div>
+<!-- End Page: Configuracion -->
+
+</div>
+</main>
+<div id="oc-modal-overlay" class="fixed inset-0 z-50 bg-black/40 flex items-center justify-center hidden">
+<div class="bg-surface-card rounded-lg shadow-lg w-full max-w-lg mx-4 max-h-[80vh] flex flex-col">
+<div class="flex items-center justify-between px-4 py-3 border-b border-border-subtle">
+<h3 class="font-semibold text-primary">Egresados de la Solicitud</h3>
+<button id="oc-modal-close" class="text-text-secondary hover:text-primary p-1 rounded"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="px-4 py-2 bg-surface-bg/50 border-b border-border-subtle text-sm text-text-secondary flex gap-4">
+<span><strong>Oficio:</strong> <span id="oc-modal-oficio">—</span></span>
+<span><strong>NT OCRACC:</strong> <span id="oc-modal-nt">—</span></span>
+</div>
+<div id="oc-modal-lista" class="overflow-y-auto flex-1 p-2"></div>
+</div>
+</div>
+<!-- Login Overlay -->
+<div id="login-overlay" class="fixed inset-0 z-[9999] flex items-center justify-center bg-surface-bg" style="display:flex">
+<div class="bg-surface-card rounded-2xl shadow-xl w-full max-w-sm mx-4 p-8 text-center border border-outline-variant">
+<div class="mb-6">
+<img src="https://aulavirtualeupg.unfv.edu.pe/pluginfile.php/1/theme_academi/logo/1770824832/LOGO_EDIT_POS.png" alt="Logo" class="h-16 mx-auto mb-4 object-contain">
+<h1 class="font-headline text-xl font-bold text-primary">Sistema de Seguimiento</h1>
+<p class="text-sm text-text-secondary mt-1">Portal de Administración de Diplomas</p>
+</div>
+<div id="login-error" class="text-sm text-danger-text bg-danger-bg px-3 py-2 rounded-lg mb-4 hidden"></div>
+<button id="btn-login-github" onclick="loginWithGithub()" class="w-full flex items-center justify-center gap-3 px-5 py-3 bg-[#24292e] hover:bg-[#1b1f23] text-white rounded-lg font-semibold text-sm transition-colors shadow-sm">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+<span>Iniciar sesión con GitHub</span>
+</button>
+<p id="login-loading" class="text-sm text-text-secondary mt-4 hidden">
+<span class="material-symbols-outlined animate-spin align-middle text-[18px]">sync</span> Conectando...
+</p>
+</div>
+</div>
+<script>
+// --- Auth & Supabase Sync (single-row JSONB per user) ---
+var loginOverlay = document.getElementById('login-overlay');
+var loginError = document.getElementById('login-error');
+var loginLoading = document.getElementById('login-loading');
+
+function showLoginError(msg) { loginError.textContent = msg; loginError.classList.remove('hidden'); }
+function hideLoginError() { loginError.classList.add('hidden'); }
+
+async function loginWithGithub() {
+hideLoginError();
+if (!supabaseClient) { showLoginError('Supabase no configurado.'); return; }
+loginLoading.classList.remove('hidden');
+try {
+var { error } = await supabaseClient.auth.signInWithOAuth({ provider: 'github' });
+if (error) showLoginError(error.message);
+} catch(e) { showLoginError('Error: ' + e.message); }
+loginLoading.classList.add('hidden');
+}
+
+async function logout() {
+if (!supabaseClient) return;
+await supabaseClient.auth.signOut();
+currentUser = null;
+loginOverlay.style.display = 'flex';
+}
+
+async function loadFromSupabase() {
+if (!supabaseClient || !currentUser) return;
+try {
+var { data, error } = await supabaseClient.from('user_data').select('*').eq('user_id', currentUser.id).maybeSingle();
+if (error) return;
+if (data) {
+solicitudes.length = 0; (data.solicitudes||[]).forEach(function(r) { solicitudes.push(r); });
+expedientes.length = 0; (data.expedientes||[]).forEach(function(r) { expedientes.push(r); });
+seguimientos.length = 0; (data.seguimientos||[]).forEach(function(r) { seguimientos.push(r); });
+enviosDireccion.length = 0; (data.envios_direccion||[]).forEach(function(r) { enviosDireccion.push(r); });
+ocraccRegistros.length = 0; (data.ocracc_registros||[]).forEach(function(r) { ocraccRegistros.push(r); });
+notas.length = 0; (data.notas||[]).forEach(function(r) { notas.push(r); });
+localSaveAll();
+}
+} catch(e) { console.warn('Supabase load error', e); }
+}
+
+async function saveToSupabase() {
+if (!supabaseClient || !currentUser) return;
+try {
+await supabaseClient.from('user_data').upsert({
+user_id: currentUser.id,
+solicitudes: solicitudes,
+expedientes: expedientes,
+seguimientos: seguimientos,
+envios_direccion: enviosDireccion,
+ocracc_registros: ocraccRegistros,
+notas: notas,
+updated_at: new Date().toISOString()
+}, { onConflict: 'user_id' });
+} catch(e) { console.warn('Supabase save error', e); }
+}
+
+function localSaveAll() {
+localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
+localStorage.setItem('expedientes', JSON.stringify(expedientes));
+localStorage.setItem('seguimientos', JSON.stringify(seguimientos));
+localStorage.setItem('enviosDireccion', JSON.stringify(enviosDireccion));
+localStorage.setItem('ocraccRegistros', JSON.stringify(ocraccRegistros));
+localStorage.setItem('notas', JSON.stringify(notas));
+}
+
+(async function() {
+if (!supabaseClient) { loginOverlay.style.display = 'none'; return; }
+try {
+var { data: { session } } = await supabaseClient.auth.getSession();
+if (session) {
+currentUser = session.user;
+loginOverlay.style.display = 'none';
+await loadFromSupabase();
+} else {
+loginOverlay.style.display = 'flex';
+}
+supabaseClient.auth.onAuthStateChange(function(event, session) {
+if (event === 'SIGNED_IN' && session) {
+currentUser = session.user;
+loginOverlay.style.display = 'none';
+loadFromSupabase().then(function() {
+renderSolicitudes(); renderExpedientes(); renderSeguimientos();
+renderEnviosDireccion(); renderOcracc(); renderNotas(); renderDashboard();
+});
+} else if (event === 'SIGNED_OUT') {
+currentUser = null;
+loginOverlay.style.display = 'flex';
+}
+});
+} catch(e) { console.warn('Auth check failed, falling back to localStorage', e); loginOverlay.style.display = 'none'; }
+})();
+try {
+document.getElementById('menu-toggle').addEventListener('click', function() {
+var s = document.getElementById('sidebar');
+var b = document.getElementById('sidebar-backdrop');
+s.classList.toggle('open');
+b.classList.toggle('open');
+});
+document.getElementById('sidebar-backdrop').addEventListener('click', function() {
+document.getElementById('sidebar').classList.remove('open');
+document.getElementById('sidebar-backdrop').classList.remove('open');
+});
+document.querySelectorAll('#sidebar [data-page]').forEach(function(el) {
+el.addEventListener('click', function() {
+if (window.innerWidth < 1024) {
+document.getElementById('sidebar').classList.remove('open');
+document.getElementById('sidebar-backdrop').classList.remove('open');
+}
+});
+});
+window.addEventListener('resize', function() {
+if (window.innerWidth >= 1024) {
+document.getElementById('sidebar').classList.remove('open');
+document.getElementById('sidebar-backdrop').classList.remove('open');
+}
+});
+} catch(_se) {}
+
+// --- Navigation ---
+const navLinks = document.querySelectorAll('[data-page]');
+const pages = document.querySelectorAll('.page');
+
+function showPage(pageId) {
+pages.forEach(p => p.style.display = 'none');
+const target = document.getElementById('page-' + pageId);
+if (target) target.style.display = 'flex';
+navLinks.forEach(link => {
+if (link.dataset.page === pageId) {
+link.className = 'flex items-center gap-3 px-4 py-3 bg-primary text-on-primary rounded-lg transition-colors duration-150 shadow-sm';
+} else if (link.closest && link.closest('#seg-sa-submenu')) {
+link.className = 'flex items-center gap-3 px-4 py-2 text-sm bg-surface-container-low text-text-secondary hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg';
+if (link.dataset.page === pageId) {
+link.className = 'flex items-center gap-3 px-4 py-2 text-sm bg-primary-fixed-dim text-on-primary-fixed rounded-lg transition-colors duration-150';
+}
+} else {
+link.className = 'flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg';
+}
+});
+if (pageId === 'seguimiento-sa-envios' || pageId === 'seguimiento-sa-agrupamiento') {
+const submenu = document.getElementById('seg-sa-submenu');
+const arrow = document.getElementById('seg-sa-arrow');
+submenu.classList.remove('hidden');
+arrow.style.transform = 'rotate(180deg)';
+}
+if (pageId === 'reporte' && typeof renderReporte === 'function') {
+renderReporte();
+}
+}
+
+// --- Submenu Seguimiento SA ---
+document.getElementById('seg-sa-toggle').addEventListener('click', function() {
+const submenu = document.getElementById('seg-sa-submenu');
+const arrow = document.getElementById('seg-sa-arrow');
+const isHidden = submenu.classList.contains('hidden');
+submenu.classList.toggle('hidden');
+arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+});
+
+navLinks.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+showPage(this.dataset.page);
+});
+});
+
+// --- Solicitud State ---
+let solicitudes = JSON.parse(localStorage.getItem('solicitudes') || '[]');
+let editSolIndex = -1;
+
+function guardarSolicitudes() {
+localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
+saveToSupabase();
+}
+
+function renderSolicitudes() {
+const tbody = document.getElementById('tabla-solicitudes');
+const count = document.getElementById('solicitud-count');
+tbody.innerHTML = '';
+solicitudes.forEach((s, i) => {
+const tr = document.createElement('tr');
+tr.className = 'hover:bg-hover-state transition-colors group';
+let estadoClass = 'bg-surface-container-high text-text-secondary';
+if (s.estado === 'Completo') estadoClass = 'bg-success-bg text-success-text';
+else if (s.estado === 'Observado') estadoClass = 'bg-warning-bg text-warning-text';
+tr.innerHTML = '<td class="py-4 px-6 font-medium text-primary">' + s.nt + '</td>' +
+'<td class="py-4 px-6">' + s.fecha + '</td>' +
+'<td class="py-4 px-6"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + estadoClass + '">' + s.estado + '</span></td>' +
+'<td class="py-4 px-6 text-sm text-text-secondary">' + (s.comentario || '—') + '</td>' +
+'<td class="py-4 px-6 text-right flex items-center justify-end gap-1">' +
+'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarSolicitud(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="eliminarSolicitud(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+tbody.appendChild(tr);
+});
+count.textContent = solicitudes.length + ' registros';
+}
+
+function eliminarSolicitud(index) {
+if (!confirm('¿Eliminar la solicitud NT ' + solicitudes[index].nt + '?')) return;
+solicitudes.splice(index, 1);
+guardarSolicitudes();
+renderSolicitudes();
+}
+
+// --- Form Solicitud (Crear / Actualizar) ---
+document.getElementById('input-estado').addEventListener('change', function() {
+const container = document.getElementById('comentario-container');
+container.style.display = this.value === 'Observado' ? 'flex' : 'none';
+});
+
+document.getElementById('form-solicitud').addEventListener('submit', function(e) {
+e.preventDefault();
+const nt = document.getElementById('input-nt').value.trim();
+const fecha = document.getElementById('input-fecha').value;
+const estado = document.getElementById('input-estado').value;
+const comentario = document.getElementById('input-comentario').value.trim();
+if (!nt || !fecha) return;
+if (editSolIndex !== -1) {
+solicitudes[editSolIndex] = { nt, fecha, estado, comentario: estado === 'Observado' ? comentario : '' };
+editSolIndex = -1;
+} else {
+if (solicitudes.some(s => s.nt === nt)) {
+alert('El NT ' + nt + ' ya está registrado.');
+return;
+}
+solicitudes.push({ nt, fecha, estado, comentario: estado === 'Observado' ? comentario : '' });
+}
+guardarSolicitudes();
+renderSolicitudes();
+cancelarEdicionSol();
+document.getElementById('input-nt').focus();
+});
+
+function editarSolicitud(index) {
+editSolIndex = index;
+const s = solicitudes[index];
+document.getElementById('input-nt').value = s.nt;
+document.getElementById('input-nt').disabled = true;
+document.getElementById('input-fecha').value = s.fecha;
+document.getElementById('input-estado').value = s.estado;
+document.getElementById('comentario-container').style.display = s.estado === 'Observado' ? 'flex' : 'none';
+document.getElementById('input-comentario').value = s.comentario || '';
+document.getElementById('sol-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span> Actualizar';
+document.getElementById('sol-cancel-btn').classList.remove('hidden');
+}
+
+function cancelarEdicionSol() {
+editSolIndex = -1;
+document.getElementById('form-solicitud').reset();
+document.getElementById('comentario-container').style.display = 'none';
+document.getElementById('input-nt').disabled = false;
+document.getElementById('sol-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span> Registrar';
+document.getElementById('sol-cancel-btn').classList.add('hidden');
+}
+
+document.getElementById('sol-cancel-btn').addEventListener('click', cancelarEdicionSol);
+
+// --- Helper: NTs asignados a algún expediente ---
+function ntsAsignados() {
+const asignados = new Set();
+expedientes.forEach(e => e.nts.forEach(nt => asignados.add(nt)));
+return asignados;
+}
+
+// --- Helper: obtener NTs disponibles (no asignados) ---
+function ntsDisponibles() {
+const asignados = ntsAsignados();
+return solicitudes.filter(s => !asignados.has(s.nt));
+}
+
+// --- Search + Chips para NTs ---
+const expNtsSeleccionados = new Set();
+
+function renderNtsChips() {
+const container = document.getElementById('exp-nts-seleccionados');
+container.innerHTML = '';
+if (expNtsSeleccionados.size === 0) {
+container.innerHTML = '<span class="text-xs text-text-secondary">Ningún NT seleccionado</span>';
+return;
+}
+expNtsSeleccionados.forEach(nt => {
+const chip = document.createElement('span');
+chip.className = 'inline-flex items-center gap-1 px-2 py-0.5 bg-primary-fixed text-primary text-xs font-medium rounded-full';
+chip.innerHTML = 'NT ' + nt + '<button type="button" class="hover:text-primary-container" data-nt="' + nt + '"><span class="material-symbols-outlined text-[14px]">close</span></button>';
+chip.querySelector('button').addEventListener('click', function() {
+expNtsSeleccionados.delete(this.dataset.nt);
+renderNtsChips();
+});
+container.appendChild(chip);
+});
+}
+
+function mostrarDropdown(filtro) {
+const dropdown = document.getElementById('exp-nts-dropdown');
+const disponibles = ntsDisponibles();
+const resultados = disponibles.filter(s => s.nt.includes(filtro) && !expNtsSeleccionados.has(s.nt));
+dropdown.innerHTML = '';
+if (resultados.length === 0 || filtro === '') {
+dropdown.classList.add('hidden');
+return;
+}
+dropdown.classList.remove('hidden');
+resultados.forEach(s => {
+const item = document.createElement('button');
+item.type = 'button';
+item.className = 'w-full text-left px-3 py-2 text-sm hover:bg-hover-state transition-colors flex justify-between items-center';
+item.innerHTML = '<span class="font-medium">NT ' + s.nt + '</span><span class="text-xs text-text-secondary">' + s.estado + '</span>';
+item.addEventListener('click', function() {
+expNtsSeleccionados.add(s.nt);
+renderNtsChips();
+document.getElementById('exp-nts-buscar').value = '';
+dropdown.classList.add('hidden');
+document.getElementById('exp-nts-buscar').focus();
+});
+dropdown.appendChild(item);
+});
+}
+
+const buscarInput = document.getElementById('exp-nts-buscar');
+buscarInput.addEventListener('input', function() {
+mostrarDropdown(this.value.trim());
+});
+buscarInput.addEventListener('focus', function() {
+if (this.value.trim()) mostrarDropdown(this.value.trim());
+});
+document.addEventListener('click', function(e) {
+const container = document.querySelector('#exp-nts-buscar').closest('.relative');
+if (!container.contains(e.target)) {
+document.getElementById('exp-nts-dropdown').classList.add('hidden');
+}
+});
+
+// --- Expediente State ---
+let expedientes = JSON.parse(localStorage.getItem('expedientes') || '[]');
+let editExpedienteIndex = -1;
+
+function guardarExpedientes() {
+localStorage.setItem('expedientes', JSON.stringify(expedientes));
+saveToSupabase();
+}
+
+function renderExpedientes() {
+const tbody = document.getElementById('tabla-expedientes');
+const count = document.getElementById('expediente-count');
+tbody.innerHTML = '';
+expedientes.forEach((e, i) => {
+const tr = document.createElement('tr');
+tr.className = 'hover:bg-hover-state transition-colors group';
+let califClass = 'bg-surface-container-high text-text-secondary';
+if (e.calificacion === 'Aprobado por excelencia') califClass = 'bg-success-bg text-success-text';
+else if (e.calificacion === 'Aprobado por Unanimidad') califClass = 'bg-primary-fixed text-primary';
+const gradoLabel = e.tipoGrado === 'Maestría' ? 'M.' : 'Doc.';
+tr.innerHTML = '<td class="py-4 px-4 font-medium text-primary">' + e.dni + '</td>' +
+'<td class="py-4 px-4">' + e.apellidosNombres + '</td>' +
+'<td class="py-4 px-4 text-sm">' + gradoLabel + ' ' + e.nombreGrado + '</td>' +
+'<td class="py-4 px-4 text-sm">' + (e.area || '—') + '</td>' +
+'<td class="py-4 px-4 text-sm">' + e.fechaSustentacion + '</td>' +
+'<td class="py-4 px-4"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + califClass + '">' + e.calificacion + '</span></td>' +
+'<td class="py-4 px-4 text-sm">' + (e.nts && e.nts.length ? e.nts.join(', ') : '—') + '</td>' +
+'<td class="py-4 px-4 text-sm">' + (e.estadoDatos === 'Correcto' ? '<span class="material-symbols-outlined text-success-text text-[18px]">check_circle</span>' : '<span class="text-xs text-warning-text font-medium">Observado</span>') + '</td>' +
+'<td class="py-4 px-4 text-right flex items-center justify-end gap-1">' +
+'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarExpediente(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="eliminarExpediente(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+tbody.appendChild(tr);
+});
+count.textContent = expedientes.length + ' registros';
+}
+
+function eliminarExpediente(index) {
+if (!confirm('¿Está seguro de eliminar el expediente con Código de estudiante ' + expedientes[index].dni + '? Esta acción no se puede deshacer.')) return;
+expedientes.splice(index, 1);
+guardarExpedientes();
+renderExpedientes();
+}
+
+function editarExpediente(index) {
+editExpedienteIndex = index;
+const e = expedientes[index];
+document.getElementById('exp-dni').value = e.dni;
+document.getElementById('exp-nombres').value = e.apellidosNombres;
+document.getElementById('exp-tipo-grado').value = e.tipoGrado;
+document.getElementById('exp-nombre-grado').value = e.nombreGrado;
+document.getElementById('exp-area').value = e.area || '';
+document.getElementById('exp-fecha-matricula').value = e.fechaMatricula;
+document.getElementById('exp-fecha-egreso').value = e.fechaEgreso;
+document.getElementById('exp-creditos').value = e.totalCreditos;
+document.getElementById('exp-fecha-sustentacion').value = e.fechaSustentacion;
+document.getElementById('exp-calificacion').value = e.calificacion;
+document.getElementById('exp-estado-datos').value = e.estadoDatos;
+document.getElementById('exp-obs-container').style.display = e.estadoDatos === 'Observado' ? 'flex' : 'none';
+document.getElementById('exp-obs-comentario').value = e.obsComentario || '';
+expNtsSeleccionados.clear();
+(e.nts || []).forEach(nt => expNtsSeleccionados.add(nt));
+renderNtsChips();
+document.getElementById('exp-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span> Actualizar Expediente';
+document.getElementById('exp-cancel-btn').classList.remove('hidden');
+document.getElementById('exp-dni').focus();
+showPage('expediente');
+}
+
+function cancelarEdicion() {
+editExpedienteIndex = -1;
+document.getElementById('form-expediente').reset();
+document.getElementById('exp-obs-container').style.display = 'none';
+expNtsSeleccionados.clear();
+renderNtsChips();
+document.getElementById('exp-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">assignment</span> Registrar Expediente';
+document.getElementById('exp-cancel-btn').classList.add('hidden');
+}
+
+document.getElementById('exp-cancel-btn').addEventListener('click', cancelarEdicion);
+
+// --- Form Expediente (Crear / Actualizar) ---
+document.getElementById('form-expediente').addEventListener('submit', function(e) {
+e.preventDefault();
+const dni = document.getElementById('exp-dni').value.trim();
+const apellidosNombres = document.getElementById('exp-nombres').value.trim();
+const tipoGrado = document.getElementById('exp-tipo-grado').value;
+const nombreGrado = document.getElementById('exp-nombre-grado').value.trim();
+const area = document.getElementById('exp-area').value;
+const fechaMatricula = document.getElementById('exp-fecha-matricula').value;
+const fechaEgreso = document.getElementById('exp-fecha-egreso').value;
+const totalCreditos = document.getElementById('exp-creditos').value;
+const fechaSustentacion = document.getElementById('exp-fecha-sustentacion').value;
+const calificacion = document.getElementById('exp-calificacion').value;
+const estadoDatos = document.getElementById('exp-estado-datos').value;
+const obsComentario = document.getElementById('exp-obs-comentario').value.trim();
+const ntsSeleccionados = Array.from(expNtsSeleccionados);
+if (!dni || !apellidosNombres || !nombreGrado || !fechaMatricula || !fechaEgreso || !totalCreditos || !fechaSustentacion) return;
+if (ntsSeleccionados.length === 0) {
+alert('Debe seleccionar al menos un NT asociado.');
+return;
+}
+const data = { dni, apellidosNombres, tipoGrado, nombreGrado, area, fechaMatricula, fechaEgreso, totalCreditos, fechaSustentacion, calificacion, estadoDatos, obsComentario: estadoDatos === 'Observado' ? obsComentario : '', nts: ntsSeleccionados };
+if (editExpedienteIndex !== -1) {
+if (dni !== expedientes[editExpedienteIndex].dni && expedientes.some((ex, idx) => ex.dni === dni && idx !== editExpedienteIndex)) {
+alert('El Código de estudiante ' + dni + ' ya pertenece a otro expediente.');
+return;
+}
+expedientes[editExpedienteIndex] = data;
+editExpedienteIndex = -1;
+} else {
+if (expedientes.some(e => e.dni === dni)) {
+alert('El Código de estudiante ' + dni + ' ya tiene un expediente registrado.');
+return;
+}
+expedientes.push(data);
+}
+guardarExpedientes();
+renderExpedientes();
+expNtsSeleccionados.clear();
+renderNtsChips();
+cancelarEdicion();
+document.getElementById('exp-dni').focus();
+});
+
+// --- Mostrar/ocultar comentario de observación en Expediente ---
+document.getElementById('exp-estado-datos').addEventListener('change', function() {
+document.getElementById('exp-obs-container').style.display = this.value === 'Observado' ? 'flex' : 'none';
+});
+
+// --- Limpiar selección de NTs al mostrar página Expediente ---
+document.querySelector('[data-page="expediente"]').addEventListener('click', function() {
+setTimeout(function() {
+cancelarEdicion();
+}, 50);
+});
+
+// --- Seguimiento State ---
+let seguimientos = JSON.parse(localStorage.getItem('seguimientos') || '[]');
+// Migrate old format (nts array -> individual nt)
+if (seguimientos.length && seguimientos[0].nts) {
+const nuevos = [];
+seguimientos.forEach(s => {
+(s.nts || []).forEach(nt => {
+nuevos.push({ dni: s.dni, nombres: s.nombres, programa: s.programa || '', ntSa: '', nt, fechaEntrega: '', oficio: '', fechaRecepcion: '', resolucion: '', estado: '', observacion: '' });
+});
+});
+seguimientos = nuevos;
+guardarSeguimientos();
+}
+const segNtsSeleccionados = new Set();
+let editSegIndex = -1;
+
+function guardarSeguimientos() {
+localStorage.setItem('seguimientos', JSON.stringify(seguimientos));
+saveToSupabase();
+}
+
+function renderSeguimientos() {
+const tbody = document.getElementById('tabla-seguimiento');
+const count = document.getElementById('seg-count');
+tbody.innerHTML = '';
+seguimientos.forEach((s, i) => {
+const tr = document.createElement('tr');
+tr.className = 'hover:bg-hover-state transition-colors group';
+let claseEstado = 'bg-surface-container-high text-text-secondary';
+if (s.estado === 'COMPLETO') claseEstado = 'bg-success-bg text-success-text';
+else if (s.estado === 'Observado') claseEstado = 'bg-warning-bg text-warning-text';
+tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + s.dni + '</td>' +
+'<td class="py-3 px-3 font-medium">NT ' + s.nt + '</td>' +
+'<td class="py-3 px-3">' + s.nombres + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (s.programa || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (s.ntSa || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (s.fechaEntrega || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (s.oficio || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (s.fechaRecepcion || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (s.resolucion || '—') + '</td>' +
+'<td class="py-3 px-3">' + (s.estado ? '<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + s.estado + '</span>' : '<span class="text-xs text-text-secondary">—</span>') + '</td>' +
+'<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
+'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarSeguimiento(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="eliminarSeguimiento(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+tbody.appendChild(tr);
+});
+count.textContent = seguimientos.length + ' registro(s)';
+renderAgrupamiento();
+}
+
+function eliminarSeguimiento(index) {
+if (!confirm('¿Eliminar el seguimiento de NT ' + seguimientos[index].nt + '?')) return;
+seguimientos.splice(index, 1);
+guardarSeguimientos();
+renderSeguimientos();
+}
+
+function renderAgrupamiento() {
+const container = document.getElementById('agrup-container');
+if (!container) return;
+const conResol = seguimientos.filter(s => s.resolucion);
+function getTipo(s) {
+const p = (s.programa || '').toLowerCase();
+if (p.startsWith('maestría') || p.startsWith('maestria')) return 'MAESTRIA';
+if (p.startsWith('doctorado')) return 'DOCTORADO';
+return 'OTROS';
+}
+function soloNombre(programa) {
+if (!programa) return '—';
+const idx = programa.indexOf(' en ');
+return idx > 0 ? programa.substring(idx + 4) : programa;
+}
+const grupos = {};
+conResol.forEach(s => {
+const t = getTipo(s);
+if (!grupos[s.resolucion]) grupos[s.resolucion] = {};
+if (!grupos[s.resolucion][t]) grupos[s.resolucion][t] = [];
+grupos[s.resolucion][t].push(s);
+});
+const resoluciones = Object.keys(grupos).sort();
+container.innerHTML = '';
+if (resoluciones.length === 0) {
+container.innerHTML = '<p class="text-center text-text-secondary py-8">No hay registros con resolución asignada.</p>';
+return;
+}
+resoluciones.forEach(res => {
+const porTipo = grupos[res];
+const tiposPresentes = [];
+['MAESTRIA', 'DOCTORADO', 'OTROS'].forEach(t => { if (porTipo[t] && porTipo[t].length) tiposPresentes.push(t); });
+const item = document.createElement('div');
+item.className = 'bg-surface-card rounded-lg border border-border-subtle shadow-sm overflow-hidden';
+let headerHtml = '<div class="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-hover-state transition-colors agrup-toggle" data-res="' + res.replace(/"/g, '&quot;') + '">' +
+'<div class="flex items-center gap-3">' +
+'<span class="material-symbols-outlined text-text-secondary transition-transform agrup-arrow">chevron_right</span>' +
+'<div><p class="font-semibold text-primary text-sm">Resolución Directoral: ' + res + '</p>' +
+'<p class="text-xs text-text-secondary">';
+const partes = [];
+tiposPresentes.forEach(t => {
+const count = porTipo[t].length;
+const label = t === 'MAESTRIA' ? 'Maestría' : t === 'DOCTORADO' ? 'Doctorado' : 'Otros';
+partes.push(count + ' ' + label);
+});
+headerHtml += partes.join(' · ') + '</p></div></div></div>';
+let bodyHtml = '<div class="agrup-body hidden">';
+tiposPresentes.forEach(t => {
+const miembros = porTipo[t];
+const copyData = miembros.map(m => [m.dni || '', m.nombres || '', soloNombre(m.programa)]);
+const copyJson = JSON.stringify(copyData);
+const rowsHtml = miembros.map(m =>
+'<tr class="hover:bg-hover-state transition-colors">' +
+'<td class="py-2 px-3 font-medium text-primary">' + m.dni + '</td>' +
+'<td class="py-2 px-3">' + m.nombres + '</td>' +
+'<td class="py-2 px-3">' + soloNombre(m.programa) + '</td></tr>'
+).join('');
+const tipoLabel = t === 'MAESTRIA' ? 'Maestría' : t === 'DOCTORADO' ? 'Doctorado' : 'Otros';
+const tipoColor = t === 'MAESTRIA' ? 'bg-blue-100 text-blue-700' : t === 'DOCTORADO' ? 'bg-purple-100 text-purple-700' : 'bg-gray-100 text-gray-600';
+bodyHtml +=
+'<div class="border-t border-border-subtle">' +
+'<div class="flex items-center justify-between px-4 py-2 bg-surface-bg/50">' +
+'<div class="flex items-center gap-2">' +
+'<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + tipoColor + '">' + tipoLabel + '</span>' +
+'<span class="text-xs text-text-secondary">' + miembros.length + ' egresado(s)</span></div>' +
+'<button class="inline-flex items-center justify-center w-6 h-6 rounded text-text-secondary hover:text-primary hover:bg-surface-dim transition-colors copy-agrup-btn flex-shrink-0" data-json="' + copyJson.replace(/"/g, '&quot;') + '" title="Copiar tabla para Excel"><span class="material-symbols-outlined text-[14px]">content_copy</span></button></div>' +
+'<div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-surface-container-low/60">' +
+'<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Código estudiante</th>' +
+'<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Apellidos y Nombres</th>' +
+'<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">' + tipoLabel + '</th></tr></thead>' +
+'<tbody class="text-sm divide-y divide-border-subtle">' + rowsHtml + '</tbody></table></div></div>';
+});
+bodyHtml += '</div>';
+item.innerHTML = headerHtml + bodyHtml;
+container.appendChild(item);
+});
+}
+function copiarAgrup(btn) {
+const data = JSON.parse(btn.getAttribute('data-json'));
+const rows = data.map(r => r.join('\t'));
+const text = rows.join('\n');
+navigator.clipboard.writeText(text).then(() => {
+const orig = btn.innerHTML;
+btn.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span>';
+btn.classList.add('text-success-text');
+btn.classList.remove('text-text-secondary', 'hover:text-primary');
+setTimeout(function() {
+btn.innerHTML = orig;
+btn.classList.remove('text-success-text');
+btn.classList.add('text-text-secondary', 'hover:text-primary');
+}, 2000);
+}).catch(function() {
+alert('No se pudo copiar. Seleccione manualmente los datos.');
+});
+}
+document.getElementById('page-seguimiento-sa-agrupamiento').addEventListener('click', function(e) {
+var btn = e.target.closest('.copy-agrup-btn');
+if (btn) copiarAgrup(btn);
+var toggle = e.target.closest('.agrup-toggle');
+if (toggle) {
+var body = toggle.nextElementSibling;
+var arrow = toggle.querySelector('.agrup-arrow');
+if (body && body.classList.contains('agrup-body')) {
+var isOpen = !body.classList.contains('hidden');
+body.classList.toggle('hidden');
+arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+}
+}
+});
+
+// --- NT search/chips for Seguimiento ---
+function segNtsDisponibles() {
+if (editSegIndex !== -1) {
+const editado = seguimientos[editSegIndex];
+const asignados = new Set();
+seguimientos.forEach((s, i) => { if (i !== editSegIndex) s.nts && s.nts.forEach(nt => asignados.add(nt)); });
+return solicitudes.filter(s => !asignados.has(s.nt) || s.nt === editado.nt);
+}
+const asignados = new Set();
+seguimientos.forEach(s => s.nts && s.nts.forEach(nt => asignados.add(nt)));
+return solicitudes.filter(s => !asignados.has(s.nt));
+}
+
+function renderSegNtsChips() {
+const container = document.getElementById('seg-nts-seleccionados');
+container.innerHTML = '';
+if (segNtsSeleccionados.size === 0) {
+container.innerHTML = '<span class="text-xs text-text-secondary">Ningún NT seleccionado</span>';
+return;
+}
+segNtsSeleccionados.forEach(nt => {
+const chip = document.createElement('span');
+chip.className = 'inline-flex items-center gap-1 px-2 py-0.5 bg-primary-fixed text-primary text-xs font-medium rounded-full';
+chip.innerHTML = 'NT ' + nt + '<button type="button" class="hover:text-primary-container" data-nt="' + nt + '"><span class="material-symbols-outlined text-[14px]">close</span></button>';
+chip.querySelector('button').addEventListener('click', function() {
+segNtsSeleccionados.delete(this.dataset.nt);
+renderSegNtsChips();
+});
+container.appendChild(chip);
+});
+}
+
+function mostrarSegDropdown(filtro) {
+const dropdown = document.getElementById('seg-nts-dropdown');
+const disponibles = segNtsDisponibles();
+const resultados = disponibles.filter(s => s.nt.includes(filtro) && !segNtsSeleccionados.has(s.nt));
+dropdown.innerHTML = '';
+if (resultados.length === 0 || filtro === '') {
+dropdown.classList.add('hidden');
+return;
+}
+dropdown.classList.remove('hidden');
+resultados.forEach(s => {
+const item = document.createElement('button');
+item.type = 'button';
+item.className = 'w-full text-left px-3 py-2 text-sm hover:bg-hover-state transition-colors flex justify-between items-center';
+item.innerHTML = '<span class="font-medium">NT ' + s.nt + '</span><span class="text-xs text-text-secondary">' + s.estado + '</span>';
+item.addEventListener('click', function() {
+segNtsSeleccionados.add(s.nt);
+renderSegNtsChips();
+document.getElementById('seg-nts-buscar').value = '';
+dropdown.classList.add('hidden');
+document.getElementById('seg-nts-buscar').focus();
+});
+dropdown.appendChild(item);
+});
+}
+
+document.getElementById('seg-nts-buscar').addEventListener('input', function() {
+mostrarSegDropdown(this.value.trim());
+});
+document.getElementById('seg-nts-buscar').addEventListener('focus', function() {
+if (this.value.trim()) mostrarSegDropdown(this.value.trim());
+});
+document.addEventListener('click', function(e) {
+const container = document.querySelector('#seg-nts-buscar')?.closest('.relative');
+if (container && !container.contains(e.target)) {
+document.getElementById('seg-nts-dropdown')?.classList.add('hidden');
+}
+});
+
+// --- Toggle observación en Seguimiento ---
+document.getElementById('seg-estado').addEventListener('change', function() {
+document.getElementById('seg-obs-container').style.display = this.value === 'Observado' ? 'flex' : 'none';
+});
+
+// --- Auto-completar al escribir Código de estudiante ---
+document.getElementById('seg-dni').addEventListener('input', function() {
+const dni = this.value.trim();
+if (dni.length < 8) return;
+const exp = expedientes.find(e => e.dni === dni);
+if (exp) {
+document.getElementById('seg-nombres').value = exp.apellidosNombres;
+document.getElementById('seg-tipo').value = exp.tipoGrado === 'Doctorado' ? 'Doctorado' : 'Maestría';
+document.getElementById('seg-nombre-programa').value = exp.nombreGrado || '';
+const asignados = new Set();
+seguimientos.forEach(s => s.nt && asignados.add(s.nt));
+segNtsSeleccionados.clear();
+(exp.nts || []).forEach(nt => { if (!asignados.has(nt)) segNtsSeleccionados.add(nt); });
+renderSegNtsChips();
+} else {
+document.getElementById('seg-nombres').value = '';
+document.getElementById('seg-tipo').value = '';
+document.getElementById('seg-nombre-programa').value = '';
+}
+});
+
+// --- Form Seguimiento (Crear / Actualizar) ---
+document.getElementById('form-seguimiento').addEventListener('submit', function(e) {
+e.preventDefault();
+const dni = document.getElementById('seg-dni').value.trim();
+const nombres = document.getElementById('seg-nombres').value.trim();
+const ntsSeleccionados = Array.from(segNtsSeleccionados);
+const fechaEntrega = document.getElementById('seg-fecha-entrega').value;
+const oficio = document.getElementById('seg-oficio').value.trim();
+const fechaRecepcion = document.getElementById('seg-fecha-recepcion').value;
+const resolucion = document.getElementById('seg-resolucion').value.trim();
+const estado = document.getElementById('seg-estado').value;
+const observacion = document.getElementById('seg-obs-comentario').value.trim();
+if (!dni || !nombres) return;
+if (ntsSeleccionados.length === 0) {
+alert('Debe seleccionar al menos un NT.');
+return;
+}
+const tipo = document.getElementById('seg-tipo').value;
+const nombrePrograma = document.getElementById('seg-nombre-programa').value.trim();
+const programa = tipo && nombrePrograma ? tipo + ' en ' + nombrePrograma : (tipo || nombrePrograma || '');
+const ntSa = document.getElementById('seg-nt-sa').value.trim();
+if (editSegIndex !== -1) {
+seguimientos[editSegIndex].dni = dni;
+seguimientos[editSegIndex].nombres = nombres;
+seguimientos[editSegIndex].programa = programa;
+seguimientos[editSegIndex].ntSa = ntSa;
+seguimientos[editSegIndex].nt = ntsSeleccionados[0];
+seguimientos[editSegIndex].fechaEntrega = fechaEntrega;
+seguimientos[editSegIndex].oficio = oficio;
+seguimientos[editSegIndex].fechaRecepcion = fechaRecepcion;
+seguimientos[editSegIndex].resolucion = resolucion;
+seguimientos[editSegIndex].estado = estado;
+seguimientos[editSegIndex].observacion = estado === 'Observado' ? observacion : '';
+editSegIndex = -1;
+} else {
+ntsSeleccionados.forEach(nt => {
+seguimientos.push({ dni, nombres, programa, ntSa, nt, fechaEntrega, oficio, fechaRecepcion, resolucion, estado, observacion: estado === 'Observado' ? observacion : '' });
+});
+}
+guardarSeguimientos();
+renderSeguimientos();
+segNtsSeleccionados.clear();
+renderSegNtsChips();
+cancelarEdicionSeg();
+document.getElementById('seg-dni').focus();
+});
+
+function editarSeguimiento(index) {
+editSegIndex = index;
+const s = seguimientos[index];
+document.getElementById('seg-dni').value = s.dni;
+document.getElementById('seg-nombres').value = s.nombres;
+const prog = s.programa || '';
+const idxEn = prog.indexOf(' en ');
+if (idxEn > 0) {
+document.getElementById('seg-tipo').value = prog.substring(0, idxEn);
+document.getElementById('seg-nombre-programa').value = prog.substring(idxEn + 4);
+} else {
+document.getElementById('seg-tipo').value = '';
+document.getElementById('seg-nombre-programa').value = prog;
+}
+segNtsSeleccionados.clear();
+segNtsSeleccionados.add(s.nt);
+renderSegNtsChips();
+document.getElementById('seg-fecha-entrega').value = s.fechaEntrega || '';
+document.getElementById('seg-nt-sa').value = s.ntSa || '';
+document.getElementById('seg-oficio').value = s.oficio || '';
+document.getElementById('seg-fecha-recepcion').value = s.fechaRecepcion || '';
+document.getElementById('seg-resolucion').value = s.resolucion || '';
+document.getElementById('seg-estado').value = s.estado || '';
+document.getElementById('seg-obs-container').style.display = s.estado === 'Observado' ? 'flex' : 'none';
+document.getElementById('seg-obs-comentario').value = s.observacion || '';
+document.getElementById('seg-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span> Actualizar Seguimiento';
+document.getElementById('seg-cancel-btn').classList.remove('hidden');
+const body = document.getElementById('seg-form-body');
+if (body.classList.contains('hidden')) {
+body.classList.remove('hidden');
+document.getElementById('seg-toggle-icon').style.transform = 'rotate(180deg)';
+}
+document.getElementById('seg-dni').focus();
+}
+
+function cancelarEdicionSeg() {
+editSegIndex = -1;
+document.getElementById('form-seguimiento').reset();
+document.getElementById('seg-tipo').value = '';
+document.getElementById('seg-nombre-programa').value = '';
+document.getElementById('seg-obs-container').style.display = 'none';
+segNtsSeleccionados.clear();
+renderSegNtsChips();
+document.getElementById('seg-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span> Registrar Seguimiento';
+document.getElementById('seg-cancel-btn').classList.add('hidden');
+}
+
+document.getElementById('seg-cancel-btn').addEventListener('click', cancelarEdicionSeg);
+
+// --- Toggle formulario Seguimiento ---
+document.getElementById('seg-toggle-form').addEventListener('click', function() {
+const body = document.getElementById('seg-form-body');
+const icon = document.getElementById('seg-toggle-icon');
+if (!body.classList.contains('hidden') && editSegIndex === -1) {
+cancelarEdicionSeg();
+}
+body.classList.toggle('hidden');
+icon.style.transform = body.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+});
+
+// --- Limpiar al entrar a Seguimiento ---
+document.querySelector('[data-page="seguimiento-sa-envios"]').addEventListener('click', function() {
+setTimeout(function() {
+cancelarEdicionSeg();
+}, 50);
+});
+
+// --- Envio a Direccion State ---
+let enviosDireccion = JSON.parse(localStorage.getItem('enviosDireccion') || '[]');
+let editEdIndex = -1;
+
+function guardarEnviosDireccion() {
+localStorage.setItem('enviosDireccion', JSON.stringify(enviosDireccion));
+saveToSupabase();
+}
+
+function renderEgresadosResolucion() {
+const container = document.getElementById('ed-egresados-container');
+const count = document.getElementById('ed-egresados-count');
+const res = document.getElementById('ed-resolucion').value.trim();
+if (!res) {
+container.innerHTML = '<p class="text-center text-text-secondary py-4">Ingrese un número de resolución para ver los egresados.</p>';
+count.textContent = '0 egresados';
+return;
+}
+const miembros = seguimientos.filter(s => s.resolucion === res && s.estado === 'COMPLETO');
+if (miembros.length === 0) {
+container.innerHTML = '<p class="text-center text-text-secondary py-4">No hay egresados completos con esta resolución.</p>';
+count.textContent = '0 egresados';
+return;
+}
+function getTipo(s) {
+const p = (s.programa || '').toLowerCase();
+if (p.startsWith('maestría') || p.startsWith('maestria')) return 'MAESTRIA';
+if (p.startsWith('doctorado')) return 'DOCTORADO';
+return 'OTROS';
+}
+function soloNombre(programa) {
+if (!programa) return '—';
+const idx = programa.indexOf(' en ');
+return idx > 0 ? programa.substring(idx + 4) : programa;
+}
+const maestria = miembros.filter(m => getTipo(m) === 'MAESTRIA');
+const doctorado = miembros.filter(m => getTipo(m) === 'DOCTORADO');
+let html = '';
+[['Maestría', maestria, 'bg-blue-100 text-blue-700'], ['Doctorado', doctorado, 'bg-purple-100 text-purple-700']].forEach(function(g) {
+const label = g[0], items = g[1], color = g[2];
+if (items.length === 0) return;
+html += '<div class="mb-3 last:mb-0"><div class="flex items-center gap-2 mb-2"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + color + '">' + label + '</span><span class="text-xs text-text-secondary">' + items.length + ' egresado(s)</span></div>' +
+'<div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-surface-container-low/60">' +
+'<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Código estudiante</th>' +
+'<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Apellidos y Nombres</th>' +
+'<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">' + label + '</th></tr></thead>' +
+'<tbody class="text-sm divide-y divide-border-subtle">';
+items.forEach(function(m) {
+html += '<tr class="hover:bg-hover-state transition-colors"><td class="py-2 px-3 font-medium text-primary">' + m.dni + '</td><td class="py-2 px-3">' + m.nombres + '</td><td class="py-2 px-3">' + soloNombre(m.programa) + '</td></tr>';
+});
+html += '</tbody></table></div></div>';
+});
+container.innerHTML = html || '<p class="text-center text-text-secondary py-4">No se encontraron egresados para esta resolución.</p>';
+count.textContent = miembros.length + ' egresado(s)';
+}
+
+document.getElementById('ed-resolucion').addEventListener('input', renderEgresadosResolucion);
+
+function renderEnviosDireccion() {
+const tbody = document.getElementById('tabla-envios-direccion');
+const count = document.getElementById('ed-count');
+tbody.innerHTML = '';
+enviosDireccion.forEach(function(e, i) {
+const tr = document.createElement('tr');
+tr.className = 'hover:bg-hover-state transition-colors group';
+let claseEstado = 'bg-surface-container-high text-text-secondary';
+if (e.estado === 'Enviado a SG-OGT') claseEstado = 'bg-success-bg text-success-text';
+else if (e.estado === 'Pendiente de recepcion') claseEstado = 'bg-warning-bg text-warning-text';
+else if (e.estado === 'Recepcionado') claseEstado = 'bg-blue-100 text-blue-700';
+tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (e.ntOgt || '—') + '</td>' +
+'<td class="py-3 px-3">' + (e.oficio || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (e.resolucion || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (e.fechaEnvio || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (e.fechaRecepcion || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (e.fechaSg || '—') + '</td>' +
+'<td class="py-3 px-3"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + e.estado + '</span></td>' +
+'<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
+'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarEnvioDireccion(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="eliminarEnvioDireccion(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+tbody.appendChild(tr);
+});
+count.textContent = enviosDireccion.length + ' registro(s)';
+}
+
+document.getElementById('form-envio-direccion').addEventListener('submit', function(e) {
+e.preventDefault();
+const ntOgt = document.getElementById('ed-nt-ogt').value.trim();
+const oficio = document.getElementById('ed-oficio').value.trim();
+const resolucion = document.getElementById('ed-resolucion').value.trim();
+const fechaEnvio = document.getElementById('ed-fecha-envio').value;
+const fechaRecepcion = document.getElementById('ed-fecha-recepcion').value;
+const estado = document.getElementById('ed-estado').value;
+const fechaSg = document.getElementById('ed-fecha-sg').value;
+if (!ntOgt || !resolucion) return;
+if (editEdIndex !== -1) {
+enviosDireccion[editEdIndex].ntOgt = ntOgt;
+enviosDireccion[editEdIndex].oficio = oficio;
+enviosDireccion[editEdIndex].resolucion = resolucion;
+enviosDireccion[editEdIndex].fechaEnvio = fechaEnvio;
+enviosDireccion[editEdIndex].fechaRecepcion = fechaRecepcion;
+enviosDireccion[editEdIndex].estado = estado;
+enviosDireccion[editEdIndex].fechaSg = fechaSg;
+editEdIndex = -1;
+} else {
+enviosDireccion.push({ ntOgt, oficio, resolucion, fechaEnvio, fechaRecepcion, estado, fechaSg });
+}
+guardarEnviosDireccion();
+renderEnviosDireccion();
+cancelarEdicionEnvioDireccion();
+document.getElementById('ed-nt-ogt').focus();
+});
+
+function editarEnvioDireccion(index) {
+editEdIndex = index;
+const e = enviosDireccion[index];
+document.getElementById('ed-nt-ogt').value = e.ntOgt;
+document.getElementById('ed-oficio').value = e.oficio || '';
+document.getElementById('ed-resolucion').value = e.resolucion || '';
+document.getElementById('ed-fecha-envio').value = e.fechaEnvio || '';
+document.getElementById('ed-fecha-recepcion').value = e.fechaRecepcion || '';
+document.getElementById('ed-estado').value = e.estado || 'Pendiente de recepcion';
+document.getElementById('ed-fecha-sg').value = e.fechaSg || '';
+document.getElementById('ed-fecha-sg-container').style.display = e.estado === 'Enviado a SG-OGT' ? 'flex' : 'none';
+renderEgresadosResolucion();
+document.getElementById('form-envio-direccion').querySelector('button[type="submit"]').innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span> Actualizar Envío';
+document.getElementById('ed-cancel-btn').classList.remove('hidden');
+document.getElementById('ed-nt-ogt').focus();
+}
+
+function cancelarEdicionEnvioDireccion() {
+editEdIndex = -1;
+document.getElementById('form-envio-direccion').reset();
+document.getElementById('ed-resolucion').value = '';
+document.getElementById('ed-fecha-sg-container').style.display = 'none';
+renderEgresadosResolucion();
+document.getElementById('form-envio-direccion').querySelector('button[type="submit"]').innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span> Registrar Envío';
+document.getElementById('ed-cancel-btn').classList.add('hidden');
+}
+
+document.getElementById('ed-cancel-btn').addEventListener('click', cancelarEdicionEnvioDireccion);
+
+document.getElementById('ed-fecha-recepcion').addEventListener('input', function() {
+if (this.value && editEdIndex === -1) {
+document.getElementById('ed-estado').value = 'Recepcionado';
+document.getElementById('ed-fecha-sg-container').style.display = 'none';
+}
+});
+
+document.getElementById('ed-estado').addEventListener('change', function() {
+document.getElementById('ed-fecha-sg-container').style.display = this.value === 'Enviado a SG-OGT' ? 'flex' : 'none';
+});
+
+function eliminarEnvioDireccion(index) {
+if (!confirm('¿Eliminar el envío NT OGT ' + enviosDireccion[index].ntOgt + '?')) return;
+enviosDireccion.splice(index, 1);
+guardarEnviosDireccion();
+renderEnviosDireccion();
+}
+
+// --- OCRACC State ---
+let ocraccRegistros = JSON.parse(localStorage.getItem('ocraccRegistros') || '[]');
+let ocEditIndex = -1;
+let ocEgresadosTemp = [];
+
+function guardarOcracc() {
+localStorage.setItem('ocraccRegistros', JSON.stringify(ocraccRegistros));
+saveToSupabase();
+}
+
+// --- Notas State ---
+let notas = JSON.parse(localStorage.getItem('notas') || '[]');
+let ntEditIndex = -1;
+
+const ntColores = ['#fff9c4','#c8e6c9','#bbdefb','#f8bbd0','#ffe0b2','#d1c4e9','#b2dfdb','#ffccbc','#f0f4c3','#e1bee7'];
+const ntRotaciones = ['-1.5deg','-0.5deg','1deg','2deg','-1deg','0.5deg','-2deg','1.5deg'];
+
+function guardarNotas() {
+localStorage.setItem('notas', JSON.stringify(notas));
+saveToSupabase();
+}
+
+function renderNotas() {
+var grid = document.getElementById('nt-grid');
+if (!grid) return;
+grid.innerHTML = '';
+if (!notas.length) {
+grid.innerHTML = '<p class="text-sm text-text-secondary col-span-full text-center py-10">No hay notas todavía. ¡Crea una!</p>';
+return;
+}
+notas.forEach(function(n, i) {
+var div = document.createElement('div');
+div.className = 'nota-card';
+var color = ntColores[i % ntColores.length];
+var rot = ntRotaciones[i % ntRotaciones.length];
+div.style.cssText = 'background:' + color + ';transform:rotate(' + rot + ');';
+div.innerHTML = '<div class="nota-titulo">' + escHtml(n.titulo || 'Sin título') + '</div>' +
+'<div class="nota-cuerpo">' + escHtml(n.cuerpo || '') + '</div>' +
+'<button class="nota-delete material-symbols-outlined" title="Eliminar">delete</button>';
+div.querySelector('.nota-delete').addEventListener('click', function(e) {
+e.stopPropagation();
+if (!confirm('¿Eliminar esta nota?')) return;
+notas.splice(i, 1);
+guardarNotas();
+renderNotas();
+});
+div.addEventListener('dblclick', function() {
+editarNota(i);
+});
+grid.appendChild(div);
+});
+}
+
+function editarNota(idx) {
+var n = notas[idx];
+if (!n) return;
+ntEditIndex = idx;
+document.getElementById('nt-modal-title').textContent = 'Editar Nota';
+document.getElementById('nt-input-titulo').value = n.titulo || '';
+document.getElementById('nt-input-cuerpo').value = n.cuerpo || '';
+document.getElementById('nota-modal').classList.remove('hidden');
+document.getElementById('nt-input-titulo').focus();
+}
+
+function cerrarModalNota() {
+document.getElementById('nota-modal').classList.add('hidden');
+ntEditIndex = -1;
+document.getElementById('nt-input-titulo').value = '';
+document.getElementById('nt-input-cuerpo').value = '';
+}
+
+function escHtml(str) {
+if (!str) return '';
+return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// --- Notas Init inline ---
+document.getElementById('nt-btn-nueva').addEventListener('click', function() {
+ntEditIndex = -1;
+document.getElementById('nt-modal-title').textContent = 'Nueva Nota';
+document.getElementById('nt-input-titulo').value = '';
+document.getElementById('nt-input-cuerpo').value = '';
+document.getElementById('nota-modal').classList.remove('hidden');
+document.getElementById('nt-input-titulo').focus();
+});
+document.getElementById('nt-cancel-btn').addEventListener('click', cerrarModalNota);
+document.getElementById('nota-modal').addEventListener('click', function(e) {
+if (e.target === document.getElementById('nota-modal')) cerrarModalNota();
+});
+document.getElementById('nt-save-btn').addEventListener('click', function() {
+var titulo = document.getElementById('nt-input-titulo').value.trim();
+var cuerpo = document.getElementById('nt-input-cuerpo').value.trim();
+if (!titulo && !cuerpo) { alert('Escribe al menos un título o contenido.'); return; }
+var data = { titulo: titulo || 'Sin título', cuerpo: cuerpo || '' };
+if (ntEditIndex >= 0) {
+notas[ntEditIndex] = data;
+} else {
+notas.push(data);
+}
+guardarNotas();
+renderNotas();
+cerrarModalNota();
+});
+
+function ocEgresadoNombre(codigo) {
+const exp = expedientes.find(function(e) { return e.dni === codigo; });
+return exp ? exp.apellidosNombres : codigo;
+}
+
+function renderOcracc() {
+const tbody = document.getElementById('tabla-ocracc');
+const count = document.getElementById('oc-count');
+tbody.innerHTML = '';
+const now = new Date();
+ocraccRegistros.forEach(function(r, i) {
+const tr = document.createElement('tr');
+tr.className = 'hover:bg-hover-state transition-colors group';
+const fechaEnvio = new Date(r.fechaEnvio + 'T00:00:00');
+const diasTrans = Math.floor((now - fechaEnvio) / (1000 * 60 * 60 * 24));
+const alerta = parseInt(r.alerta) || 30;
+let claseDias = 'text-success-text';
+if (diasTrans > alerta) claseDias = 'text-danger-text font-semibold';
+else if (diasTrans > Math.floor(alerta * 0.75)) claseDias = 'text-warning-text';
+let claseEstado = 'bg-surface-container-high text-text-secondary';
+if (r.estado === 'CERTIFICADOS RECEPCIONADOS') claseEstado = 'bg-success-bg text-success-text';
+tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (r.oficio || '—') + '</td>' +
+'<td class="py-3 px-3">' + (r.nt || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm">' + (r.fechaEnvio || '—') + '</td>' +
+'<td class="py-3 px-3 text-sm font-medium ' + claseDias + '">' + diasTrans + ' días</td>' +
+'<td class="py-3 px-3 text-sm">' + alerta + ' días</td>' +
+'<td class="py-3 px-3 text-sm">' + (r.fechaRecepcion || '—') + '</td>' +
+'<td class="py-3 px-3"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + r.estado + '</span></td>' +
+'<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
+'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="verOcraccEgresados(' + i + ')" title="Ver egresados"><span class="material-symbols-outlined text-[18px]">visibility</span></button>' +
+'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarOcracc(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="eliminarOcracc(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+tbody.appendChild(tr);
+});
+count.textContent = ocraccRegistros.length + ' registro(s)';
+}
+
+function renderOcEgresadosChips() {
+const container = document.getElementById('oc-egresados-chips');
+container.innerHTML = '';
+ocEgresadosTemp.forEach(function(codigo, i) {
+const nombre = ocEgresadoNombre(codigo);
+const chip = document.createElement('span');
+chip.className = 'inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary-fixed text-primary text-xs font-semibold';
+chip.innerHTML = codigo + ' - ' + nombre + '<button type="button" class="hover:text-danger-text" onclick="ocEgresadosTemp.splice(' + i + ',1);renderOcEgresadosChips();"><span class="material-symbols-outlined text-[14px]">close</span></button>';
+container.appendChild(chip);
+});
+if (ocEgresadosTemp.length === 0) {
+container.innerHTML = '<span class="text-xs text-text-secondary">Ningún egresado agregado</span>';
+}
+}
+
+function ocMostrarDropdown(filtro) {
+const dropdown = document.getElementById('oc-egresados-dropdown');
+const resultados = expedientes.filter(function(e) { return e.dni.includes(filtro) && !ocEgresadosTemp.includes(e.dni); });
+dropdown.innerHTML = '';
+if (resultados.length === 0 || filtro === '') {
+dropdown.classList.add('hidden');
+return;
+}
+dropdown.classList.remove('hidden');
+resultados.forEach(function(e) {
+const item = document.createElement('button');
+item.type = 'button';
+item.className = 'w-full text-left px-3 py-2 text-sm hover:bg-hover-state transition-colors flex justify-between items-center';
+item.innerHTML = '<span class="font-medium">' + e.dni + '</span><span class="text-xs text-text-secondary">' + e.apellidosNombres + '</span>';
+item.addEventListener('click', function() {
+if (!ocEgresadosTemp.includes(e.dni)) {
+ocEgresadosTemp.push(e.dni);
+renderOcEgresadosChips();
+}
+document.getElementById('oc-egresado-input').value = '';
+dropdown.classList.add('hidden');
+document.getElementById('oc-egresado-input').focus();
+});
+dropdown.appendChild(item);
+});
+}
+
+var ocEgresadoInput = document.getElementById('oc-egresado-input');
+ocEgresadoInput.addEventListener('input', function() {
+ocMostrarDropdown(this.value.trim());
+});
+ocEgresadoInput.addEventListener('focus', function() {
+if (this.value.trim()) ocMostrarDropdown(this.value.trim());
+});
+document.addEventListener('click', function(e) {
+var container = document.getElementById('oc-egresado-input').closest('.relative');
+if (container && !container.contains(e.target)) {
+document.getElementById('oc-egresados-dropdown').classList.add('hidden');
+}
+});
+
+document.getElementById('form-ocracc').addEventListener('submit', function(e) {
+e.preventDefault();
+const oficio = document.getElementById('oc-oficio').value.trim();
+const nt = document.getElementById('oc-nt').value.trim();
+const fechaEnvio = document.getElementById('oc-fecha-envio').value;
+const fechaRecepcion = document.getElementById('oc-fecha-recepcion').value;
+const estado = document.getElementById('oc-estado').value;
+const alerta = document.getElementById('oc-alerta').value || '30';
+if (!oficio || !nt || !fechaEnvio) return;
+if (ocEgresadosTemp.length === 0) {
+alert('Debe agregar al menos un egresado.');
+return;
+}
+const data = { oficio, nt, fechaEnvio, fechaRecepcion, estado, alerta, egresados: ocEgresadosTemp.slice() };
+if (ocEditIndex !== -1) {
+ocraccRegistros[ocEditIndex] = data;
+ocEditIndex = -1;
+} else {
+ocraccRegistros.push(data);
+}
+guardarOcracc();
+renderOcracc();
+document.getElementById('form-ocracc').reset();
+ocEgresadosTemp = [];
+renderOcEgresadosChips();
+document.getElementById('oc-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span> Registrar Solicitud';
+document.getElementById('oc-cancel-btn').classList.add('hidden');
+document.getElementById('oc-alerta').value = '30';
+});
+
+function editarOcracc(index) {
+ocEditIndex = index;
+const r = ocraccRegistros[index];
+document.getElementById('oc-oficio').value = r.oficio;
+document.getElementById('oc-nt').value = r.nt;
+document.getElementById('oc-fecha-envio').value = r.fechaEnvio;
+document.getElementById('oc-fecha-recepcion').value = r.fechaRecepcion || '';
+document.getElementById('oc-estado').value = r.estado;
+document.getElementById('oc-alerta').value = r.alerta || '30';
+ocEgresadosTemp = (r.egresados || []).slice();
+renderOcEgresadosChips();
+document.getElementById('oc-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span> Actualizar Solicitud';
+document.getElementById('oc-cancel-btn').classList.remove('hidden');
+document.getElementById('oc-oficio').focus();
+}
+
+document.getElementById('oc-cancel-btn').addEventListener('click', function() {
+ocEditIndex = -1;
+document.getElementById('form-ocracc').reset();
+ocEgresadosTemp = [];
+renderOcEgresadosChips();
+document.getElementById('oc-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span> Registrar Solicitud';
+document.getElementById('oc-cancel-btn').classList.add('hidden');
+document.getElementById('oc-alerta').value = '30';
+});
+
+function eliminarOcracc(index) {
+if (!confirm('¿Eliminar solicitud NT ' + ocraccRegistros[index].nt + '?')) return;
+ocraccRegistros.splice(index, 1);
+guardarOcracc();
+renderOcracc();
+}
+
+function verOcraccEgresados(index) {
+const r = ocraccRegistros[index];
+const lista = document.getElementById('oc-modal-lista');
+lista.innerHTML = '';
+if (r.egresados && r.egresados.length) {
+r.egresados.forEach(function(codigo) {
+const nombre = ocEgresadoNombre(codigo);
+const item = document.createElement('div');
+item.className = 'flex items-center gap-2 px-3 py-2 border-b border-border-subtle text-sm';
+item.innerHTML = '<span class="font-medium text-primary">' + codigo + '</span><span class="text-text-secondary">-</span><span>' + nombre + '</span>';
+lista.appendChild(item);
+});
+} else {
+lista.innerHTML = '<p class="text-text-secondary text-sm p-3">Sin egresados.</p>';
+}
+document.getElementById('oc-modal-oficio').textContent = r.oficio || '—';
+document.getElementById('oc-modal-nt').textContent = r.nt || '—';
+document.getElementById('oc-modal-overlay').classList.remove('hidden');
+}
+
+document.getElementById('oc-modal-close').addEventListener('click', function() {
+document.getElementById('oc-modal-overlay').classList.add('hidden');
+});
+document.getElementById('oc-modal-overlay').addEventListener('click', function(e) {
+if (e.target === this) this.classList.add('hidden');
+});
+
+// --- Reporte ---
+function renderReporte() {
+const areas = [
+'Ciencias de la Empresa',
+'Humanidades y Ciencias Basicas',
+'Derecho y Ciencias Políticas',
+'Ingeniería, Arquitectura y Ciencias Básicas',
+'Ciencias de la Salud'
+];
+const meses = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+const matriz = {};
+areas.forEach(function(a) {
+matriz[a] = {};
+meses.forEach(function(m, idx) { matriz[a][idx] = 0; });
+matriz[a].total = 0;
+});
+var totalMes = {};
+meses.forEach(function(m, idx) { totalMes[idx] = 0; });
+var granTotal = 0;
+
+enviosDireccion.forEach(function(env) {
+if (env.estado !== 'Enviado a SG-OGT' || !env.fechaSg) return;
+const mesIdx = new Date(env.fechaSg + 'T00:00:00').getMonth();
+var dnisEnResolucion = new Set();
+seguimientos.forEach(function(seg) {
+if (seg.resolucion === env.resolucion && seg.dni) {
+dnisEnResolucion.add(seg.dni);
+}
+});
+dnisEnResolucion.forEach(function(dni) {
+var exp = expedientes.find(function(e) { return e.dni === dni; });
+if (!exp || !exp.area) return;
+var area = areas.find(function(a) { return a.toLowerCase() === exp.area.toLowerCase(); });
+if (!area) return;
+matriz[area][mesIdx]++;
+matriz[area].total++;
+totalMes[mesIdx]++;
+granTotal++;
+});
+});
+
+const tbody = document.getElementById('tabla-reporte');
+tbody.innerHTML = '';
+areas.forEach(function(area) {
+const tr = document.createElement('tr');
+tr.className = 'hover:bg-hover-state transition-colors';
+var html = '<td class="py-3 px-3 font-medium text-primary sticky left-0 bg-surface-card">' + area + '</td>';
+meses.forEach(function(m, idx) {
+var val = matriz[area][idx] || 0;
+html += '<td class="py-3 px-3 text-center">' + (val || '—') + '</td>';
+});
+html += '<td class="py-3 px-3 text-center font-semibold text-primary">' + (matriz[area].total || 0) + '</td>';
+tr.innerHTML = html;
+tbody.appendChild(tr);
+});
+var totalRow = document.createElement('tr');
+totalRow.className = 'bg-surface-bg/50 font-semibold';
+var totalHtml = '<td class="py-3 px-3 font-semibold text-primary sticky left-0 bg-surface-bg/50">TOTAL</td>';
+meses.forEach(function(m, idx) {
+totalHtml += '<td class="py-3 px-3 text-center font-semibold">' + (totalMes[idx] || 0) + '</td>';
+});
+totalHtml += '<td class="py-3 px-3 text-center font-semibold text-primary">' + (granTotal || 0) + '</td>';
+totalRow.innerHTML = totalHtml;
+tbody.appendChild(totalRow);
+}
+
+// --- Dashboard ---
+function renderDashboard() {
+document.getElementById('kpi-solicitudes').textContent = solicitudes.length;
+document.getElementById('kpi-expedientes').textContent = expedientes.length;
+document.getElementById('kpi-seguimientos').textContent = seguimientos.length;
+document.getElementById('kpi-envios').textContent = enviosDireccion.length;
+document.getElementById('kpi-ocracc').textContent = ocraccRegistros.length;
+document.getElementById('kpi-notas').textContent = notas.length;
+// Mini gráfico SA por estado
+var estados = {}; seguimientos.forEach(function(s) { estados[s.estado] = (estados[s.estado]||0) + 1; });
+var chart = document.getElementById('kpi-sa-chart');
+chart.innerHTML = '';
+var coloresEstado = { Entregado: '#4caf50', 'En Proceso': '#ff9800', Observado: '#f44336', Pendiente: '#9e9e9e' };
+var maxVal = Math.max(1, ...Object.values(estados));
+Object.keys(estados).forEach(function(est) {
+var pct = (estados[est] / maxVal) * 100;
+var bar = document.createElement('div');
+bar.className = 'flex-1 rounded-t flex flex-col items-center justify-end gap-1 relative';
+bar.innerHTML = '<span class="text-[10px] font-semibold text-text-secondary">' + estados[est] + '</span><div class="w-full rounded-t" style="height:' + pct + '%;background:' + (coloresEstado[est]||'#9e9e9e') + ';min-height:4px"></div><span class="text-[9px] text-text-secondary truncate w-full text-center">' + est + '</span>';
+chart.appendChild(bar);
+});
+// Alertas OCRACC
+var alertas = document.getElementById('kpi-alertas');
+var now = new Date();
+var alertasList = ocraccRegistros.filter(function(r) {
+if (r.estado === 'CERTIFICADOS RECEPCIONADOS' || !r.fechaEnvio) return false;
+var dias = Math.floor((now - new Date(r.fechaEnvio + 'T00:00:00')) / (1000*60*60*24));
+return dias > (parseInt(r.alerta) || 30);
+});
+if (alertasList.length) {
+alertas.innerHTML = alertasList.map(function(r) { return '<div class="flex items-center gap-2 text-danger-text"><span class="material-symbols-outlined text-[16px]">warning</span>' + (r.oficio||'—') + ' (' + r.nt + ')</div>'; }).join('');
+} else {
+alertas.innerHTML = '<span class="text-success-text flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">check_circle</span>Sin alertas pendientes</span>';
+}
+}
+
+// --- Búsqueda Global ---
+function initSearch() {
+var input = document.querySelector('header input[type="text"]');
+if (!input) return;
+var dropdown = document.createElement('div');
+dropdown.className = 'absolute top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-80 overflow-y-auto hidden z-50';
+dropdown.id = 'global-search-dd';
+input.parentNode.appendChild(dropdown);
+input.addEventListener('input', function() {
+var q = input.value.trim().toLowerCase();
+if (!q) { dropdown.classList.add('hidden'); dropdown.innerHTML = ''; return; }
+var results = [];
+expedientes.forEach(function(e) {
+if ((e.dni && e.dni.toLowerCase().includes(q)) || (e.apellidosNombres && e.apellidosNombres.toLowerCase().includes(q))) {
+results.push({ tipo: 'Expediente', label: e.dni + ' - ' + (e.apellidosNombres||''), page: 'expediente' });
+}
+});
+solicitudes.forEach(function(s) {
+if (s.nt && s.nt.toString().includes(q)) {
+results.push({ tipo: 'Solicitud', label: 'NT ' + s.nt + ' - ' + (s.estudiante||''), page: 'solicitud' });
+}
+});
+seguimientos.forEach(function(seg) {
+if (seg.dni && seg.dni.toLowerCase().includes(q)) {
+results.push({ tipo: 'Seguimiento SA', label: seg.dni + ' - ' + (seg.nombres||'') + ' (Res. ' + seg.resolucion + ')', page: 'seguimiento-sa-envios' });
+}
+});
+if (!results.length) {
+dropdown.innerHTML = '<div class="p-3 text-sm text-text-secondary">Sin resultados</div>';
+} else {
+dropdown.innerHTML = results.slice(0, 10).map(function(r) {
+return '<div class="flex items-center gap-3 px-4 py-2.5 hover:bg-surface-container-high cursor-pointer text-sm border-b border-border-subtle last:border-0" data-page="' + r.page + '"><span class="text-[11px] font-semibold uppercase text-primary bg-surface-bg/50 px-1.5 py-0.5 rounded">' + r.tipo + '</span><span class="text-on-surface">' + r.label + '</span></div>';
+}).join('');
+dropdown.querySelectorAll('[data-page]').forEach(function(el) {
+el.addEventListener('click', function() {
+showPage(el.dataset.page);
+input.value = '';
+dropdown.classList.add('hidden');
+dropdown.innerHTML = '';
+});
+});
+}
+dropdown.classList.remove('hidden');
+});
+document.addEventListener('click', function(e) {
+if (!input.parentNode.contains(e.target)) { dropdown.classList.add('hidden'); }
+});
+}
+
+// --- Export / Import ---
+function exportJSON() {
+var data = {
+solicitudes: solicitudes,
+expedientes: expedientes,
+seguimientos: seguimientos,
+enviosDireccion: enviosDireccion,
+ocraccRegistros: ocraccRegistros,
+notas: notas,
+categoriasCorreo: JSON.parse(localStorage.getItem('categoriasCorreo') || '[]')
+};
+var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+var url = URL.createObjectURL(blob);
+var a = document.createElement('a');
+a.href = url; a.download = 'backup-' + new Date().toISOString().slice(0,10) + '.json';
+document.body.appendChild(a); a.click(); document.body.removeChild(a);
+URL.revokeObjectURL(url);
+}
+
+function importJSON(file) {
+var reader = new FileReader();
+reader.onload = function(e) {
+try {
+var data = JSON.parse(e.target.result);
+if (data.solicitudes) { solicitudes.length = 0; solicitudes.push.apply(solicitudes, data.solicitudes); localStorage.setItem('solicitudes', JSON.stringify(solicitudes)); }
+if (data.expedientes) { expedientes.length = 0; expedientes.push.apply(expedientes, data.expedientes); localStorage.setItem('expedientes', JSON.stringify(expedientes)); }
+if (data.seguimientos) { seguimientos.length = 0; seguimientos.push.apply(seguimientos, data.seguimientos); localStorage.setItem('seguimientos', JSON.stringify(seguimientos)); }
+if (data.enviosDireccion) { enviosDireccion.length = 0; enviosDireccion.push.apply(enviosDireccion, data.enviosDireccion); localStorage.setItem('enviosDireccion', JSON.stringify(enviosDireccion)); }
+if (data.ocraccRegistros) { ocraccRegistros.length = 0; ocraccRegistros.push.apply(ocraccRegistros, data.ocraccRegistros); localStorage.setItem('ocraccRegistros', JSON.stringify(ocraccRegistros)); }
+if (data.notas) { notas.length = 0; notas.push.apply(notas, data.notas); localStorage.setItem('notas', JSON.stringify(notas)); }
+if (data.categoriasCorreo) localStorage.setItem('categoriasCorreo', JSON.stringify(data.categoriasCorreo));
+saveToSupabase();
+alert('Datos importados correctamente. Recargando...');
+location.reload();
+} catch(err) { alert('Error al importar: ' + err.message); }
+};
+reader.readAsText(file);
+}
+
+// --- Init ---
+try {
+renderSolicitudes();
+renderExpedientes();
+renderSeguimientos();
+renderEnviosDireccion();
+renderOcracc();
+renderNotas();
+renderReporte();
+renderDashboard();
+} catch(e) { console.error('Init error:', e); }
+
+initSearch();
+
+document.getElementById('btn-export-json').addEventListener('click', exportJSON);
+document.getElementById('btn-export-excel').addEventListener('click', function() {
+var rows = [['Sección','Campo','Valor']];
+function addSection(name, arr, fields) {
+arr.forEach(function(item) {
+fields.forEach(function(f) { rows.push([name, f, item[f] || '']); });
+});
+}
+addSection('Solicitudes', solicitudes, ['nt','estudiante','grado','programa']);
+addSection('Expedientes', expedientes, ['dni','apellidosNombres','area','tipoGrado','nombreGrado']);
+addSection('Seguimientos SA', seguimientos, ['dni','nombres','nt','resolucion','estado']);
+addSection('Envios Direccion', enviosDireccion, ['resolucion','oficio','estado']);
+addSection('OCRACC', ocraccRegistros, ['oficio','nt','estado']);
+var csv = rows.map(function(r) { return r.map(function(c) { return '"' + (c||'').replace(/"/g,'""') + '"'; }).join(','); }).join('\n');
+var blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+var url = URL.createObjectURL(blob);
+var a = document.createElement('a'); a.href = url; a.download = 'export-' + new Date().toISOString().slice(0,10) + '.csv';
+document.body.appendChild(a); a.click(); document.body.removeChild(a);
+URL.revokeObjectURL(url);
+});
+document.getElementById('btn-import-json').addEventListener('change', function(e) {
+if (e.target.files.length) importJSON(e.target.files[0]);
+});
+
+showPage('dashboard');
+
+// --- Live reload ---
+(function() {
+let lastMod = null;
+setInterval(function() {
+fetch(window.location.href, { method: 'HEAD', cache: 'no-store' }).then(function(r) {
+var lm = r.headers.get('Last-Modified');
+if (lastMod && lm && lm !== lastMod) { location.reload(); }
+lastMod = lm || lastMod;
+}).catch(function(){});
+    }, 3000);
+})();
+</script>
