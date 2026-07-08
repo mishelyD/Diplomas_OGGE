@@ -4,18 +4,17 @@
 1. [Acceso a la Aplicación](#1-acceso-a-la-aplicación)
 2. [Estructura General](#2-estructura-general)
 3. [Resumen (Dashboard)](#3-resumen-dashboard)
-4. [Seguimiento NT](#4-seguimiento-nt)
-5. [Solicitud](#5-solicitud)
-6. [Expediente](#6-expediente)
-7. [Seguimiento SA](#7-seguimiento-sa)
-   - 7.1 Envíos
-   - 7.2 Agrupamiento
-8. [Envio a Direccion](#8-envio-a-direccion)
-9. [OCRACC](#9-ocracc)
-10. [Notas](#10-notas)
-11. [Reporte](#11-reporte)
-12. [Configuración](#12-configuración)
-13. [Búsqueda Global](#13-búsqueda-global)
+4. [Solicitud](#4-solicitud)
+5. [Expediente](#5-expediente)
+6. [Seguimiento SA](#6-seguimiento-sa)
+   - 6.1 Envíos
+   - 6.2 Agrupamiento
+7. [Envio a Direccion](#7-envio-a-direccion)
+8. [OCRACC](#8-ocracc)
+9. [Notas](#9-notas)
+10. [Reporte](#10-reporte)
+11. [Configuración](#11-configuración)
+12. [Búsqueda Global](#12-búsqueda-global)
 
 ---
 
@@ -68,26 +67,7 @@ La aplicación tiene:
 
 ---
 
-## 4. Seguimiento NT
-
-**¿Para qué sirve?** Permite buscar un Número de Trámite (NT) y conocer en qué etapa del flujo se encuentra.
-
-### Cómo usar
-1. En el campo **"N° de Trámite"**, escribe el número a buscar.
-2. Haz clic en **"Buscar"**.
-3. La aplicación revisa automáticamente:
-   - **Solicitudes**: si el NT está registrado como solicitud.
-   - **Expedientes**: si el NT aparece en la lista de trámites de algún expediente.
-   - **Seguimiento SA**: si el NT está en los seguimientos (campo NTS o NT SA).
-   - **Envío a Dirección**: si el NT OGT coincide.
-   - **OCRACC**: si el NT aparece en registros de OCRACC.
-4. Los resultados se muestran en tarjetas con el estado actual en cada módulo.
-
-**Ejemplo:** Buscas "NT-2024-001" y te muestra que está en Solicitud (estado: Completo) y en Expediente (asociado al DNI 12345678).
-
----
-
-## 5. Solicitud
+## 4. Solicitud
 
 **¿Para qué sirve?** Registrar y dar seguimiento a las solicitudes de trámite de diplomas.
 
@@ -110,7 +90,7 @@ La aplicación tiene:
 
 ---
 
-## 6. Expediente
+## 5. Expediente
 
 **¿Para qué sirve?** Gestionar los expedientes académicos de los egresados.
 
@@ -137,22 +117,22 @@ La aplicación tiene:
 
 ---
 
-## 7. Seguimiento SA
+## 6. Seguimiento SA
 
 **¿Para qué sirve?** Realizar el seguimiento de las actas de sustentación (SA) de los egresados.
 
-### 7.1 Envíos
+### 6.1 Envíos
 Registro de envíos de documentación al SA.
 - **Campos:** DNI, Nombres, N° de Trámites (NTs), Tipo, Nombre del Programa, NT SA, Fecha de Entrega, Oficio, Fecha de Recepción, Resolución, Estado, Obs./Comentario.
 - **Estado:** COMPLETO, Observado, Pendiente.
 - **Botón "Agregar Egresado"** en la tabla para añadir más egresados a un mismo seguimiento.
 
-### 7.2 Agrupamiento
+### 6.2 Agrupamiento
 Agrupa los seguimientos por resolución para verlos de forma consolidada.
 
 ---
 
-## 8. Envio a Direccion
+## 7. Envio a Direccion
 
 **¿Para qué sirve?** Registrar y dar seguimiento a los envíos de documentos a la Dirección.
 
@@ -173,7 +153,7 @@ Agrupa los seguimientos por resolución para verlos de forma consolidada.
 
 ---
 
-## 9. OCRACC
+## 8. OCRACC
 
 **¿Para qué sirve?** Gestionar registros de la Oficina de Control de Riesgos y Calidad.
 
@@ -193,7 +173,7 @@ Agrupa los seguimientos por resolución para verlos de forma consolidada.
 
 ---
 
-## 10. Notas
+## 9. Notas
 
 **¿Para qué sirve?** Notas adhesivas tipo Post-it para apuntes rápidos.
 
@@ -211,7 +191,7 @@ Agrupa los seguimientos por resolución para verlos de forma consolidada.
 
 ---
 
-## 11. Reporte
+## 10. Reporte
 
 **¿Para qué sirve?** Generar un resumen estadístico de todos los datos del sistema.
 
@@ -224,7 +204,7 @@ Agrupa los seguimientos por resolución para verlos de forma consolidada.
 
 ---
 
-## 12. Configuración
+## 11. Configuración
 
 **¿Para qué sirve?** Gestionar datos, exportar/importar respaldo y personalizar colores.
 
@@ -243,7 +223,7 @@ Agrupa los seguimientos por resolución para verlos de forma consolidada.
 
 ---
 
-## 13. Búsqueda Global
+## 12. Búsqueda Global
 
 **¿Para qué sirve?** Encontrar rápidamente cualquier registro desde la barra superior.
 
