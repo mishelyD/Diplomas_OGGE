@@ -266,6 +266,12 @@ box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 </a>
 </li>
 <li class="">
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="seguimiento-nt">
+<span class="material-symbols-outlined">search</span>
+<span class="">Seguimiento NT</span>
+</a>
+</li>
+<li class="">
 <a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="ocracc">
 <span class="material-symbols-outlined">document_scanner</span>
 <span class="">OCRACC</span>
@@ -776,6 +782,41 @@ Cancelar
 </section>
 </div>
 <!-- End Page: Envio a Direccion -->
+
+<!-- Page: Seguimiento NT -->
+<div id="page-seguimiento-nt" class="page flex flex-col gap-stack-lg" style="display:none">
+<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
+<div>
+<h2 class="font-section-title text-section-title text-primary tracking-tight">Seguimiento NT</h2>
+<p class="text-text-secondary text-sm mt-1">Consulta en qué etapa se encuentra un Número de Trámite.</p>
+</div>
+</section>
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50">
+<h3 class="font-semibold text-primary">Buscar NT</h3>
+</div>
+<div class="p-4">
+<div class="flex gap-3 items-end">
+<div class="flex flex-col gap-1.5 flex-1 max-w-md">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° de Trámite</label>
+<input id="nt-search-input" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: NT-2024-001">
+</div>
+<button onclick="buscarNT()" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">search</span> Buscar
+</button>
+</div>
+</div>
+</section>
+<section id="nt-result-section" class="hidden">
+<div class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<div class="p-4 border-b border-border-subtle bg-surface-bg/50">
+<h3 class="font-semibold text-primary">Resultados para: <span id="nt-searched-value" class="font-mono"></span></h3>
+</div>
+<div id="nt-results" class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+</div>
+</div>
+</section>
+</div>
 
 <!-- Page: OCRACC -->
 <div id="page-ocracc" class="page flex flex-col gap-stack-lg" style="display:none">
@@ -2559,6 +2600,70 @@ location.reload();
 } catch(err) { alert('Error al importar: ' + err.message); }
 };
 reader.readAsText(file);
+}
+
+// --- Seguimiento NT ---
+function buscarNT() {
+var nt = document.getElementById('nt-search-input').value.trim();
+if (!nt) { alert('Ingresa un N° de Trámite'); return; }
+document.getElementById('nt-searched-value').textContent = nt;
+var section = document.getElementById('nt-result-section');
+var container = document.getElementById('nt-results');
+var cards = [];
+// Buscar en Solicitudes
+solicitudes.forEach(function(s) {
+if (s.nt && s.nt.toString().toLowerCase().includes(nt.toLowerCase())) {
+var estadoClass = 'bg-surface-container-high text-text-secondary';
+if (s.estado === 'Completo') estadoClass = 'bg-success-bg text-success-text';
+else if (s.estado === 'Observado') estadoClass = 'bg-warning-bg text-warning-text';
+cards.push({ titulo: 'Solicitud', fields: [['NT', s.nt], ['Estudiante', s.estudiante||'—'], ['Estado', '<span class="' + estadoClass + ' px-2 py-0.5 rounded text-xs font-semibold">' + escHtml(s.estado||'') + '</span>'], ['Fecha', s.fecha||'—'], ['Comentario', s.comentario||'—']] });
+}
+});
+// Buscar en Expedientes
+expedientes.forEach(function(e) {
+if (e.nts && Array.isArray(e.nts) && e.nts.some(function(n) { return n && n.toString().toLowerCase().includes(nt.toLowerCase()); })) {
+cards.push({ titulo: 'Expediente', fields: [['DNI', e.dni||'—'], ['Nombres', e.nombres||e.apellidosNombres||'—'], ['Grado', (e.tipoGrado||'') + ' ' + (e.nombreGrado||'')], ['Estado Datos', e.estadoDatos||'—']] });
+}
+});
+// Buscar en Seguimientos
+seguimientos.forEach(function(seg) {
+if (seg.nts && Array.isArray(seg.nts) && seg.nts.some(function(n) { return n && n.toString().toLowerCase().includes(nt.toLowerCase()); })) {
+var estClass = 'bg-surface-container-high text-text-secondary';
+if (seg.estado === 'COMPLETO') estClass = 'bg-success-bg text-success-text';
+else if (seg.estado === 'Observado') estClass = 'bg-warning-bg text-warning-text';
+cards.push({ titulo: 'Seguimiento SA', fields: [['DNI', seg.dni||'—'], ['Nombres', seg.nombres||'—'], ['Resolución', seg.resolucion||'—'], ['Estado', '<span class="' + estClass + ' px-2 py-0.5 rounded text-xs font-semibold">' + escHtml(seg.estado||'') + '</span>']] });
+}
+if (seg.ntSa && seg.ntSa.toString().toLowerCase().includes(nt.toLowerCase())) {
+var estClass2 = 'bg-surface-container-high text-text-secondary';
+if (seg.estado === 'COMPLETO') estClass2 = 'bg-success-bg text-success-text';
+else if (seg.estado === 'Observado') estClass2 = 'bg-warning-bg text-warning-text';
+cards.push({ titulo: 'Seguimiento SA (NT SA)', fields: [['DNI', seg.dni||'—'], ['Nombres', seg.nombres||'—'], ['NT SA', seg.ntSa||'—'], ['Resolución', seg.resolucion||'—'], ['Estado', '<span class="' + estClass2 + ' px-2 py-0.5 rounded text-xs font-semibold">' + escHtml(seg.estado||'') + '</span>']] });
+}
+});
+// Buscar en Envíos a Dirección
+enviosDireccion.forEach(function(ed) {
+if (ed.ntOgt && ed.ntOgt.toString().toLowerCase().includes(nt.toLowerCase())) {
+var estClass3 = 'bg-surface-container-high text-text-secondary';
+if (ed.estado === 'Recepcionado' || ed.estado === 'Enviado a SG-OGT') estClass3 = 'bg-success-bg text-success-text';
+cards.push({ titulo: 'Envío a Dirección', fields: [['NT OGT', ed.ntOgt||'—'], ['Oficio', ed.oficio||'—'], ['Resolución', ed.resolucion||'—'], ['Estado', '<span class="' + estClass3 + ' px-2 py-0.5 rounded text-xs font-semibold">' + escHtml(ed.estado||'') + '</span>'], ['Fecha Envío', ed.fechaEnvio||'—']] });
+}
+});
+// Buscar en OCRACC
+ocraccRegistros.forEach(function(oc) {
+if (oc.nt && oc.nt.toString().toLowerCase().includes(nt.toLowerCase())) {
+var alertaClass = 'bg-surface-container-high text-text-secondary';
+if (oc.alerta) alertaClass = 'bg-danger-bg text-danger-text';
+cards.push({ titulo: 'OCRACC', fields: [['NT', oc.nt||'—'], ['Oficio', oc.oficio||'—'], ['Estado', '<span class="' + alertaClass + ' px-2 py-0.5 rounded text-xs font-semibold">' + escHtml(oc.estado||'') + '</span>'], ['Alerta', oc.alerta || '—']] });
+}
+});
+if (!cards.length) {
+container.innerHTML = '<div class="col-span-full text-center py-8 text-text-secondary"><span class="material-symbols-outlined text-4xl block mb-2">search_off</span>No se encontró el NT en ningún módulo.</div>';
+} else {
+container.innerHTML = cards.map(function(c) {
+return '<div class="bg-surface-bg rounded-lg border border-border-subtle p-4"><h4 class="font-semibold text-primary text-sm mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">info</span>' + escHtml(c.titulo) + '</h4><table class="w-full text-sm"><tbody>' + c.fields.map(function(f) { return '<tr><td class="text-text-secondary pr-3 py-1 align-top whitespace-nowrap">' + escHtml(f[0]) + '</td><td class="text-on-surface py-1">' + f[1] + '</td></tr>'; }).join('') + '</tbody></table></div>';
+}).join('');
+}
+section.classList.remove('hidden');
 }
 
 // --- Init ---
