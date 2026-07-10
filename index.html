@@ -3,66 +3,66 @@
     theme: {
       extend: {
         "colors": {
-                "error-container": "#f5d6d6",
-                "on-tertiary-container": "#1a1a1a",
+                "error-container": "#fce8e8",
+                "on-tertiary-container": "#1a2a3a",
                 "on-primary": "#ffffff",
-                "inverse-on-surface": "#fafafa",
-                "secondary-fixed": "#fafafa",
-                "primary-fixed": "#f2f2f2",
-                "inverse-surface": "#111111",
-                "surface": "#f2f2f2",
-                "secondary-container": "#e8e8e8",
-                "surface-dim": "#e8e8e8",
-                "secondary-fixed-dim": "#d0d0d0",
-                "secondary": "#555555",
-                "tertiary-container": "#d4d4d4",
-                "on-primary-container": "#fafafa",
+                "inverse-on-surface": "#f4f6fa",
+                "secondary-fixed": "#f4f6fa",
+                "primary-fixed": "#e8eef5",
+                "inverse-surface": "#1a2a3a",
+                "surface": "rgba(255,255,255,0.55)",
+                "secondary-container": "rgba(255,255,255,0.45)",
+                "surface-dim": "rgba(255,255,255,0.35)",
+                "secondary-fixed-dim": "rgba(255,255,255,0.25)",
+                "secondary": "#5a6a7a",
+                "tertiary-container": "rgba(255,255,255,0.3)",
+                "on-primary-container": "#e8eef5",
                 "on-error-container": "#8c3a3a",
-                "surface-container-high": "#f2f2f2",
-                "on-surface": "#111111",
-                "on-secondary-container": "#222222",
-                "tertiary-fixed-dim": "#d4d4d4",
-                "on-tertiary-fixed": "#0a0a0a",
+                "surface-container-high": "rgba(255,255,255,0.6)",
+                "on-surface": "#1a2a3a",
+                "on-secondary-container": "#2a3a5a",
+                "tertiary-fixed-dim": "rgba(255,255,255,0.3)",
+                "on-tertiary-fixed": "#0a1a2a",
                 "on-secondary": "#ffffff",
-                "surface-container-highest": "#e8e8e8",
-                "primary": "#222222",
-                "background": "#fafafa",
-                "outline-variant": "#d4d4d4",
+                "surface-container-highest": "rgba(255,255,255,0.5)",
+                "primary": "#4a6a9a",
+                "background": "#f4f6fa",
+                "outline-variant": "rgba(255,255,255,0.3)",
                 "error": "#b91c1c",
-                "on-background": "#111111",
-                "surface-container-lowest": "#ffffff",
-                "on-tertiary-fixed-variant": "#222222",
-                "tertiary": "#222222",
-                "surface-tint": "#222222",
-                "on-secondary-fixed-variant": "#222222",
-                "surface-variant": "#f2f2f2",
-                "on-primary-fixed": "#0a0a0a",
-                "primary-container": "#e8e8e8",
-                "on-secondary-fixed": "#0a0a0a",
-                "tertiary-fixed": "#fafafa",
-                "surface-container": "#f2f2f2",
-                "on-primary-fixed-variant": "#222222",
-                "inverse-primary": "#e8e8e8",
+                "on-background": "#1a2a3a",
+                "surface-container-lowest": "rgba(255,255,255,0.7)",
+                "on-tertiary-fixed-variant": "#2a3a5a",
+                "tertiary": "#4a6a9a",
+                "surface-tint": "#4a6a9a",
+                "on-secondary-fixed-variant": "#2a3a5a",
+                "surface-variant": "rgba(255,255,255,0.4)",
+                "on-primary-fixed": "#0a1a2a",
+                "primary-container": "rgba(255,255,255,0.5)",
+                "on-secondary-fixed": "#0a1a2a",
+                "tertiary-fixed": "#f4f6fa",
+                "surface-container": "rgba(255,255,255,0.55)",
+                "on-primary-fixed-variant": "#2a3a5a",
+                "inverse-primary": "#a0b8d0",
                 "on-tertiary": "#ffffff",
-                "outline": "#999999",
-                "surface-container-low": "#fafafa",
+                "outline": "#8a9aaa",
+                "surface-container-low": "#f4f6fa",
                 "on-error": "#ffffff",
-                "primary-fixed-dim": "#d0d0d0",
-                "surface-bright": "#fafafa",
-                "on-surface-variant": "#555555",
+                "primary-fixed-dim": "rgba(255,255,255,0.35)",
+                "surface-bright": "#f4f6fa",
+                "on-surface-variant": "#5a6a7a",
                 
                 "warning-bg": "#fef3c7",
                 "warning-text": "#b45309",
                 "success-bg": "#dcfce7",
                 "success-text": "#15803d",
-                "danger-bg": "#f5d6d6",
+                "danger-bg": "#fce8e8",
                 "danger-text": "#b91c1c",
                 
-                "surface-card": "#f2f2f2",
-                "surface-bg": "#fafafa",
-                "border-subtle": "#d4d4d4",
-                "text-secondary": "#555555",
-                "text-table": "#111111",
+                "surface-card": "rgba(255,255,255,0.55)",
+                "surface-bg": "#f4f6fa",
+                "border-subtle": "rgba(255,255,255,0.3)",
+                "text-secondary": "#5a6a7a",
+                "text-table": "#1a2a3a",
                 "hover-state": "rgba(0,0,0,0.04)"
         },
         "borderRadius": {
@@ -230,110 +230,156 @@ display: flex;
 align-items: center;
 gap: 8px;
 }
-.toast-success { background: #16a34a; color: #fff; }
-.toast-error { background: #dc2626; color: #fff; }
-.toast-warning { background: #f59e0b; color: #fff; }
+.toast {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+.toast-success { background: rgba(22,163,74,0.15); border: 1px solid rgba(22,163,74,0.3); color: #166534; backdrop-filter: blur(8px); }
+.toast-error { background: rgba(220,38,38,0.15); border: 1px solid rgba(220,38,38,0.3); color: #991b1b; backdrop-filter: blur(8px); }
+.toast-warning { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: #92400e; backdrop-filter: blur(8px); }
 @keyframes toastIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 @keyframes toastOut { from { opacity:1; } to { opacity:0; transform:translateY(-8px); } }
 .table-scroll { max-height: 420px; overflow-y: auto; }
 .table-scroll thead { position: sticky; top: 0; z-index: 5; }
-/* === Claymorphism === */
-.clay-card {
-background: #f2f2f2;
-border-radius: 20px;
-box-shadow: 8px 8px 16px #d4d4d4, -6px -6px 12px #ffffff;
-border: none;
+/* === Glassmorphism === */
+body {
+  background: linear-gradient(135deg, #eef2f8 0%, #f8eef5 50%, #eef8f2 100%);
+  background-attachment: fixed;
 }
-.clay-card-inset {
-background: #f2f2f2;
-border-radius: 20px;
-box-shadow: inset 4px 4px 8px #d4d4d4, inset -3px -3px 6px #ffffff;
+.glass-card {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
 }
-.clay-btn {
-background: #e8e8e8;
-border: none;
-border-radius: 50px;
-box-shadow: 4px 4px 8px #d4d4d4, -3px -3px 6px #ffffff;
-color: #111111;
-font-weight: 600;
-transition: all 0.15s ease;
-cursor: pointer;
+.glass-card-inset {
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
 }
-.clay-btn:hover { box-shadow: 2px 2px 4px #d4d4d4, -1px -1px 3px #ffffff; transform: scale(0.98); }
-.clay-btn:active { box-shadow: inset 3px 3px 6px #d4d4d4, inset -2px -2px 4px #ffffff; transform: scale(0.96); }
-.clay-btn-primary {
-background: #222222;
-box-shadow: 4px 4px 8px #c8c8c8, -3px -3px 6px #ffffff;
-color: #fff;
+.glass-btn {
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50px;
+  color: #1a2a3a;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
-.clay-btn-primary:hover { box-shadow: 2px 2px 4px #c8c8c8, -1px -1px 3px #ffffff; }
-.clay-btn-primary:active { box-shadow: inset 3px 3px 6px #000000, inset -2px -2px 4px #444444; }
-.clay-input {
-background: #f2f2f2;
-border: none;
-border-radius: 16px;
-box-shadow: inset 3px 3px 6px #d4d4d4, inset -2px -2px 4px #ffffff;
-padding: 10px 16px;
-color: #111111;
+.glass-btn:hover {
+  background: rgba(255,255,255,0.65);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transform: scale(0.98);
 }
-.clay-input:focus { outline: none; box-shadow: inset 4px 4px 8px #c0c0c0, inset -3px -3px 6px #ffffff; }
-.clay-sidebar {
-background: #e8e8e8;
-box-shadow: 4px 0 12px rgba(0,0,0,0.06);
-border: none;
+.glass-btn:active {
+  background: rgba(255,255,255,0.35);
+  transform: scale(0.96);
 }
-.clay-sidebar-item {
-display: flex; align-items: center; gap: 0.75rem;
-padding: 0.75rem 1rem;
-border-radius: 12px;
-color: #555555;
-transition: all 0.15s ease;
-border-left: 3px solid transparent;
-cursor: pointer;
+.glass-btn-primary {
+  background: rgba(74,106,154,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(74,106,154,0.2);
 }
-.clay-sidebar-item:hover { background: rgba(0,0,0,0.03); color: #111111; }
-.clay-sidebar-item-active {
-background: #f2f2f2;
-color: #111111;
-border-left: 3px solid #222222;
-box-shadow: 2px 2px 6px #d4d4d4, -1px -1px 4px #ffffff;
+.glass-btn-primary:hover {
+  background: rgba(74,106,154,0.85);
+  box-shadow: 0 6px 20px rgba(74,106,154,0.3);
 }
-.clay-icon-btn {
-display: inline-flex; align-items: center; justify-content: center;
-width: 28px; height: 28px; border-radius: 8px;
-color: #555555; transition: all 0.15s ease;
+.glass-btn-primary:active {
+  background: rgba(74,106,154,0.6);
 }
-.clay-icon-btn:hover { background: rgba(0,0,0,0.04); color: #111111; }
-.clay-icon-btn.danger:hover { background: #f5d6d6; color: #b91c1c; }
-.clay-table tbody tr { border-bottom: 1px solid #d4d4d4; transition: background 0.15s; }
-.clay-table tbody tr:nth-child(even) { background: rgba(0,0,0,0.015); }
-.clay-table tbody tr:hover { background: rgba(0,0,0,0.04); }
-.clay-table thead th {
-background: #e8e8e8;
-color: #111111;
-border-bottom: 2px solid #d4d4d4;
+.glass-input {
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 10px 16px;
+  color: #1a2a3a;
+  transition: all 0.15s ease;
 }
-.clay-modal {
-background: #f2f2f2;
-border-radius: 24px;
-box-shadow: 12px 12px 24px #d4d4d4, -8px -8px 16px #ffffff;
-border: none;
+.glass-input:focus {
+  outline: none;
+  border-color: rgba(74,106,154,0.4);
+  background: rgba(255,255,255,0.55);
+  box-shadow: 0 0 0 3px rgba(74,106,154,0.1);
 }
-.clay-toast {
-border-radius: 50px;
-box-shadow: 4px 4px 8px rgba(0,0,0,0.12);
+.glass-input::placeholder { color: #8a9aaa; }
+.glass-sidebar {
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-right: 1px solid rgba(255,255,255,0.3);
+}
+.glass-sidebar-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  color: #5a6a7a;
+  transition: all 0.15s ease;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+}
+.glass-sidebar-item:hover { background: rgba(255,255,255,0.3); color: #1a2a3a; }
+.glass-sidebar-item-active {
+  background: rgba(255,255,255,0.5);
+  color: #1a2a3a;
+  border-left: 3px solid #4a6a9a;
+}
+.glass-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 8px;
+  color: #5a6a7a; transition: all 0.15s ease;
+}
+.glass-icon-btn:hover { background: rgba(255,255,255,0.4); color: #1a2a3a; }
+.glass-icon-btn.danger:hover { background: rgba(185,28,28,0.1); color: #b91c1c; }
+.glass-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.2); transition: background 0.15s; }
+.glass-table tbody tr:nth-child(even) { background: rgba(255,255,255,0.1); }
+.glass-table tbody tr:hover { background: rgba(255,255,255,0.25); }
+.glass-table thead th {
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(8px);
+  color: #1a2a3a;
+  border-bottom: 2px solid rgba(255,255,255,0.3);
+}
+.glass-modal {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 24px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+}
+.glass-toast {
+  border-radius: 50px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: #fafafa; border-radius: 4px; }
-::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #c0c0c0; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.2); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
 .table-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
 .table-scroll::-webkit-scrollbar-track { background: transparent; }
-.table-scroll::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 4px; }
-</style></head><body class="bg-[#fafafa] text-[#111111] font-body-md text-body-md overflow-x-hidden min-h-screen">
+.table-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
+</style></head><body class="text-[#1a2a3a] font-body-md text-body-md overflow-x-hidden min-h-screen">
 <!-- SideNavBar -->
-<nav id="sidebar" class="fixed left-0 top-0 h-full w-[260px] clay-sidebar flex flex-col py-6 px-4 z-50">
+<nav id="sidebar" class="fixed left-0 top-0 h-full w-[260px] glass-sidebar flex flex-col py-6 px-4 z-50">
 <div class="mb-6 px-4 flex flex-col items-center gap-2">
 <img src="https://aulavirtualeupg.unfv.edu.pe/pluginfile.php/1/theme_academi/logo/1770824832/LOGO_EDIT_POS.png" alt="Logo" class="h-16 w-auto object-contain">
 <div class="text-center">
@@ -344,49 +390,49 @@ box-shadow: 4px 4px 8px rgba(0,0,0,0.12);
 </div>
 <ul class="flex flex-col gap-1 flex-grow text-on-surface-variant">
 <li class="">
-<a class="clay-sidebar-item" href="#" data-page="reporte">
+<a class="glass-sidebar-item" href="#" data-page="reporte">
 <span class="material-symbols-outlined">assessment</span>
 <span class="">Reporte</span>
 </a>
 </li>
 <li class="">
-<a class="clay-sidebar-item" href="#" data-page="solicitud">
+<a class="glass-sidebar-item" href="#" data-page="solicitud">
 <span class="material-symbols-outlined">note_add</span>
 <span class="">Solicitud</span>
 </a>
 </li>
 <li class="">
-<a class="clay-sidebar-item" href="#" data-page="expediente">
+<a class="glass-sidebar-item" href="#" data-page="expediente">
 <span class="material-symbols-outlined">folder</span>
 <span class="">Expediente</span>
 </a>
 </li>
 <li class="">
-<button id="seg-sa-toggle" class="clay-sidebar-item w-full text-left">
+<button id="seg-sa-toggle" class="glass-sidebar-item w-full text-left">
 <span class="material-symbols-outlined">track_changes</span>
 <span class="flex-grow">Seguimiento SA</span>
 <span class="material-symbols-outlined text-text-secondary transition-transform" id="seg-sa-arrow">expand_more</span>
 </button>
 <ul id="seg-sa-submenu" class="ml-4 flex flex-col gap-0.5 border-l border-outline-variant pl-2 hidden">
-<li><a class="clay-sidebar-item text-sm gap-2 py-2" href="#" data-page="seguimiento-sa-envios"><span class="material-symbols-outlined text-[18px]">send</span>Envíos</a></li>
-<li><a class="clay-sidebar-item text-sm gap-2 py-2" href="#" data-page="seguimiento-sa-agrupamiento"><span class="material-symbols-outlined text-[18px]">group_work</span>Agrupamiento</a></li>
+<li><a class="glass-sidebar-item text-sm gap-2 py-2" href="#" data-page="seguimiento-sa-envios"><span class="material-symbols-outlined text-[18px]">send</span>Envíos</a></li>
+<li><a class="glass-sidebar-item text-sm gap-2 py-2" href="#" data-page="seguimiento-sa-agrupamiento"><span class="material-symbols-outlined text-[18px]">group_work</span>Agrupamiento</a></li>
 </ul>
 </li>
 <li class="">
-<a class="clay-sidebar-item" href="#" data-page="seguimiento-sg-ogt">
+<a class="glass-sidebar-item" href="#" data-page="seguimiento-sg-ogt">
 <span class="material-symbols-outlined">assignment</span>
 <span class="">Envio a Direccion</span>
 </a>
 </li>
 <li class="">
-<a class="clay-sidebar-item" href="#" data-page="ocracc">
+<a class="glass-sidebar-item" href="#" data-page="ocracc">
 <span class="material-symbols-outlined">document_scanner</span>
 <span class="">OCRACC</span>
 </a>
 </li>
 <li class="">
 <li class="">
-<a class="clay-sidebar-item" href="#" data-page="notas">
+<a class="glass-sidebar-item" href="#" data-page="notas">
 <span class="material-symbols-outlined">sticky_note_2</span>
 <span class="">Notas</span>
 </a>
@@ -400,13 +446,13 @@ box-shadow: 4px 4px 8px rgba(0,0,0,0.12);
 </div>
 </li>
 <li class="">
-<a class="clay-sidebar-item" href="#" data-page="configuracion">
+<a class="glass-sidebar-item" href="#" data-page="configuracion">
 <span class="material-symbols-outlined">settings</span>
 <span class="">Configuración</span>
 </a>
 </li>
 <li class="" id="sidebar-logout-li">
-<button id="sidebar-logout" class="clay-sidebar-item w-full text-left hover:bg-danger-bg hover:text-danger-text">
+<button id="sidebar-logout" class="glass-sidebar-item w-full text-left hover:bg-danger-bg hover:text-danger-text">
 <span class="material-symbols-outlined">logout</span>
 <span class="">Cerrar Sesión</span>
 </button>
@@ -425,7 +471,7 @@ box-shadow: 4px 4px 8px rgba(0,0,0,0.12);
 </button>
 <div class="relative group flex-1">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-primary">search</span>
-<input class="clay-input text-sm pl-10" placeholder="Buscar..." type="text">
+<input class="glass-input text-sm pl-10" placeholder="Buscar..." type="text">
 </div>
 </div>
 <!-- Actions -->
@@ -446,19 +492,19 @@ box-shadow: 4px 4px 8px rgba(0,0,0,0.12);
 </div>
 </section>
 <!-- Form -->
-<section class="clay-card p-6">
+<section class="glass-card p-6">
 <form id="form-solicitud" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT (N° Trámite)</label>
-<input id="input-nt" type="number" class="clay-input text-sm" placeholder="Ej: 456778" required>
+<input id="input-nt" type="number" class="glass-input text-sm" placeholder="Ej: 456778" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
-<input id="input-fecha" type="date" class="clay-input text-sm" required>
+<input id="input-fecha" type="date" class="glass-input text-sm" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
-<select id="input-estado" class="clay-input text-sm">
+<select id="input-estado" class="glass-input text-sm">
 <option value="Completo">Completo</option>
 <option value="Observado">Observado</option>
 <option value="Pendiente">Pendiente</option>
@@ -466,10 +512,10 @@ box-shadow: 4px 4px 8px rgba(0,0,0,0.12);
 </div>
 <div class="flex flex-col gap-1.5" id="comentario-container" style="display:none">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Comentario</label>
-<textarea id="input-comentario" class="clay-input text-sm resize-none" rows="2" placeholder="Describa la observación..."></textarea>
+<textarea id="input-comentario" class="glass-input text-sm resize-none" rows="2" placeholder="Describa la observación..."></textarea>
 </div>
 <div class="flex items-end gap-3">
-<button type="submit" id="sol-submit-btn" class="clay-btn clay-btn-primary">
+<button type="submit" id="sol-submit-btn" class="glass-btn glass-btn-primary">
 <span class="material-symbols-outlined text-[18px]">add</span> Registrar
 </button>
 <button type="button" id="sol-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">
@@ -479,13 +525,13 @@ Cancelar
 </form>
 </section>
 <!-- Solicitudes Table -->
-<section class="clay-card flex flex-col flex-grow overflow-hidden">
+<section class="glass-card flex flex-col flex-grow overflow-hidden">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Solicitudes Registradas</h3>
 <span id="solicitud-count" class="text-sm text-text-secondary">0 registros</span>
 </div>
 <div class="overflow-x-auto table-scroll">
-<table class="clay-table w-full text-left border-collapse min-w-[700px]">
+<table class="glass-table w-full text-left border-collapse min-w-[700px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider" data-sort-key="nt">NT</th>
@@ -512,30 +558,30 @@ Cancelar
 </div>
 </section>
 <!-- Form -->
-<section class="clay-card p-6">
+<section class="glass-card p-6">
 <form id="form-expediente" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 items-end">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Código de estudiante</label>
-<input id="exp-dni" type="text" class="clay-input text-sm" placeholder="12345678" required>
+<input id="exp-dni" type="text" class="glass-input text-sm" placeholder="12345678" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Apellidos y Nombres</label>
-<input id="exp-nombres" type="text" class="clay-input text-sm" placeholder="Pérez López, Juan Carlos" required>
+<input id="exp-nombres" type="text" class="glass-input text-sm" placeholder="Pérez López, Juan Carlos" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Tipo de Grado</label>
-<select id="exp-tipo-grado" class="clay-input text-sm">
+<select id="exp-tipo-grado" class="glass-input text-sm">
 <option value="Maestría">Maestría</option>
 <option value="Doctorado">Doctorado</option>
 </select>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Nombre del Grado</label>
-<input id="exp-nombre-grado" type="text" class="clay-input text-sm" placeholder="Ej: Educación con mención en Docencia" required>
+<input id="exp-nombre-grado" type="text" class="glass-input text-sm" placeholder="Ej: Educación con mención en Docencia" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Área</label>
-<select id="exp-area" class="clay-input text-sm">
+<select id="exp-area" class="glass-input text-sm">
 <option value="">Seleccionar...</option>
 <option value="Ciencias de la Empresa">Ciencias de la Empresa</option>
 <option value="Humanidades y Ciencias Basicas">Humanidades y Ciencias Basicas</option>
@@ -546,23 +592,23 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Matrícula</label>
-<input id="exp-fecha-matricula" type="date" class="clay-input text-sm" required>
+<input id="exp-fecha-matricula" type="date" class="glass-input text-sm" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Egreso</label>
-<input id="exp-fecha-egreso" type="date" class="clay-input text-sm" required>
+<input id="exp-fecha-egreso" type="date" class="glass-input text-sm" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Total de Créditos</label>
-<input id="exp-creditos" type="number" class="clay-input text-sm" placeholder="Ej: 48" required>
+<input id="exp-creditos" type="number" class="glass-input text-sm" placeholder="Ej: 48" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Sustentación</label>
-<input id="exp-fecha-sustentacion" type="date" class="clay-input text-sm" required>
+<input id="exp-fecha-sustentacion" type="date" class="glass-input text-sm" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Calificación Sustentación</label>
-<select id="exp-calificacion" class="clay-input text-sm">
+<select id="exp-calificacion" class="glass-input text-sm">
 <option value="Aprobado por excelencia">Aprobado por excelencia</option>
 <option value="Aprobado por Mayoria">Aprobado por Mayoria</option>
 <option value="Aprobado por Unanimidad">Aprobado por Unanimidad</option>
@@ -571,24 +617,24 @@ Cancelar
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NTs Asociados</label>
 <div class="relative">
-<input id="exp-nts-buscar" type="text" class="clay-input text-sm" placeholder="Buscar NT para asociar..." autocomplete="off">
+<input id="exp-nts-buscar" type="text" class="glass-input text-sm" placeholder="Buscar NT para asociar..." autocomplete="off">
 <div id="exp-nts-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
 </div>
 <div id="exp-nts-seleccionados" class="flex flex-wrap gap-1.5 min-h-[28px]"></div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado de Datos en el SD</label>
-<select id="exp-estado-datos" class="clay-input text-sm">
+<select id="exp-estado-datos" class="glass-input text-sm">
 <option value="Correcto">Correcto</option>
 <option value="Observado">Observado</option>
 </select>
 </div>
 <div class="flex flex-col gap-1.5" id="exp-obs-container" style="display:none">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Comentario de Observación</label>
-<textarea id="exp-obs-comentario" class="clay-input text-sm resize-none" rows="2" placeholder="Describa la observación de los datos..."></textarea>
+<textarea id="exp-obs-comentario" class="glass-input text-sm resize-none" rows="2" placeholder="Describa la observación de los datos..."></textarea>
 </div>
 <div class="flex items-end gap-3 md:col-span-2">
-<button type="submit" id="exp-submit-btn" class="clay-btn clay-btn-primary">
+<button type="submit" id="exp-submit-btn" class="glass-btn glass-btn-primary">
 <span class="material-symbols-outlined text-[18px]">assignment</span> Registrar Expediente
 </button>
 <button type="button" id="exp-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">
@@ -598,13 +644,13 @@ Cancelar
 </form>
 </section>
 <!-- Expedientes Table -->
-<section class="clay-card flex flex-col flex-grow overflow-hidden">
+<section class="glass-card flex flex-col flex-grow overflow-hidden">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Expedientes Registrados</h3>
 <span id="expediente-count" class="text-sm text-text-secondary">0 registros</span>
 </div>
 <div class="overflow-x-auto table-scroll">
-<table class="clay-table w-full text-left border-collapse min-w-[900px]">
+<table class="glass-table w-full text-left border-collapse min-w-[900px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="dni">Código de estudiante</th>
@@ -635,7 +681,7 @@ Cancelar
 </div>
 </section>
 <!-- Form Registro / Edicion -->
-<section class="clay-card">
+<section class="glass-card">
 <button id="seg-toggle-form" class="w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer hover:bg-hover-state transition-colors">
 <h3 class="font-semibold text-primary">Registrar Seguimiento</h3>
 <span id="seg-toggle-icon" class="material-symbols-outlined text-text-secondary transition-transform">expand_more</span>
@@ -644,16 +690,16 @@ Cancelar
 <form id="form-seguimiento" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4 items-end">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Código de estudiante del Egresado</label>
-<input id="seg-dni" type="text" class="clay-input text-sm" placeholder="12345678" required>
+<input id="seg-dni" type="text" class="glass-input text-sm" placeholder="12345678" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Apellidos y Nombres</label>
-<input id="seg-nombres" type="text" class="clay-input text-sm" placeholder="Pérez López, Juan Carlos" required>
+<input id="seg-nombres" type="text" class="glass-input text-sm" placeholder="Pérez López, Juan Carlos" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NTs Asociados</label>
 <div class="relative">
-<input id="seg-nts-buscar" type="text" class="clay-input text-sm" placeholder="Buscar NT para asociar..." autocomplete="off">
+<input id="seg-nts-buscar" type="text" class="glass-input text-sm" placeholder="Buscar NT para asociar..." autocomplete="off">
 <div id="seg-nts-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
 </div>
 <div id="seg-nts-seleccionados" class="flex flex-wrap gap-1.5 min-h-[28px]"></div>
@@ -683,27 +729,27 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT SA</label>
-<input id="seg-nt-sa" type="text" class="clay-input text-sm" placeholder="NT enviado a Secretaría Académica">
+<input id="seg-nt-sa" type="text" class="glass-input text-sm" placeholder="NT enviado a Secretaría Académica">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Entrega Sec. Académica</label>
-<input id="seg-fecha-entrega" type="date" class="clay-input text-sm">
+<input id="seg-fecha-entrega" type="date" class="glass-input text-sm">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Número de Oficio</label>
-<input id="seg-oficio" type="text" class="clay-input text-sm" placeholder="Ej: OFICIO-2024-001">
+<input id="seg-oficio" type="text" class="glass-input text-sm" placeholder="Ej: OFICIO-2024-001">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
-<input id="seg-fecha-recepcion" type="date" class="clay-input text-sm">
+<input id="seg-fecha-recepcion" type="date" class="glass-input text-sm">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Nombre Resolución Directoral</label>
-<input id="seg-resolucion" type="text" class="clay-input text-sm" placeholder="Ej: RD-2024-001-UNFV">
+<input id="seg-resolucion" type="text" class="glass-input text-sm" placeholder="Ej: RD-2024-001-UNFV">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
-<select id="seg-estado" class="clay-input text-sm">
+<select id="seg-estado" class="glass-input text-sm">
 <option value="">— Seleccione —</option>
 <option value="COMPLETO">COMPLETO</option>
 <option value="Observado">Observado</option>
@@ -711,10 +757,10 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5 md:col-span-2 lg:col-span-2" id="seg-obs-container" style="display:none">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Motivos de Observación</label>
-<textarea id="seg-obs-comentario" class="clay-input text-sm resize-none" rows="2" placeholder="Describa los motivos de la observación..."></textarea>
+<textarea id="seg-obs-comentario" class="glass-input text-sm resize-none" rows="2" placeholder="Describa los motivos de la observación..."></textarea>
 </div>
 <div class="flex items-end gap-3 md:col-span-2 lg:col-span-4">
-<button type="submit" id="seg-submit-btn" class="clay-btn clay-btn-primary">
+<button type="submit" id="seg-submit-btn" class="glass-btn glass-btn-primary">
 <span class="material-symbols-outlined text-[18px]">add</span> Registrar Seguimiento
 </button>
 <button type="button" id="seg-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">
@@ -725,13 +771,13 @@ Cancelar
 </div>
 </section>
 <!-- Tabla de Seguimiento -->
-<section class="clay-card flex flex-col overflow-hidden">
+<section class="glass-card flex flex-col overflow-hidden">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Trámites en Seguimiento</h3>
 <span id="seg-count" class="text-sm text-text-secondary">0 registros</span>
 </div>
 <div class="overflow-x-auto table-scroll">
-<table class="clay-table w-full text-left border-collapse min-w-[1000px]">
+<table class="glass-table w-full text-left border-collapse min-w-[1000px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Código de estudiante</th>
@@ -776,34 +822,34 @@ Cancelar
 <p class="text-text-secondary text-sm mt-1">Registro y seguimiento de envíos a Dirección.</p>
 </div>
 </section>
-<section class="clay-card">
+<section class="glass-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Registrar Envío</h3>
 </div>
 <form id="form-envio-direccion" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT OGT</label>
-<input id="ed-nt-ogt" type="text" class="clay-input text-sm" placeholder="NT de OGT" required>
+<input id="ed-nt-ogt" type="text" class="glass-input text-sm" placeholder="NT de OGT" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Oficio</label>
-<input id="ed-oficio" type="text" class="clay-input text-sm" placeholder="Ej: OFICIO-2024-001">
+<input id="ed-oficio" type="text" class="glass-input text-sm" placeholder="Ej: OFICIO-2024-001">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Resolución Directoral</label>
-<input id="ed-resolucion" type="text" class="clay-input text-sm" placeholder="Ej: RD-2024-001-UNFV" required>
+<input id="ed-resolucion" type="text" class="glass-input text-sm" placeholder="Ej: RD-2024-001-UNFV" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a Dirección</label>
-<input id="ed-fecha-envio" type="date" class="clay-input text-sm">
+<input id="ed-fecha-envio" type="date" class="glass-input text-sm">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Recepción del Oficio</label>
-<input id="ed-fecha-recepcion" type="date" class="clay-input text-sm">
+<input id="ed-fecha-recepcion" type="date" class="glass-input text-sm">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
-<select id="ed-estado" class="clay-input text-sm">
+<select id="ed-estado" class="glass-input text-sm">
 <option value="Pendiente de recepcion">Pendiente de recepcion</option>
 <option value="Recepcionado">Recepcionado</option>
 <option value="Enviado a SG-OGT">Enviado a SG-OGT</option>
@@ -811,17 +857,17 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5" id="ed-fecha-sg-container" style="display:none">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a SG-OGT</label>
-<input id="ed-fecha-sg" type="date" class="clay-input text-sm">
+<input id="ed-fecha-sg" type="date" class="glass-input text-sm">
 </div>
 <div class="flex items-end gap-3 md:col-span-2 lg:col-span-3">
-<button type="submit" class="clay-btn clay-btn-primary">
+<button type="submit" class="glass-btn glass-btn-primary">
 <span class="material-symbols-outlined text-[18px]">add</span> Registrar Envío
 </button>
 <button type="button" id="ed-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">Cancelar</button>
 </div>
 </form>
 </section>
-<section class="clay-card">
+<section class="glass-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Egresados de la Resolución</h3>
 <span id="ed-egresados-count" class="text-sm text-text-secondary">0 egresados</span>
@@ -830,13 +876,13 @@ Cancelar
 <p class="text-center text-text-secondary py-4">Ingrese un número de resolución para ver los egresados.</p>
 </div>
 </section>
-<section class="clay-card">
+<section class="glass-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Envíos Registrados</h3>
 <span id="ed-count" class="text-sm text-text-secondary">0 registros</span>
 </div>
 <div class="overflow-x-auto table-scroll">
-<table class="clay-table w-full text-left border-collapse min-w-[800px]">
+<table class="glass-table w-full text-left border-collapse min-w-[800px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="ntOgt">NT OGT</th>
@@ -864,60 +910,60 @@ Cancelar
 <p class="text-text-secondary text-sm mt-1">Registro de solicitudes y recepción de certificados.</p>
 </div>
 </section>
-<section class="clay-card">
+<section class="glass-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Registrar Solicitud OCRACC</h3>
 </div>
 <form id="form-ocracc" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Oficio</label>
-<input id="oc-oficio" type="text" class="clay-input text-sm" placeholder="Ej: OFICIO-2024-001" required>
+<input id="oc-oficio" type="text" class="glass-input text-sm" placeholder="Ej: OFICIO-2024-001" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT OCRACC</label>
-<input id="oc-nt" type="text" class="clay-input text-sm" placeholder="NT de OCRACC" required>
+<input id="oc-nt" type="text" class="glass-input text-sm" placeholder="NT de OCRACC" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío de Solicitud</label>
-<input id="oc-fecha-envio" type="date" class="clay-input text-sm" required>
+<input id="oc-fecha-envio" type="date" class="glass-input text-sm" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Recepción Certificados</label>
-<input id="oc-fecha-recepcion" type="date" class="clay-input text-sm">
+<input id="oc-fecha-recepcion" type="date" class="glass-input text-sm">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
-<select id="oc-estado" class="clay-input text-sm">
+<select id="oc-estado" class="glass-input text-sm">
 <option value="Pendiente">Pendiente</option>
 <option value="CERTIFICADOS RECEPCIONADOS">CERTIFICADOS RECEPCIONADOS</option>
 </select>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Alerta (días)</label>
-<input id="oc-alerta" type="number" class="clay-input text-sm" placeholder="Ej: 30" value="30">
+<input id="oc-alerta" type="number" class="glass-input text-sm" placeholder="Ej: 30" value="30">
 </div>
 <div class="flex flex-col gap-1.5 md:col-span-2 lg:col-span-3">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Egresados</label>
 <div class="relative">
-<input id="oc-egresado-input" type="text" class="clay-input text-sm" placeholder="Buscar por código de estudiante..." autocomplete="off">
+<input id="oc-egresado-input" type="text" class="glass-input text-sm" placeholder="Buscar por código de estudiante..." autocomplete="off">
 <div id="oc-egresados-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
 </div>
 <div id="oc-egresados-chips" class="flex flex-wrap gap-1.5 mt-2 min-h-[28px]"></div>
 </div>
 <div class="flex items-end gap-3 md:col-span-2 lg:col-span-3">
-<button type="submit" id="oc-submit-btn" class="clay-btn">
+<button type="submit" id="oc-submit-btn" class="glass-btn">
 <span class="material-symbols-outlined text-[18px]">add</span> Registrar Solicitud
 </button>
 <button type="button" id="oc-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">Cancelar</button>
 </div>
 </form>
 </section>
-<section class="clay-card overflow-x-auto table-scroll">
+<section class="glass-card overflow-x-auto table-scroll">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Solicitudes Registradas</h3>
 <span id="oc-count" class="text-sm text-text-secondary">0 solicitudes</span>
 </div>
-<table class="clay-table w-full text-left border-collapse min-w-[1000px]">
+<table class="glass-table w-full text-left border-collapse min-w-[1000px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="oficio">N° Oficio</th>
@@ -943,11 +989,11 @@ Cancelar
 <h2 class="font-section-title text-section-title text-primary tracking-tight">Notas</h2>
 <p class="text-text-secondary text-sm mt-1">Notas adhesivas personales.</p>
 </div>
-<button id="nt-btn-nueva" class="clay-btn">
+<button id="nt-btn-nueva" class="glass-btn">
 <span class="material-symbols-outlined text-[18px]">add</span> + Nueva Nota
 </button>
 </section>
-<section class="clay-card p-5">
+<section class="glass-card p-5">
 <div id="nt-grid" class="grid gap-5" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
 </section>
 </div>
@@ -963,7 +1009,7 @@ Cancelar
 </div>
 <div class="flex justify-end gap-3 mt-5">
 <button id="nt-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle">Cancelar</button>
-<button id="nt-save-btn" class="clay-btn clay-btn-primary">Guardar</button>
+<button id="nt-save-btn" class="glass-btn glass-btn-primary">Guardar</button>
 </div>
 </div>
 </div>
@@ -978,48 +1024,48 @@ Cancelar
 </section>
 <!-- KPI Cards -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="clay-card p-5">
+<div class="glass-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">note_add</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Solicitudes</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-solicitudes">0</div>
 </div>
-<div class="clay-card p-5">
+<div class="glass-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">folder</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Expedientes</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-expedientes">0</div>
 </div>
-<div class="clay-card p-5">
+<div class="glass-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">track_changes</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Seguimientos SA</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-seguimientos">0</div>
 </div>
-<div class="clay-card p-5">
+<div class="glass-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">assignment</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Envíos Dirección</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-envios">0</div>
 </div>
-<div class="clay-card p-5">
+<div class="glass-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">document_scanner</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">OCRACC</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-ocracc">0</div>
 </div>
-<div class="clay-card p-5">
+<div class="glass-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">sticky_note_2</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Notas</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-notas">0</div>
 </div>
-<div class="clay-card p-5 md:col-span-2">
+<div class="glass-card p-5 md:col-span-2">
 <div class="flex items-center gap-3 text-primary mb-3"><span class="material-symbols-outlined text-[28px]">bar_chart</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Seguimientos SA por Estado</span></div>
 <div id="kpi-sa-chart" class="flex items-end gap-2 h-20"></div>
 </div>
-<div class="clay-card p-5 md:col-span-2">
+<div class="glass-card p-5 md:col-span-2">
 <div class="flex items-center gap-3 text-primary mb-3"><span class="material-symbols-outlined text-[28px]">warning</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Alertas OCRACC</span></div>
 <div class="text-sm text-text-secondary" id="kpi-alertas">Sin alertas</div>
 </div>
 </div>
 <!-- Matriz de Envios -->
-<section class="clay-card overflow-x-auto table-scroll">
+<section class="glass-card overflow-x-auto table-scroll">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Matriz de Envíos SG-OGT</h3>
 <button onclick="renderReporte()" class="text-sm font-semibold text-primary hover:text-primary-container transition-colors flex items-center gap-1">
 <span class="material-symbols-outlined text-[18px]">refresh</span> Actualizar
 </button>
 </div>
-<table class="clay-table w-full text-left border-collapse min-w-[1100px]">
+<table class="glass-table w-full text-left border-collapse min-w-[1100px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider sticky left-0 bg-surface-bg/80 backdrop-blur-sm">ÁREA</th>
@@ -1052,12 +1098,12 @@ Cancelar
 <p class="text-text-secondary text-sm mt-1">Exportar e importar datos.</p>
 </div>
 </section>
-<section class="clay-card">
+<section class="glass-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Exportar Datos</h3>
 </div>
 <div class="p-4 flex gap-3">
-<button id="btn-export-json" class="clay-btn px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm flex items-center gap-2">
+<button id="btn-export-json" class="glass-btn px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm flex items-center gap-2">
 <span class="material-symbols-outlined text-[18px]">download</span> Exportar JSON
 </button>
 <button id="btn-export-excel" class="bg-[#217346] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#1a5c38] transition-colors shadow-sm flex items-center gap-2">
@@ -1065,7 +1111,7 @@ Cancelar
 </button>
 </div>
 </section>
-<section class="clay-card">
+<section class="glass-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Importar Datos</h3>
 </div>
@@ -1080,12 +1126,12 @@ Cancelar
 </div>
 </main>
 <div id="oc-modal-overlay" class="fixed inset-0 z-50 bg-black/40 flex items-center justify-center hidden">
-<div class="clay-modal w-full max-w-lg mx-4 max-h-[80vh] flex flex-col">
-<div class="flex items-center justify-between px-4 py-3 border-b border-[#d4d4d4]">
-<h3 class="font-semibold text-[#111111]">Egresados de la Solicitud</h3>
-<button id="oc-modal-close" class="text-[#555555] hover:text-[#111111] p-1 rounded"><span class="material-symbols-outlined">close</span></button>
+<div class="glass-modal w-full max-w-lg mx-4 max-h-[80vh] flex flex-col">
+<div class="flex items-center justify-between px-4 py-3 border-b border-[#dce0e8]">
+<h3 class="font-semibold text-[#1a2a3a]">Egresados de la Solicitud</h3>
+<button id="oc-modal-close" class="text-[#5a6a7a] hover:text-[#1a2a3a] p-1 rounded"><span class="material-symbols-outlined">close</span></button>
 </div>
-<div class="px-4 py-2 bg-[#e8e8e8]/50 border-b border-[#d4d4d4] text-sm text-[#555555] flex gap-4">
+<div class="px-4 py-2 bg-[#eef2f8]/50 border-b border-[#dce0e8] text-sm text-[#5a6a7a] flex gap-4">
 <span><strong>Oficio:</strong> <span id="oc-modal-oficio">—</span></span>
 <span><strong>NT OCRACC:</strong> <span id="oc-modal-nt">—</span></span>
 </div>
@@ -1094,18 +1140,18 @@ Cancelar
 </div>
 <!-- Confirm Modal -->
 <div id="confirm-modal" class="fixed inset-0 z-[9998] bg-black/40 flex items-center justify-center hidden">
-  <div class="clay-modal w-full max-w-sm mx-4 p-6">
-    <h3 id="confirm-title" class="font-semibold text-lg text-[#111111] mb-2"></h3>
-    <p id="confirm-msg" class="text-sm text-[#555555] mb-6"></p>
+  <div class="glass-modal w-full max-w-sm mx-4 p-6">
+    <h3 id="confirm-title" class="font-semibold text-lg text-[#1a2a3a] mb-2"></h3>
+    <p id="confirm-msg" class="text-sm text-[#5a6a7a] mb-6"></p>
     <div class="flex justify-end gap-3">
-      <button id="confirm-cancel" class="clay-btn px-4 py-2 text-sm">Cancelar</button>
-      <button id="confirm-ok" class="clay-btn px-4 py-2 text-sm bg-[#c27a6f] text-white">Eliminar</button>
+      <button id="confirm-cancel" class="glass-btn px-4 py-2 text-sm">Cancelar</button>
+      <button id="confirm-ok" class="glass-btn px-4 py-2 text-sm text-white" style="background:rgba(185,28,28,0.75);border-color:rgba(255,255,255,0.2)">Eliminar</button>
     </div>
   </div>
 </div>
 <!-- Login Overlay -->
 <div id="login-overlay" class="fixed inset-0 z-[9999] flex items-center justify-center bg-surface-bg" style="display:flex">
-<div class="clay-card w-full max-w-sm mx-4 p-8 text-center">
+<div class="glass-card w-full max-w-sm mx-4 p-8 text-center">
 <div class="mb-6">
 <img src="https://aulavirtualeupg.unfv.edu.pe/pluginfile.php/1/theme_academi/logo/1770824832/LOGO_EDIT_POS.png" alt="Logo" class="h-16 mx-auto mb-4 object-contain">
 <h1 class="font-headline text-xl font-bold text-primary">Sistema de Seguimiento</h1>
@@ -1116,13 +1162,13 @@ Cancelar
 <form id="login-form" onsubmit="loginWithEmail(event)">
 <div class="mb-3 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Correo electrónico</label>
-<input id="login-email" type="email" required class="clay-input text-sm w-full" placeholder="tu@correo.com">
+<input id="login-email" type="email" required class="glass-input text-sm w-full" placeholder="tu@correo.com">
 </div>
 <div class="mb-4 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Contraseña</label>
-<input id="login-password" type="password" required class="clay-input text-sm w-full" placeholder="••••••••">
+<input id="login-password" type="password" required class="glass-input text-sm w-full" placeholder="••••••••">
 </div>
-<button type="submit" class="clay-btn clay-btn-primary w-full text-sm py-2.5">
+<button type="submit" class="glass-btn glass-btn-primary w-full text-sm py-2.5">
 Entrar
 </button>
 <div class="mt-3 text-xs text-text-secondary">
@@ -1136,7 +1182,7 @@ Entrar
 <!-- Signup Form -->
 <div id="toast-container" class="fixed bottom-4 right-4 z-[99999] flex flex-col gap-2 pointer-events-none"></div>
 <div id="signup-form" class="hidden">
-<div class="clay-card p-6 mb-6">
+<div class="glass-card p-6 mb-6">
 <div class="mb-6">
 <h1 class="font-headline text-xl font-bold text-primary">Crear cuenta</h1>
 <p class="text-sm text-text-secondary mt-1">Regístrate para usar el sistema</p>
@@ -1145,13 +1191,13 @@ Entrar
 <form onsubmit="signupWithEmail(event)">
 <div class="mb-3 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Correo electrónico</label>
-<input id="signup-email" type="email" required class="clay-input text-sm w-full" placeholder="tu@correo.com">
+<input id="signup-email" type="email" required class="glass-input text-sm w-full" placeholder="tu@correo.com">
 </div>
 <div class="mb-4 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Contraseña</label>
-<input id="signup-password" type="password" required minlength="6" class="clay-input text-sm w-full" placeholder="Mínimo 6 caracteres">
+<input id="signup-password" type="password" required minlength="6" class="glass-input text-sm w-full" placeholder="Mínimo 6 caracteres">
 </div>
-<button type="submit" class="clay-btn clay-btn-primary w-full text-sm py-2.5">
+<button type="submit" class="glass-btn glass-btn-primary w-full text-sm py-2.5">
 Crear cuenta
 </button>
 <div class="mt-3 text-xs text-text-secondary">
@@ -1211,7 +1257,7 @@ type = type || 'success';
 var container = document.getElementById('toast-container');
 if (!container) return;
 var el = document.createElement('div');
-el.className = 'clay-toast px-4 py-2.5 text-sm font-medium text-white bg-[#111111] toast toast-' + type;
+el.className = 'toast px-4 py-2.5 text-sm font-medium toast-' + type;
 el.innerHTML = msg;
 container.appendChild(el);
 setTimeout(function() { if (el.parentNode) el.remove(); }, 3000);
@@ -1516,14 +1562,14 @@ const target = document.getElementById('page-' + pageId);
 if (target) target.style.display = 'flex';
 navLinks.forEach(link => {
 if (link.dataset.page === pageId) {
-link.className = 'clay-sidebar-item clay-sidebar-item-active';
+link.className = 'glass-sidebar-item glass-sidebar-item-active';
 } else if (link.closest && link.closest('#seg-sa-submenu')) {
-link.className = 'clay-sidebar-item text-sm gap-2 py-2';
+link.className = 'glass-sidebar-item text-sm gap-2 py-2';
 if (link.dataset.page === pageId) {
-link.className = 'clay-sidebar-item text-sm gap-2 py-2 clay-sidebar-item-active';
+link.className = 'glass-sidebar-item text-sm gap-2 py-2 glass-sidebar-item-active';
 }
 } else {
-link.className = 'clay-sidebar-item';
+link.className = 'glass-sidebar-item';
 }
 });
 if (pageId === 'seguimiento-sa-envios' || pageId === 'seguimiento-sa-agrupamiento') {
@@ -1588,8 +1634,8 @@ tr.innerHTML = '<td class="py-4 px-6 font-medium text-primary">' + s.nt + '</td>
 '<td class="py-4 px-6"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + estadoClass + '">' + s.estado + '</span></td>' +
 '<td class="py-4 px-6 text-sm text-text-secondary">' + (s.comentario || '—') + '</td>' +
 '<td class="py-4 px-6 text-right flex items-center justify-end gap-1">' +
-'<button class="clay-icon-btn" onclick="editarSolicitud(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="clay-icon-btn danger" onclick="event.stopPropagation();eliminarSolicitud(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="glass-icon-btn" onclick="editarSolicitud(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="glass-icon-btn danger" onclick="event.stopPropagation();eliminarSolicitud(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = solicitudes.length + ' registros';
@@ -1779,8 +1825,8 @@ tr.innerHTML = '<td class="py-4 px-4 font-medium text-primary">' + e.dni + '</td
 '<td class="py-4 px-4 text-sm">' + (e.nts && e.nts.length ? e.nts.join(', ') : '—') + '</td>' +
 '<td class="py-4 px-4 text-sm">' + (e.estadoDatos === 'Correcto' ? '<span class="material-symbols-outlined text-success-text text-[18px]">check_circle</span>' : '<span class="text-xs text-warning-text font-medium">Observado</span>') + '</td>' +
 '<td class="py-4 px-4 text-right flex items-center justify-end gap-1">' +
-'<button class="clay-icon-btn" onclick="editarExpediente(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="clay-icon-btn danger" onclick="event.stopPropagation();eliminarExpediente(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="glass-icon-btn" onclick="editarExpediente(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="glass-icon-btn danger" onclick="event.stopPropagation();eliminarExpediente(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = expedientes.length + ' registros';
@@ -1949,8 +1995,8 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + s.dni + '</td
 '<td class="py-3 px-3 text-sm">' + (s.resolucion || '—') + '</td>' +
 '<td class="py-3 px-3">' + (s.estado ? '<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + s.estado + '</span>' : '<span class="text-xs text-text-secondary">—</span>') + '</td>' +
 '<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
-'<button class="clay-icon-btn" onclick="editarSeguimiento(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="clay-icon-btn danger" onclick="event.stopPropagation();eliminarSeguimiento(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="glass-icon-btn" onclick="editarSeguimiento(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="glass-icon-btn danger" onclick="event.stopPropagation();eliminarSeguimiento(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = seguimientos.length + ' registro(s)';
@@ -2003,7 +2049,7 @@ const porTipo = grupos[res];
 const tiposPresentes = [];
 ['MAESTRIA', 'DOCTORADO', 'OTROS'].forEach(t => { if (porTipo[t] && porTipo[t].length) tiposPresentes.push(t); });
 const item = document.createElement('div');
-item.className = 'clay-card overflow-hidden';
+item.className = 'glass-card overflow-hidden';
 let headerHtml = '<div class="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-hover-state transition-colors agrup-toggle" data-res="' + res.replace(/"/g, '&quot;') + '">' +
 '<div class="flex items-center gap-3">' +
 '<span class="material-symbols-outlined text-text-secondary transition-transform agrup-arrow">chevron_right</span>' +
@@ -2036,7 +2082,7 @@ bodyHtml +=
 '<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + tipoColor + '">' + tipoLabel + '</span>' +
 '<span class="text-xs text-text-secondary">' + miembros.length + ' egresado(s)</span></div>' +
 '<button class="inline-flex items-center justify-center w-6 h-6 rounded text-text-secondary hover:text-primary hover:bg-surface-dim transition-colors copy-agrup-btn flex-shrink-0" data-json="' + copyJson.replace(/"/g, '&quot;') + '" title="Copiar tabla para Excel"><span class="material-symbols-outlined text-[14px]">content_copy</span></button></div>' +
-'<div class="overflow-x-auto table-scroll"><table class="clay-table w-full text-left border-collapse"><thead><tr class="bg-surface-container-low/60">' +
+'<div class="overflow-x-auto table-scroll"><table class="glass-table w-full text-left border-collapse"><thead><tr class="bg-surface-container-low/60">' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Código estudiante</th>' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Apellidos y Nombres</th>' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">' + tipoLabel + '</th></tr></thead>' +
@@ -2336,7 +2382,7 @@ let html = '';
 const label = g[0], items = g[1], color = g[2];
 if (items.length === 0) return;
 html += '<div class="mb-3 last:mb-0"><div class="flex items-center gap-2 mb-2"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + color + '">' + label + '</span><span class="text-xs text-text-secondary">' + items.length + ' egresado(s)</span></div>' +
-'<div class="overflow-x-auto table-scroll"><table class="clay-table w-full text-left border-collapse"><thead><tr class="bg-surface-container-low/60">' +
+'<div class="overflow-x-auto table-scroll"><table class="glass-table w-full text-left border-collapse"><thead><tr class="bg-surface-container-low/60">' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Código estudiante</th>' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Apellidos y Nombres</th>' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">' + label + '</th></tr></thead>' +
@@ -2382,8 +2428,8 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (e.ntOgt || '
 '<td class="py-3 px-3 text-sm">' + (e.fechaSg || '—') + '</td>' +
 '<td class="py-3 px-3"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + e.estado + '</span></td>' +
 '<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
-'<button class="clay-icon-btn" onclick="editarEnvioDireccion(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="clay-icon-btn danger" onclick="event.stopPropagation();eliminarEnvioDireccion(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="glass-icon-btn" onclick="editarEnvioDireccion(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="glass-icon-btn danger" onclick="event.stopPropagation();eliminarEnvioDireccion(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = enviosDireccion.length + ' registro(s)';
@@ -2615,9 +2661,9 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (r.oficio || 
 '<td class="py-3 px-3 text-sm">' + (r.fechaRecepcion || '—') + '</td>' +
 '<td class="py-3 px-3"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + r.estado + '</span></td>' +
 '<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
-'<button class="clay-icon-btn" onclick="verOcraccEgresados(' + i + ')" title="Ver egresados"><span class="material-symbols-outlined text-[18px]">visibility</span></button>' +
-'<button class="clay-icon-btn" onclick="editarOcracc(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="clay-icon-btn danger" onclick="event.stopPropagation();eliminarOcracc(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="glass-icon-btn" onclick="verOcraccEgresados(' + i + ')" title="Ver egresados"><span class="material-symbols-outlined text-[18px]">visibility</span></button>' +
+'<button class="glass-icon-btn" onclick="editarOcracc(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="glass-icon-btn danger" onclick="event.stopPropagation();eliminarOcracc(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = ocraccRegistros.length + ' registro(s)';
@@ -3027,7 +3073,7 @@ if (existing) existing.remove();
 var div = document.createElement('div');
 div.className = 'table-filter px-4 py-2 border-b border-border-subtle bg-surface-bg/30';
 var inputId = 'filter-' + tableId;
-div.innerHTML = '<input id="' + inputId + '" type="text" placeholder="' + placeholder + '" class="clay-input text-sm w-full max-w-xs px-3 py-1.5">';
+div.innerHTML = '<input id="' + inputId + '" type="text" placeholder="' + placeholder + '" class="glass-input text-sm w-full max-w-xs px-3 py-1.5">';
 container.insertBefore(div, table);
 document.getElementById(inputId).addEventListener('input', function() {
 var q = this.value.trim().toLowerCase();
