@@ -1,6 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script id="tailwind-config">try{
   tailwind.config = {
-    darkMode: "class",
     theme: {
       extend: {
         "colors": {
@@ -236,8 +235,6 @@ gap: 8px;
 .toast-warning { background: #f59e0b; color: #fff; }
 @keyframes toastIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 @keyframes toastOut { from { opacity:1; } to { opacity:0; transform:translateY(-8px); } }
-/* Dark mode overrides */
-.dark .nota-card { box-shadow: 4px 4px 10px rgba(0,0,0,0.4), 1px 1px 3px rgba(0,0,0,0.3); }
 </style></head><body class="bg-surface-bg text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
 <!-- SideNavBar -->
 <nav id="sidebar" class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col py-6 px-4 z-50">
@@ -305,10 +302,6 @@ gap: 8px;
 <span class="material-symbols-outlined text-[18px]">account_circle</span>
 <span id="sidebar-email" class="truncate flex-1"></span>
 </div>
-<button id="sidebar-dark-toggle" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg w-full text-left">
-<span class="material-symbols-outlined" id="dark-icon">dark_mode</span>
-<span class="">Modo Oscuro</span>
-</button>
 </li>
 <li class="">
 <a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="configuracion">
@@ -1252,18 +1245,6 @@ if (e.key === 'e') { e.preventDefault(); showPage('expediente'); }
 if (e.key === 'r') { e.preventDefault(); showPage('reporte'); }
 }
 });
-
-// --- Dark Mode ---
-var darkEnabled = localStorage.getItem('darkMode') === 'true';
-if (darkEnabled) document.documentElement.classList.add('dark');
-function toggleDark() {
-darkEnabled = !darkEnabled;
-document.documentElement.classList.toggle('dark', darkEnabled);
-localStorage.setItem('darkMode', darkEnabled);
-document.getElementById('dark-icon').textContent = darkEnabled ? 'light_mode' : 'dark_mode';
-}
-document.getElementById('sidebar-dark-toggle').addEventListener('click', toggleDark);
-document.getElementById('dark-icon').textContent = darkEnabled ? 'light_mode' : 'dark_mode';
 
 // --- User Profile in Sidebar ---
 function updateSidebarUser(email) {
