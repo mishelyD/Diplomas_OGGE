@@ -296,12 +296,6 @@ gap: 8px;
 <span class="">Notas</span>
 </a>
 </li>
-<li class="">
-<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="reporte">
-<span class="material-symbols-outlined">assessment</span>
-<span class="">Reporte</span>
-</a>
-</li>
 
 <li class="mt-auto">
 <li class="">
@@ -387,10 +381,10 @@ Cancelar
 <table class="w-full text-left border-collapse min-w-[700px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider">NT</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider">Fecha Recepción</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider">Estado</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider">Comentario</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider" data-sort-key="nt">NT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider" data-sort-key="fecha">Fecha Recepción</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider" data-sort-key="estado">Estado</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider" data-sort-key="comentario">Comentario</th>
 <th class="py-3 px-6"></th>
 </tr>
 </thead>
@@ -506,12 +500,12 @@ Cancelar
 <table class="w-full text-left border-collapse min-w-[900px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Código de estudiante</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Apellidos y Nombres</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Grado</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Área</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Sustentación</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Calificación</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="dni">Código de estudiante</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="apellidosNombres">Apellidos y Nombres</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="tipoGrado">Grado</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="area">Área</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="fechaSustentacion">Sustentación</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="calificacion">Calificación</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">NTs</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Check</th>
 <th class="py-3 px-4"></th>
@@ -634,15 +628,15 @@ Cancelar
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Código de estudiante</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">NT</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Apellidos y Nombres</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Programa</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">NT SA</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Entrega Sec. Acad.</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">N° Oficio</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Recepción</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">N° Resol. Directoral</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Estado</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="nt">NT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="apellidosNombres">Apellidos y Nombres</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="programa">Programa</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="ntSa">NT SA</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaEntrega">Fecha Entrega Sec. Acad.</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="oficio">N° Oficio</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaRecepcion">Fecha Recepción</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="resolucion">N° Resol. Directoral</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="estado">Estado</th>
 <th class="py-3 px-3"></th>
 </tr>
 </thead>
@@ -738,13 +732,13 @@ Cancelar
 <table class="w-full text-left border-collapse min-w-[800px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">NT OGT</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">N° Oficio</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Resolución</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Envío</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Recepción</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Envío SG-OGT</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Estado</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="ntOgt">NT OGT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="oficio">N° Oficio</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="resolucion">Resolución</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaEnvio">Fecha Envío</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaRecepcion">Fecha Recepción</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaEnvioSg">Fecha Envío SG-OGT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="estado">Estado</th>
 <th class="py-3 px-3"></th>
 </tr>
 </thead>
@@ -819,13 +813,13 @@ Cancelar
 <table class="w-full text-left border-collapse min-w-[1000px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">N° Oficio</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">NT OCRACC</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Envío</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="oficio">N° Oficio</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="nt">NT OCRACC</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaEnvio">Fecha Envío</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Días Trans.</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Alerta</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Fecha Recepción</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Estado</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="alerta">Alerta</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaRecepcion">Fecha Recepción</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="estado">Estado</th>
 <th class="py-3 px-3"></th>
 </tr>
 </thead>
@@ -1287,7 +1281,8 @@ const count = document.getElementById('solicitud-count');
 tbody.innerHTML = '';
 solicitudes.forEach((s, i) => {
 const tr = document.createElement('tr');
-tr.className = 'hover:bg-hover-state transition-colors group';
+tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
+tr.onclick = function() { editarSolicitud(i); };
 let estadoClass = 'bg-surface-container-high text-text-secondary';
 if (s.estado === 'Completo') estadoClass = 'bg-success-bg text-success-text';
 else if (s.estado === 'Observado') estadoClass = 'bg-warning-bg text-warning-text';
@@ -1297,7 +1292,7 @@ tr.innerHTML = '<td class="py-4 px-6 font-medium text-primary">' + s.nt + '</td>
 '<td class="py-4 px-6 text-sm text-text-secondary">' + (s.comentario || '—') + '</td>' +
 '<td class="py-4 px-6 text-right flex items-center justify-end gap-1">' +
 '<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarSolicitud(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="eliminarSolicitud(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="event.stopPropagation();eliminarSolicitud(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = solicitudes.length + ' registros';
@@ -1453,7 +1448,8 @@ const count = document.getElementById('expediente-count');
 tbody.innerHTML = '';
 expedientes.forEach((e, i) => {
 const tr = document.createElement('tr');
-tr.className = 'hover:bg-hover-state transition-colors group';
+tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
+tr.onclick = function() { editarExpediente(i); };
 let califClass = 'bg-surface-container-high text-text-secondary';
 if (e.calificacion === 'Aprobado por excelencia') califClass = 'bg-success-bg text-success-text';
 else if (e.calificacion === 'Aprobado por Unanimidad') califClass = 'bg-primary-fixed text-primary';
@@ -1468,7 +1464,7 @@ tr.innerHTML = '<td class="py-4 px-4 font-medium text-primary">' + e.dni + '</td
 '<td class="py-4 px-4 text-sm">' + (e.estadoDatos === 'Correcto' ? '<span class="material-symbols-outlined text-success-text text-[18px]">check_circle</span>' : '<span class="text-xs text-warning-text font-medium">Observado</span>') + '</td>' +
 '<td class="py-4 px-4 text-right flex items-center justify-end gap-1">' +
 '<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarExpediente(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="eliminarExpediente(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="event.stopPropagation();eliminarExpediente(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = expedientes.length + ' registros';
@@ -1601,7 +1597,8 @@ const count = document.getElementById('seg-count');
 tbody.innerHTML = '';
 seguimientos.forEach((s, i) => {
 const tr = document.createElement('tr');
-tr.className = 'hover:bg-hover-state transition-colors group';
+tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
+tr.onclick = function() { editarSeguimiento(i); };
 let claseEstado = 'bg-surface-container-high text-text-secondary';
 if (s.estado === 'COMPLETO') claseEstado = 'bg-success-bg text-success-text';
 else if (s.estado === 'Observado') claseEstado = 'bg-warning-bg text-warning-text';
@@ -1617,7 +1614,7 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + s.dni + '</td
 '<td class="py-3 px-3">' + (s.estado ? '<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + s.estado + '</span>' : '<span class="text-xs text-text-secondary">—</span>') + '</td>' +
 '<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
 '<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarSeguimiento(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="eliminarSeguimiento(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="event.stopPropagation();eliminarSeguimiento(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = seguimientos.length + ' registro(s)';
@@ -2016,7 +2013,8 @@ const count = document.getElementById('ed-count');
 tbody.innerHTML = '';
 enviosDireccion.forEach(function(e, i) {
 const tr = document.createElement('tr');
-tr.className = 'hover:bg-hover-state transition-colors group';
+tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
+tr.onclick = function() { editarEnvioDireccion(i); };
 let claseEstado = 'bg-surface-container-high text-text-secondary';
 if (e.estado === 'Enviado a SG-OGT') claseEstado = 'bg-success-bg text-success-text';
 else if (e.estado === 'Pendiente de recepcion') claseEstado = 'bg-warning-bg text-warning-text';
@@ -2030,7 +2028,7 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (e.ntOgt || '
 '<td class="py-3 px-3"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + e.estado + '</span></td>' +
 '<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
 '<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarEnvioDireccion(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="eliminarEnvioDireccion(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="event.stopPropagation();eliminarEnvioDireccion(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = enviosDireccion.length + ' registro(s)';
@@ -2227,7 +2225,8 @@ tbody.innerHTML = '';
 const now = new Date();
 ocraccRegistros.forEach(function(r, i) {
 const tr = document.createElement('tr');
-tr.className = 'hover:bg-hover-state transition-colors group';
+tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
+tr.onclick = function() { editarOcracc(i); };
 const fechaEnvio = new Date(r.fechaEnvio + 'T00:00:00');
 const diasTrans = Math.floor((now - fechaEnvio) / (1000 * 60 * 60 * 24));
 const alerta = parseInt(r.alerta) || 30;
@@ -2246,7 +2245,7 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (r.oficio || 
 '<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
 '<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="verOcraccEgresados(' + i + ')" title="Ver egresados"><span class="material-symbols-outlined text-[18px]">visibility</span></button>' +
 '<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarOcracc(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="eliminarOcracc(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="event.stopPropagation();eliminarOcracc(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = ocraccRegistros.length + ' registro(s)';
@@ -2516,18 +2515,33 @@ var q = input.value.trim().toLowerCase();
 if (!q) { dropdown.classList.add('hidden'); dropdown.innerHTML = ''; return; }
 var results = [];
 expedientes.forEach(function(e) {
-if ((e.dni && e.dni.toLowerCase().includes(q)) || (e.apellidosNombres && e.apellidosNombres.toLowerCase().includes(q))) {
-results.push({ tipo: 'Expediente', label: e.dni + ' - ' + (e.apellidosNombres||''), page: 'expediente' });
+if ((e.dni && e.dni.toLowerCase().includes(q)) || (e.apellidosNombres && e.apellidosNombres.toLowerCase().includes(q)) || (e.nombres && e.nombres.toLowerCase().includes(q))) {
+results.push({ tipo: 'Expediente', label: e.dni + ' - ' + (e.apellidosNombres||e.nombres||''), page: 'expediente' });
 }
 });
 solicitudes.forEach(function(s) {
-if (s.nt && s.nt.toString().includes(q)) {
+if ((s.nt && s.nt.toString().includes(q)) || (s.estudiante && s.estudiante.toLowerCase().includes(q)) || (s.programa && s.programa.toLowerCase().includes(q))) {
 results.push({ tipo: 'Solicitud', label: 'NT ' + s.nt + ' - ' + (s.estudiante||''), page: 'solicitud' });
 }
 });
 seguimientos.forEach(function(seg) {
-if (seg.dni && seg.dni.toLowerCase().includes(q)) {
+if ((seg.dni && seg.dni.toLowerCase().includes(q)) || (seg.nombres && seg.nombres.toLowerCase().includes(q)) || (seg.resolucion && seg.resolucion.toLowerCase().includes(q))) {
 results.push({ tipo: 'Seguimiento SA', label: seg.dni + ' - ' + (seg.nombres||'') + ' (Res. ' + seg.resolucion + ')', page: 'seguimiento-sa-envios' });
+}
+});
+enviosDireccion.forEach(function(ed) {
+if ((ed.ntOgt && ed.ntOgt.toString().includes(q)) || (ed.oficio && ed.oficio.toLowerCase().includes(q)) || (ed.resolucion && ed.resolucion.toLowerCase().includes(q))) {
+results.push({ tipo: 'Envío a Dirección', label: (ed.oficio||'') + ' - Res. ' + (ed.resolucion||''), page: 'seguimiento-sg-ogt' });
+}
+});
+ocraccRegistros.forEach(function(oc) {
+if ((oc.nt && oc.nt.toString().includes(q)) || (oc.oficio && oc.oficio.toLowerCase().includes(q)) || (oc.estado && oc.estado.toLowerCase().includes(q))) {
+results.push({ tipo: 'OCRACC', label: (oc.oficio||'') + ' - NT ' + (oc.nt||''), page: 'ocracc' });
+}
+});
+notas.forEach(function(n, i) {
+if ((n.titulo && n.titulo.toLowerCase().includes(q)) || (n.cuerpo && n.cuerpo.toLowerCase().includes(q))) {
+results.push({ tipo: 'Nota', label: n.titulo||'(sin título)', page: 'notas' });
 }
 });
 if (!results.length) {
@@ -2591,6 +2605,15 @@ location.reload();
 reader.readAsText(file);
 }
 
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') {
+var notaModal = document.getElementById('nota-modal');
+var ocModal = document.getElementById('oc-modal-overlay');
+if (notaModal && !notaModal.classList.contains('hidden')) cerrarModalNota();
+if (ocModal && !ocModal.classList.contains('hidden')) ocModal.classList.add('hidden');
+}
+});
+
 // --- Init ---
 try {
 renderSolicitudes();
@@ -2603,6 +2626,12 @@ renderReporte();
 } catch(e) { console.error('Init error:', e); }
 
 initSearch();
+
+makeSortable('tabla-solicitudes', solicitudes, renderSolicitudes);
+makeSortable('tabla-expedientes', expedientes, renderExpedientes);
+makeSortable('tabla-seguimiento', seguimientos, renderSeguimientos);
+makeSortable('tabla-envios-direccion', enviosDireccion, renderEnviosDireccion);
+makeSortable('tabla-ocracc', ocraccRegistros, renderOcracc);
 
 document.getElementById('btn-export-json').addEventListener('click', exportJSON);
 document.getElementById('btn-export-excel').addEventListener('click', function() {
@@ -2628,17 +2657,36 @@ document.getElementById('btn-import-json').addEventListener('change', function(e
 if (e.target.files.length) importJSON(e.target.files[0]);
 });
 
+// --- Sortable tables ---
+var sortStates = {};
+function makeSortable(tableId, dataArr, renderFn) {
+var table = document.getElementById(tableId);
+if (!table) return;
+table.querySelectorAll('th').forEach(function(th, col) {
+th.style.cursor = 'pointer';
+th.title = 'Ordenar';
+th.addEventListener('click', function() {
+var key = th.dataset.sortKey || th.textContent.trim().toLowerCase().replace(/\s+/g,'');
+var state = sortStates[tableId] || {};
+if (state.key === key) state.asc = !state.asc; else { state.key = key; state.asc = true; }
+sortStates[tableId] = state;
+// Re-sort the data and re-render
+dataArr.sort(function(a, b) {
+var va = (a[key]||'').toString().toLowerCase();
+var vb = (b[key]||'').toString().toLowerCase();
+if (!isNaN(va) && !isNaN(vb)) { va = parseFloat(va); vb = parseFloat(vb); }
+if (va < vb) return state.asc ? -1 : 1;
+if (va > vb) return state.asc ? 1 : -1;
+return 0;
+});
+renderFn();
+// Update visual indicator
+table.querySelectorAll('th').forEach(function(h) { h.classList.remove('text-primary'); });
+th.classList.add('text-primary');
+});
+});
+}
+
 showPage('reporte');
 
-// --- Live reload ---
-(function() {
-let lastMod = null;
-setInterval(function() {
-fetch(window.location.href, { method: 'HEAD', cache: 'no-store' }).then(function(r) {
-var lm = r.headers.get('Last-Modified');
-if (lastMod && lm && lm !== lastMod) { location.reload(); }
-lastMod = lm || lastMod;
-}).catch(function(){});
-    }, 3000);
-})();
 </script>
