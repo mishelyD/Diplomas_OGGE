@@ -1474,7 +1474,7 @@ tbody.innerHTML = '';
 if (!solicitudes.length) {
 tbody.innerHTML = '<tr><td colspan="5" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">note_add</span>No hay solicitudes registradas</td></tr>';
 count.textContent = '0 registros';
-var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 return;
 }
 var p = paginate('sols', solicitudes, 25);
@@ -1497,7 +1497,7 @@ tr.innerHTML = '<td class="py-4 px-6 font-medium text-primary">' + s.nt + '</td>
 tbody.appendChild(tr);
 });
 count.textContent = solicitudes.length + ' registros';
-var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 var pagDiv = document.createElement('div');
 pagDiv.className = 'pag-controls';
 pagDiv.innerHTML = pagControls('sols');
@@ -1660,7 +1660,7 @@ tbody.innerHTML = '';
 if (!expedientes.length) {
 tbody.innerHTML = '<tr><td colspan="9" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">folder</span>No hay expedientes registrados</td></tr>';
 count.textContent = '0 registros';
-var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 return;
 }
 var p = paginate('exps', expedientes, 25);
@@ -1688,7 +1688,7 @@ tr.innerHTML = '<td class="py-4 px-4 font-medium text-primary">' + e.dni + '</td
 tbody.appendChild(tr);
 });
 count.textContent = expedientes.length + ' registros';
-var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 var pagDiv = document.createElement('div');
 pagDiv.className = 'pag-controls';
 pagDiv.innerHTML = pagControls('exps');
@@ -1827,7 +1827,7 @@ tbody.innerHTML = '';
 if (!seguimientos.length) {
 tbody.innerHTML = '<tr><td colspan="11" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">track_changes</span>No hay seguimientos registrados</td></tr>';
 count.textContent = '0 registro(s)';
-var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 var segPage = document.getElementById('page-seguimiento-sa-envios');
 if (segPage && segPage.style.display !== 'none') renderAgrupamiento();
 return;
@@ -1860,7 +1860,7 @@ tbody.appendChild(tr);
 count.textContent = seguimientos.length + ' registro(s)';
 var segPage = document.getElementById('page-seguimiento-sa-envios');
 if (segPage && segPage.style.display !== 'none') renderAgrupamiento();
-var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 var pagDiv = document.createElement('div');
 pagDiv.className = 'pag-controls';
 pagDiv.innerHTML = pagControls('segs');
@@ -2264,7 +2264,7 @@ tbody.innerHTML = '';
 if (!enviosDireccion.length) {
 tbody.innerHTML = '<tr><td colspan="8" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">assignment</span>No hay envíos registrados</td></tr>';
 count.textContent = '0 registro(s)';
-var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 return;
 }
 var p = paginate('eds', enviosDireccion, 25);
@@ -2291,7 +2291,7 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (e.ntOgt || '
 tbody.appendChild(tr);
 });
 count.textContent = enviosDireccion.length + ' registro(s)';
-var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 var pagDiv = document.createElement('div');
 pagDiv.className = 'pag-controls';
 pagDiv.innerHTML = pagControls('eds');
@@ -2492,7 +2492,7 @@ tbody.innerHTML = '';
 if (!ocraccRegistros.length) {
 tbody.innerHTML = '<tr><td colspan="8" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">document_scanner</span>No hay solicitudes OCRACC registradas</td></tr>';
 count.textContent = '0 registro(s)';
-var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 return;
 }
 var p = paginate('ocs', ocraccRegistros, 25);
@@ -2525,7 +2525,7 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (r.oficio || 
 tbody.appendChild(tr);
 });
 count.textContent = ocraccRegistros.length + ' registro(s)';
-var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 var pagDiv = document.createElement('div');
 pagDiv.className = 'pag-controls';
 pagDiv.innerHTML = pagControls('ocs');
