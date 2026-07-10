@@ -10,46 +10,46 @@
                 "secondary-fixed": "#dfe3e8",
                 "primary-fixed": "#d9e2ff",
                 "inverse-surface": "#303031",
-                "surface": "#faf9fa",
-                "secondary-container": "#dfe3e8",
-                "surface-dim": "#dbdadb",
+                "surface": "#e8ddd0",
+                "secondary-container": "#d9cdbc",
+                "surface-dim": "#d9cdbc",
                 "secondary-fixed-dim": "#c2c7cc",
                 "secondary": "#5a5f63",
                 "tertiary-container": "#bfab49",
                 "on-primary-container": "#e7ebff",
                 "on-error-container": "#93000a",
-                "surface-container-high": "#e9e8e9",
-                "on-surface": "#1b1c1d",
-                "on-secondary-container": "#606569",
+                "surface-container-high": "#dcd1c0",
+                "on-surface": "#3d3229",
+                "on-secondary-container": "#5a5044",
                 "tertiary-fixed-dim": "#dcc661",
                 "on-tertiary-fixed": "#211b00",
                 "on-secondary": "#ffffff",
-                "surface-container-highest": "#e3e2e3",
-                "primary": "#094cb2",
-                "background": "#faf9fa",
-                "outline-variant": "#c3c6d5",
+                "surface-container-highest": "#d5caba",
+                "primary": "#7a6b5a",
+                "background": "#f0e8dc",
+                "outline-variant": "#d0c4b6",
                 "error": "#ba1a1a",
-                "on-background": "#1b1c1d",
-                "surface-container-lowest": "#ffffff",
+                "on-background": "#3d3229",
+                "surface-container-lowest": "#f5efe6",
                 "on-tertiary-fixed-variant": "#524600",
                 "tertiary": "#6d5e00",
                 "surface-tint": "#2259bf",
                 "on-secondary-fixed-variant": "#42474b",
                 "surface-variant": "#e3e2e3",
                 "on-primary-fixed": "#001946",
-                "primary-container": "#3366cc",
+                "primary-container": "#d9cdbc",
                 "on-secondary-fixed": "#171c20",
                 "tertiary-fixed": "#f9e37a",
-                "surface-container": "#efedee",
-                "on-primary-fixed-variant": "#00419d",
+                "surface-container": "#e3d8c8",
+                "on-primary-fixed-variant": "#5c4e3e",
                 "inverse-primary": "#b1c5ff",
                 "on-tertiary": "#ffffff",
                 "outline": "#737784",
-                "surface-container-low": "#f5f3f4",
+                "surface-container-low": "#ede5d9",
                 "on-error": "#ffffff",
                 "primary-fixed-dim": "#b1c5ff",
-                "surface-bright": "#faf9fa",
-                "on-surface-variant": "#434653",
+                "surface-bright": "#f0e8dc",
+                "on-surface-variant": "#6b5d4f",
                 
                 "warning-bg": "#fef3c7",
                 "warning-text": "#b45309",
@@ -58,12 +58,12 @@
                 "danger-bg": "#fee2e2",
                 "danger-text": "#b91c1c",
                 
-                "surface-card": "#ffffff",
-                "surface-bg": "#faf9fa",
-                "border-subtle": "#e3e2e3",
-                "text-secondary": "#5a5f63",
-                "text-table": "#1b1c1d",
-                "hover-state": "rgba(0,0,0,0.04)"
+                "surface-card": "#e8ddd0",
+                "surface-bg": "#f0e8dc",
+                "border-subtle": "#d0c4b6",
+                "text-secondary": "#6b5d4f",
+                "text-table": "#3d3229",
+                "hover-state": "rgba(0,0,0,0.06)"
         },
         "borderRadius": {
                 "DEFAULT": "0.25rem",
@@ -237,9 +237,72 @@ gap: 8px;
 @keyframes toastOut { from { opacity:1; } to { opacity:0; transform:translateY(-8px); } }
 .table-scroll { max-height: 420px; overflow-y: auto; }
 .table-scroll thead { position: sticky; top: 0; z-index: 5; }
-</style></head><body class="bg-surface-bg text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
+/* === Claymorphism === */
+.clay-card {
+background: #e8ddd0;
+border-radius: 20px;
+box-shadow: 8px 8px 16px #c4b8aa, -6px -6px 12px #fff8ee;
+border: none;
+}
+.clay-card-inset {
+background: #e8ddd0;
+border-radius: 20px;
+box-shadow: inset 4px 4px 8px #c4b8aa, inset -3px -3px 6px #fff8ee;
+}
+.clay-btn {
+background: #d9cdbc;
+border: none;
+border-radius: 50px;
+box-shadow: 4px 4px 8px #c4b8aa, -3px -3px 6px #fff8ee;
+color: #3d3229;
+font-weight: 600;
+transition: all 0.15s ease;
+cursor: pointer;
+}
+.clay-btn:hover { box-shadow: 2px 2px 4px #c4b8aa, -1px -1px 3px #fff8ee; transform: scale(0.98); }
+.clay-btn:active { box-shadow: inset 3px 3px 6px #c4b8aa, inset -2px -2px 4px #fff8ee; transform: scale(0.96); }
+.clay-input {
+background: #e8ddd0;
+border: none;
+border-radius: 16px;
+box-shadow: inset 3px 3px 6px #c4b8aa, inset -2px -2px 4px #fff8ee;
+padding: 10px 16px;
+color: #3d3229;
+}
+.clay-input:focus { outline: none; box-shadow: inset 4px 4px 8px #b8ac9e, inset -3px -3px 6px #fff8ee; }
+.clay-sidebar {
+background: #d9cdbc;
+box-shadow: 4px 0 12px rgba(0,0,0,0.08);
+border: none;
+}
+.clay-badge {
+background: #d9cdbc;
+border-radius: 50px;
+box-shadow: inset 2px 2px 4px #c4b8aa, inset -1px -1px 3px #fff8ee;
+}
+.clay-table thead th {
+background: #d9cdbc;
+color: #3d3229;
+border-bottom: 2px solid #c4b8aa;
+}
+.clay-table tbody tr {
+border-bottom: 1px solid #d0c4b6;
+transition: background 0.15s;
+}
+.clay-table tbody tr:hover { background: rgba(0,0,0,0.04); }
+.clay-modal {
+background: #e8ddd0;
+border-radius: 24px;
+box-shadow: 12px 12px 24px #c4b8aa, -8px -8px 16px #fff8ee;
+border: none;
+}
+.clay-toast {
+border-radius: 50px;
+box-shadow: 4px 4px 8px rgba(0,0,0,0.15);
+}
+</style></head><body class="bg-[#f0e8dc] text-[#3d3229] font-body-md text-body-md overflow-x-hidden min-h-screen">
 <!-- SideNavBar -->
-<nav id="sidebar" class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col py-6 px-4 z-50">
+<nav id="sidebar" class="fixed left-0 top-0 h-full w-[260px] clay-sidebar flex flex-col py-6 px-4 z-50">
 <div class="mb-6 px-4 flex flex-col items-center gap-2">
 <img src="https://aulavirtualeupg.unfv.edu.pe/pluginfile.php/1/theme_academi/logo/1770824832/LOGO_EDIT_POS.png" alt="Logo" class="h-16 w-auto object-contain">
 <div class="text-center">
@@ -331,7 +394,7 @@ gap: 8px;
 </button>
 <div class="relative group flex-1">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-primary">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm transition-all text-on-surface shadow-sm" placeholder="Buscar..." type="text">
+<input class="clay-input text-sm" placeholder="Buscar..." type="text">
 </div>
 </div>
 <!-- Actions -->
@@ -356,15 +419,15 @@ gap: 8px;
 <form id="form-solicitud" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT (N° Trámite)</label>
-<input id="input-nt" type="number" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: 456778" required>
+<input id="input-nt" type="number" class="clay-input text-sm" placeholder="Ej: 456778" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
-<input id="input-fecha" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" required>
+<input id="input-fecha" type="date" class="clay-input text-sm" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
-<select id="input-estado" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<select id="input-estado" class="clay-input text-sm">
 <option value="Completo">Completo</option>
 <option value="Observado">Observado</option>
 <option value="Pendiente">Pendiente</option>
@@ -372,10 +435,10 @@ gap: 8px;
 </div>
 <div class="flex flex-col gap-1.5" id="comentario-container" style="display:none">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Comentario</label>
-<textarea id="input-comentario" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface resize-none" rows="2" placeholder="Describa la observación..."></textarea>
+<textarea id="input-comentario" class="clay-input text-sm resize-none" rows="2" placeholder="Describa la observación..."></textarea>
 </div>
 <div class="flex items-end gap-3">
-<button type="submit" id="sol-submit-btn" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<button type="submit" id="sol-submit-btn" class="clay-btn">
 <span class="material-symbols-outlined text-[18px]">add</span> Registrar
 </button>
 <button type="button" id="sol-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">
@@ -391,7 +454,7 @@ Cancelar
 <span id="solicitud-count" class="text-sm text-text-secondary">0 registros</span>
 </div>
 <div class="overflow-x-auto table-scroll">
-<table class="w-full text-left border-collapse min-w-[700px]">
+<table class="clay-table w-full text-left border-collapse min-w-[700px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider" data-sort-key="nt">NT</th>
@@ -422,26 +485,26 @@ Cancelar
 <form id="form-expediente" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 items-end">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Código de estudiante</label>
-<input id="exp-dni" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="12345678" required>
+<input id="exp-dni" type="text" class="clay-input text-sm" placeholder="12345678" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Apellidos y Nombres</label>
-<input id="exp-nombres" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Pérez López, Juan Carlos" required>
+<input id="exp-nombres" type="text" class="clay-input text-sm" placeholder="Pérez López, Juan Carlos" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Tipo de Grado</label>
-<select id="exp-tipo-grado" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<select id="exp-tipo-grado" class="clay-input text-sm">
 <option value="Maestría">Maestría</option>
 <option value="Doctorado">Doctorado</option>
 </select>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Nombre del Grado</label>
-<input id="exp-nombre-grado" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: Educación con mención en Docencia" required>
+<input id="exp-nombre-grado" type="text" class="clay-input text-sm" placeholder="Ej: Educación con mención en Docencia" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Área</label>
-<select id="exp-area" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<select id="exp-area" class="clay-input text-sm">
 <option value="">Seleccionar...</option>
 <option value="Ciencias de la Empresa">Ciencias de la Empresa</option>
 <option value="Humanidades y Ciencias Basicas">Humanidades y Ciencias Basicas</option>
@@ -452,23 +515,23 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Matrícula</label>
-<input id="exp-fecha-matricula" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" required>
+<input id="exp-fecha-matricula" type="date" class="clay-input text-sm" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Egreso</label>
-<input id="exp-fecha-egreso" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" required>
+<input id="exp-fecha-egreso" type="date" class="clay-input text-sm" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Total de Créditos</label>
-<input id="exp-creditos" type="number" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: 48" required>
+<input id="exp-creditos" type="number" class="clay-input text-sm" placeholder="Ej: 48" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Sustentación</label>
-<input id="exp-fecha-sustentacion" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" required>
+<input id="exp-fecha-sustentacion" type="date" class="clay-input text-sm" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Calificación Sustentación</label>
-<select id="exp-calificacion" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<select id="exp-calificacion" class="clay-input text-sm">
 <option value="Aprobado por excelencia">Aprobado por excelencia</option>
 <option value="Aprobado por Mayoria">Aprobado por Mayoria</option>
 <option value="Aprobado por Unanimidad">Aprobado por Unanimidad</option>
@@ -477,24 +540,24 @@ Cancelar
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NTs Asociados</label>
 <div class="relative">
-<input id="exp-nts-buscar" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Buscar NT para asociar..." autocomplete="off">
+<input id="exp-nts-buscar" type="text" class="clay-input text-sm" placeholder="Buscar NT para asociar..." autocomplete="off">
 <div id="exp-nts-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
 </div>
 <div id="exp-nts-seleccionados" class="flex flex-wrap gap-1.5 min-h-[28px]"></div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado de Datos en el SD</label>
-<select id="exp-estado-datos" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<select id="exp-estado-datos" class="clay-input text-sm">
 <option value="Correcto">Correcto</option>
 <option value="Observado">Observado</option>
 </select>
 </div>
 <div class="flex flex-col gap-1.5" id="exp-obs-container" style="display:none">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Comentario de Observación</label>
-<textarea id="exp-obs-comentario" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface resize-none" rows="2" placeholder="Describa la observación de los datos..."></textarea>
+<textarea id="exp-obs-comentario" class="clay-input text-sm resize-none" rows="2" placeholder="Describa la observación de los datos..."></textarea>
 </div>
 <div class="flex items-end gap-3 md:col-span-2">
-<button type="submit" id="exp-submit-btn" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<button type="submit" id="exp-submit-btn" class="clay-btn">
 <span class="material-symbols-outlined text-[18px]">assignment</span> Registrar Expediente
 </button>
 <button type="button" id="exp-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">
@@ -510,7 +573,7 @@ Cancelar
 <span id="expediente-count" class="text-sm text-text-secondary">0 registros</span>
 </div>
 <div class="overflow-x-auto table-scroll">
-<table class="w-full text-left border-collapse min-w-[900px]">
+<table class="clay-table w-full text-left border-collapse min-w-[900px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="dni">Código de estudiante</th>
@@ -541,7 +604,7 @@ Cancelar
 </div>
 </section>
 <!-- Form Registro / Edicion -->
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
 <button id="seg-toggle-form" class="w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer hover:bg-hover-state transition-colors">
 <h3 class="font-semibold text-primary">Registrar Seguimiento</h3>
 <span id="seg-toggle-icon" class="material-symbols-outlined text-text-secondary transition-transform">expand_more</span>
@@ -550,16 +613,16 @@ Cancelar
 <form id="form-seguimiento" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4 items-end">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Código de estudiante del Egresado</label>
-<input id="seg-dni" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="12345678" required>
+<input id="seg-dni" type="text" class="clay-input text-sm" placeholder="12345678" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Apellidos y Nombres</label>
-<input id="seg-nombres" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Pérez López, Juan Carlos" required>
+<input id="seg-nombres" type="text" class="clay-input text-sm" placeholder="Pérez López, Juan Carlos" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NTs Asociados</label>
 <div class="relative">
-<input id="seg-nts-buscar" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Buscar NT para asociar..." autocomplete="off">
+<input id="seg-nts-buscar" type="text" class="clay-input text-sm" placeholder="Buscar NT para asociar..." autocomplete="off">
 <div id="seg-nts-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
 </div>
 <div id="seg-nts-seleccionados" class="flex flex-wrap gap-1.5 min-h-[28px]"></div>
@@ -589,27 +652,27 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT SA</label>
-<input id="seg-nt-sa" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="NT enviado a Secretaría Académica">
+<input id="seg-nt-sa" type="text" class="clay-input text-sm" placeholder="NT enviado a Secretaría Académica">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Entrega Sec. Académica</label>
-<input id="seg-fecha-entrega" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<input id="seg-fecha-entrega" type="date" class="clay-input text-sm">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Número de Oficio</label>
-<input id="seg-oficio" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: OFICIO-2024-001">
+<input id="seg-oficio" type="text" class="clay-input text-sm" placeholder="Ej: OFICIO-2024-001">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
-<input id="seg-fecha-recepcion" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<input id="seg-fecha-recepcion" type="date" class="clay-input text-sm">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Nombre Resolución Directoral</label>
-<input id="seg-resolucion" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: RD-2024-001-UNFV">
+<input id="seg-resolucion" type="text" class="clay-input text-sm" placeholder="Ej: RD-2024-001-UNFV">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
-<select id="seg-estado" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<select id="seg-estado" class="clay-input text-sm">
 <option value="">— Seleccione —</option>
 <option value="COMPLETO">COMPLETO</option>
 <option value="Observado">Observado</option>
@@ -617,10 +680,10 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5 md:col-span-2 lg:col-span-2" id="seg-obs-container" style="display:none">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Motivos de Observación</label>
-<textarea id="seg-obs-comentario" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface resize-none" rows="2" placeholder="Describa los motivos de la observación..."></textarea>
+<textarea id="seg-obs-comentario" class="clay-input text-sm resize-none" rows="2" placeholder="Describa los motivos de la observación..."></textarea>
 </div>
 <div class="flex items-end gap-3 md:col-span-2 lg:col-span-4">
-<button type="submit" id="seg-submit-btn" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<button type="submit" id="seg-submit-btn" class="clay-btn">
 <span class="material-symbols-outlined text-[18px]">add</span> Registrar Seguimiento
 </button>
 <button type="button" id="seg-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">
@@ -637,7 +700,7 @@ Cancelar
 <span id="seg-count" class="text-sm text-text-secondary">0 registros</span>
 </div>
 <div class="overflow-x-auto table-scroll">
-<table class="w-full text-left border-collapse min-w-[1000px]">
+<table class="clay-table w-full text-left border-collapse min-w-[1000px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Código de estudiante</th>
@@ -682,34 +745,34 @@ Cancelar
 <p class="text-text-secondary text-sm mt-1">Registro y seguimiento de envíos a Dirección.</p>
 </div>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Registrar Envío</h3>
 </div>
 <form id="form-envio-direccion" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT OGT</label>
-<input id="ed-nt-ogt" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="NT de OGT" required>
+<input id="ed-nt-ogt" type="text" class="clay-input text-sm" placeholder="NT de OGT" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Oficio</label>
-<input id="ed-oficio" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: OFICIO-2024-001">
+<input id="ed-oficio" type="text" class="clay-input text-sm" placeholder="Ej: OFICIO-2024-001">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Resolución Directoral</label>
-<input id="ed-resolucion" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: RD-2024-001-UNFV" required>
+<input id="ed-resolucion" type="text" class="clay-input text-sm" placeholder="Ej: RD-2024-001-UNFV" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a Dirección</label>
-<input id="ed-fecha-envio" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<input id="ed-fecha-envio" type="date" class="clay-input text-sm">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Recepción del Oficio</label>
-<input id="ed-fecha-recepcion" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<input id="ed-fecha-recepcion" type="date" class="clay-input text-sm">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
-<select id="ed-estado" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<select id="ed-estado" class="clay-input text-sm">
 <option value="Pendiente de recepcion">Pendiente de recepcion</option>
 <option value="Recepcionado">Recepcionado</option>
 <option value="Enviado a SG-OGT">Enviado a SG-OGT</option>
@@ -717,17 +780,17 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5" id="ed-fecha-sg-container" style="display:none">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a SG-OGT</label>
-<input id="ed-fecha-sg" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<input id="ed-fecha-sg" type="date" class="clay-input text-sm">
 </div>
 <div class="flex items-end gap-3 md:col-span-2 lg:col-span-3">
-<button type="submit" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<button type="submit" class="clay-btn">
 <span class="material-symbols-outlined text-[18px]">add</span> Registrar Envío
 </button>
 <button type="button" id="ed-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">Cancelar</button>
 </div>
 </form>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Egresados de la Resolución</h3>
 <span id="ed-egresados-count" class="text-sm text-text-secondary">0 egresados</span>
@@ -736,13 +799,13 @@ Cancelar
 <p class="text-center text-text-secondary py-4">Ingrese un número de resolución para ver los egresados.</p>
 </div>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Envíos Registrados</h3>
 <span id="ed-count" class="text-sm text-text-secondary">0 registros</span>
 </div>
 <div class="overflow-x-auto table-scroll">
-<table class="w-full text-left border-collapse min-w-[800px]">
+<table class="clay-table w-full text-left border-collapse min-w-[800px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="ntOgt">NT OGT</th>
@@ -770,60 +833,60 @@ Cancelar
 <p class="text-text-secondary text-sm mt-1">Registro de solicitudes y recepción de certificados.</p>
 </div>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Registrar Solicitud OCRACC</h3>
 </div>
 <form id="form-ocracc" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Oficio</label>
-<input id="oc-oficio" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: OFICIO-2024-001" required>
+<input id="oc-oficio" type="text" class="clay-input text-sm" placeholder="Ej: OFICIO-2024-001" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT OCRACC</label>
-<input id="oc-nt" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="NT de OCRACC" required>
+<input id="oc-nt" type="text" class="clay-input text-sm" placeholder="NT de OCRACC" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío de Solicitud</label>
-<input id="oc-fecha-envio" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" required>
+<input id="oc-fecha-envio" type="date" class="clay-input text-sm" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Recepción Certificados</label>
-<input id="oc-fecha-recepcion" type="date" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<input id="oc-fecha-recepcion" type="date" class="clay-input text-sm">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
-<select id="oc-estado" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface">
+<select id="oc-estado" class="clay-input text-sm">
 <option value="Pendiente">Pendiente</option>
 <option value="CERTIFICADOS RECEPCIONADOS">CERTIFICADOS RECEPCIONADOS</option>
 </select>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Alerta (días)</label>
-<input id="oc-alerta" type="number" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Ej: 30" value="30">
+<input id="oc-alerta" type="number" class="clay-input text-sm" placeholder="Ej: 30" value="30">
 </div>
 <div class="flex flex-col gap-1.5 md:col-span-2 lg:col-span-3">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Egresados</label>
 <div class="relative">
-<input id="oc-egresado-input" type="text" class="w-full px-3 py-2 bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-on-surface" placeholder="Buscar por código de estudiante..." autocomplete="off">
+<input id="oc-egresado-input" type="text" class="clay-input text-sm" placeholder="Buscar por código de estudiante..." autocomplete="off">
 <div id="oc-egresados-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
 </div>
 <div id="oc-egresados-chips" class="flex flex-wrap gap-1.5 mt-2 min-h-[28px]"></div>
 </div>
 <div class="flex items-end gap-3 md:col-span-2 lg:col-span-3">
-<button type="submit" id="oc-submit-btn" class="bg-primary text-on-primary px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<button type="submit" id="oc-submit-btn" class="clay-btn">
 <span class="material-symbols-outlined text-[18px]">add</span> Registrar Solicitud
 </button>
 <button type="button" id="oc-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle hidden">Cancelar</button>
 </div>
 </form>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm overflow-x-auto table-scroll">
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card overflow-x-auto table-scroll">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Solicitudes Registradas</h3>
 <span id="oc-count" class="text-sm text-text-secondary">0 solicitudes</span>
 </div>
-<table class="w-full text-left border-collapse min-w-[1000px]">
+<table class="clay-table w-full text-left border-collapse min-w-[1000px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="oficio">N° Oficio</th>
@@ -849,11 +912,11 @@ Cancelar
 <h2 class="font-section-title text-section-title text-primary tracking-tight">Notas</h2>
 <p class="text-text-secondary text-sm mt-1">Notas adhesivas personales.</p>
 </div>
-<button id="nt-btn-nueva" class="bg-primary text-on-primary px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-sm">
+<button id="nt-btn-nueva" class="clay-btn">
 <span class="material-symbols-outlined text-[18px]">add</span> + Nueva Nota
 </button>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm p-5">
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card p-5">
 <div id="nt-grid" class="grid gap-5" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
 </section>
 </div>
@@ -869,7 +932,7 @@ Cancelar
 </div>
 <div class="flex justify-end gap-3 mt-5">
 <button id="nt-cancel-btn" class="px-4 py-2 rounded-lg text-sm font-semibold text-text-secondary hover:bg-surface-container-high transition-colors border border-border-subtle">Cancelar</button>
-<button id="nt-save-btn" class="bg-primary text-on-primary px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm">Guardar</button>
+<button id="nt-save-btn" class="clay-btn">Guardar</button>
 </div>
 </div>
 </div>
@@ -918,14 +981,14 @@ Cancelar
 </div>
 </div>
 <!-- Matriz de Envios -->
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm overflow-x-auto table-scroll">
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card overflow-x-auto table-scroll">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Matriz de Envíos SG-OGT</h3>
 <button onclick="renderReporte()" class="text-sm font-semibold text-primary hover:text-primary-container transition-colors flex items-center gap-1">
 <span class="material-symbols-outlined text-[18px]">refresh</span> Actualizar
 </button>
 </div>
-<table class="w-full text-left border-collapse min-w-[1100px]">
+<table class="clay-table w-full text-left border-collapse min-w-[1100px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider sticky left-0 bg-surface-bg/80 backdrop-blur-sm">ÁREA</th>
@@ -958,12 +1021,12 @@ Cancelar
 <p class="text-text-secondary text-sm mt-1">Exportar e importar datos.</p>
 </div>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Exportar Datos</h3>
 </div>
 <div class="p-4 flex gap-3">
-<button id="btn-export-json" class="bg-primary text-on-primary px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm flex items-center gap-2">
+<button id="btn-export-json" class="clay-btn px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm flex items-center gap-2">
 <span class="material-symbols-outlined text-[18px]">download</span> Exportar JSON
 </button>
 <button id="btn-export-excel" class="bg-[#217346] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#1a5c38] transition-colors shadow-sm flex items-center gap-2">
@@ -971,7 +1034,7 @@ Cancelar
 </button>
 </div>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm">
+<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Importar Datos</h3>
 </div>
@@ -986,12 +1049,12 @@ Cancelar
 </div>
 </main>
 <div id="oc-modal-overlay" class="fixed inset-0 z-50 bg-black/40 flex items-center justify-center hidden">
-<div class="bg-surface-card rounded-lg shadow-lg w-full max-w-lg mx-4 max-h-[80vh] flex flex-col">
-<div class="flex items-center justify-between px-4 py-3 border-b border-border-subtle">
-<h3 class="font-semibold text-primary">Egresados de la Solicitud</h3>
-<button id="oc-modal-close" class="text-text-secondary hover:text-primary p-1 rounded"><span class="material-symbols-outlined">close</span></button>
+<div class="clay-modal w-full max-w-lg mx-4 max-h-[80vh] flex flex-col">
+<div class="flex items-center justify-between px-4 py-3 border-b border-[#d0c4b6]">
+<h3 class="font-semibold text-[#3d3229]">Egresados de la Solicitud</h3>
+<button id="oc-modal-close" class="text-[#6b5d4f] hover:text-[#3d3229] p-1 rounded"><span class="material-symbols-outlined">close</span></button>
 </div>
-<div class="px-4 py-2 bg-surface-bg/50 border-b border-border-subtle text-sm text-text-secondary flex gap-4">
+<div class="px-4 py-2 bg-[#d9cdbc]/50 border-b border-[#d0c4b6] text-sm text-[#6b5d4f] flex gap-4">
 <span><strong>Oficio:</strong> <span id="oc-modal-oficio">—</span></span>
 <span><strong>NT OCRACC:</strong> <span id="oc-modal-nt">—</span></span>
 </div>
@@ -1000,18 +1063,18 @@ Cancelar
 </div>
 <!-- Confirm Modal -->
 <div id="confirm-modal" class="fixed inset-0 z-[9998] bg-black/40 flex items-center justify-center hidden">
-  <div class="bg-surface-card rounded-xl shadow-xl w-full max-w-sm mx-4 p-6">
-    <h3 id="confirm-title" class="font-semibold text-lg text-on-surface mb-2"></h3>
-    <p id="confirm-msg" class="text-sm text-text-secondary mb-6"></p>
+  <div class="clay-modal w-full max-w-sm mx-4 p-6">
+    <h3 id="confirm-title" class="font-semibold text-lg text-[#3d3229] mb-2"></h3>
+    <p id="confirm-msg" class="text-sm text-[#6b5d4f] mb-6"></p>
     <div class="flex justify-end gap-3">
-      <button id="confirm-cancel" class="px-4 py-2 text-sm font-semibold text-text-secondary hover:bg-surface-container-high rounded-lg transition-colors">Cancelar</button>
-      <button id="confirm-ok" class="px-4 py-2 text-sm font-semibold bg-danger-text text-white rounded-lg hover:bg-red-700 transition-colors shadow-sm">Eliminar</button>
+      <button id="confirm-cancel" class="clay-btn px-4 py-2 text-sm">Cancelar</button>
+      <button id="confirm-ok" class="clay-btn px-4 py-2 text-sm bg-[#c27a6f] text-white">Eliminar</button>
     </div>
   </div>
 </div>
 <!-- Login Overlay -->
-<div id="login-overlay" class="fixed inset-0 z-[9999] flex items-center justify-center bg-surface-bg" style="display:flex">
-<div class="bg-surface-card rounded-2xl shadow-xl w-full max-w-sm mx-4 p-8 text-center border border-outline-variant">
+<div class="fixed inset-0 z-[9999] flex items-center justify-center bg-surface-bg" style="display:flex">
+<div class="clay-card w-full max-w-sm mx-4 p-8 text-center">
 <div class="mb-6">
 <img src="https://aulavirtualeupg.unfv.edu.pe/pluginfile.php/1/theme_academi/logo/1770824832/LOGO_EDIT_POS.png" alt="Logo" class="h-16 mx-auto mb-4 object-contain">
 <h1 class="font-headline text-xl font-bold text-primary">Sistema de Seguimiento</h1>
@@ -1022,13 +1085,13 @@ Cancelar
 <form id="login-form" onsubmit="loginWithEmail(event)">
 <div class="mb-3 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Correo electrónico</label>
-<input id="login-email" type="email" required class="w-full px-3 py-2 border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm" placeholder="tu@correo.com">
+<input id="login-email" type="email" required class="clay-input text-sm w-full" placeholder="tu@correo.com">
 </div>
 <div class="mb-4 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Contraseña</label>
-<input id="login-password" type="password" required class="w-full px-3 py-2 border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm" placeholder="••••••••">
+<input id="login-password" type="password" required class="clay-input text-sm w-full" placeholder="••••••••">
 </div>
-<button type="submit" class="w-full bg-primary hover:bg-primary-hover text-on-primary py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors shadow-sm">
+<button type="submit" class="clay-btn w-full text-sm py-2.5">
 Entrar
 </button>
 <div class="mt-3 text-xs text-text-secondary">
@@ -1042,6 +1105,7 @@ Entrar
 <!-- Signup Form -->
 <div id="toast-container" class="fixed bottom-4 right-4 z-[99999] flex flex-col gap-2 pointer-events-none"></div>
 <div id="signup-form" class="hidden">
+<div class="clay-card p-6 mb-6">
 <div class="mb-6">
 <h1 class="font-headline text-xl font-bold text-primary">Crear cuenta</h1>
 <p class="text-sm text-text-secondary mt-1">Regístrate para usar el sistema</p>
@@ -1050,19 +1114,20 @@ Entrar
 <form onsubmit="signupWithEmail(event)">
 <div class="mb-3 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Correo electrónico</label>
-<input id="signup-email" type="email" required class="w-full px-3 py-2 border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm" placeholder="tu@correo.com">
+<input id="signup-email" type="email" required class="clay-input text-sm w-full" placeholder="tu@correo.com">
 </div>
 <div class="mb-4 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Contraseña</label>
-<input id="signup-password" type="password" required minlength="6" class="w-full px-3 py-2 border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm" placeholder="Mínimo 6 caracteres">
+<input id="signup-password" type="password" required minlength="6" class="clay-input text-sm w-full" placeholder="Mínimo 6 caracteres">
 </div>
-<button type="submit" class="w-full bg-primary hover:bg-primary-hover text-on-primary py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors shadow-sm">
+<button type="submit" class="clay-btn w-full text-sm py-2.5">
 Crear cuenta
 </button>
 <div class="mt-3 text-xs text-text-secondary">
 ¿Ya tienes cuenta? <a href="#" onclick="showLogin(event)" class="text-primary hover:underline">Inicia sesión</a>
 </div>
 </form>
+</div>
 </div>
 </div>
 </div>
@@ -1115,7 +1180,7 @@ type = type || 'success';
 var container = document.getElementById('toast-container');
 if (!container) return;
 var el = document.createElement('div');
-el.className = 'toast toast-' + type;
+el.className = 'clay-toast px-4 py-2.5 text-sm font-medium text-white bg-[#3d3229] toast toast-' + type;
 el.innerHTML = msg;
 container.appendChild(el);
 setTimeout(function() { if (el.parentNode) el.remove(); }, 3000);
@@ -1420,7 +1485,7 @@ const target = document.getElementById('page-' + pageId);
 if (target) target.style.display = 'flex';
 navLinks.forEach(link => {
 if (link.dataset.page === pageId) {
-link.className = 'flex items-center gap-3 px-4 py-3 bg-primary text-on-primary rounded-lg transition-colors duration-150 shadow-sm';
+link.className = 'flex items-center gap-3 px-4 py-3 clay-btn rounded-lg transition-colors duration-150';
 } else if (link.closest && link.closest('#seg-sa-submenu')) {
 link.className = 'flex items-center gap-3 px-4 py-2 text-sm bg-surface-container-low text-text-secondary hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg';
 if (link.dataset.page === pageId) {
@@ -1907,7 +1972,7 @@ const porTipo = grupos[res];
 const tiposPresentes = [];
 ['MAESTRIA', 'DOCTORADO', 'OTROS'].forEach(t => { if (porTipo[t] && porTipo[t].length) tiposPresentes.push(t); });
 const item = document.createElement('div');
-item.className = 'bg-surface-card rounded-lg border border-border-subtle shadow-sm overflow-hidden';
+item.className = 'bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card overflow-hidden';
 let headerHtml = '<div class="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-hover-state transition-colors agrup-toggle" data-res="' + res.replace(/"/g, '&quot;') + '">' +
 '<div class="flex items-center gap-3">' +
 '<span class="material-symbols-outlined text-text-secondary transition-transform agrup-arrow">chevron_right</span>' +
@@ -1940,7 +2005,7 @@ bodyHtml +=
 '<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + tipoColor + '">' + tipoLabel + '</span>' +
 '<span class="text-xs text-text-secondary">' + miembros.length + ' egresado(s)</span></div>' +
 '<button class="inline-flex items-center justify-center w-6 h-6 rounded text-text-secondary hover:text-primary hover:bg-surface-dim transition-colors copy-agrup-btn flex-shrink-0" data-json="' + copyJson.replace(/"/g, '&quot;') + '" title="Copiar tabla para Excel"><span class="material-symbols-outlined text-[14px]">content_copy</span></button></div>' +
-'<div class="overflow-x-auto table-scroll"><table class="w-full text-left border-collapse"><thead><tr class="bg-surface-container-low/60">' +
+'<div class="overflow-x-auto table-scroll"><table class="clay-table w-full text-left border-collapse"><thead><tr class="bg-surface-container-low/60">' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Código estudiante</th>' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Apellidos y Nombres</th>' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">' + tipoLabel + '</th></tr></thead>' +
@@ -2240,7 +2305,7 @@ let html = '';
 const label = g[0], items = g[1], color = g[2];
 if (items.length === 0) return;
 html += '<div class="mb-3 last:mb-0"><div class="flex items-center gap-2 mb-2"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + color + '">' + label + '</span><span class="text-xs text-text-secondary">' + items.length + ' egresado(s)</span></div>' +
-'<div class="overflow-x-auto table-scroll"><table class="w-full text-left border-collapse"><thead><tr class="bg-surface-container-low/60">' +
+'<div class="overflow-x-auto table-scroll"><table class="clay-table w-full text-left border-collapse"><thead><tr class="bg-surface-container-low/60">' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Código estudiante</th>' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">Apellidos y Nombres</th>' +
 '<th class="font-label-caps text-label-caps text-text-secondary py-2 px-3 uppercase tracking-wider text-[11px] whitespace-nowrap">' + label + '</th></tr></thead>' +
@@ -2931,7 +2996,7 @@ if (existing) existing.remove();
 var div = document.createElement('div');
 div.className = 'table-filter px-4 py-2 border-b border-border-subtle bg-surface-bg/30';
 var inputId = 'filter-' + tableId;
-div.innerHTML = '<input id="' + inputId + '" type="text" placeholder="' + placeholder + '" class="w-full max-w-xs px-3 py-1.5 text-sm bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20">';
+div.innerHTML = '<input id="' + inputId + '" type="text" placeholder="' + placeholder + '" class="clay-input text-sm w-full max-w-xs px-3 py-1.5">';
 container.insertBefore(div, table);
 document.getElementById(inputId).addEventListener('input', function() {
 var q = this.value.trim().toLowerCase();
