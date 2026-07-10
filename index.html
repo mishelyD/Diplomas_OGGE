@@ -236,6 +236,8 @@ gap: 8px;
 .toast-warning { background: #f59e0b; color: #fff; }
 @keyframes toastIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 @keyframes toastOut { from { opacity:1; } to { opacity:0; transform:translateY(-8px); } }
+/* Dark mode overrides */
+.dark .nota-card { box-shadow: 4px 4px 10px rgba(0,0,0,0.4), 1px 1px 3px rgba(0,0,0,0.3); }
 </style></head><body class="bg-surface-bg text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
 <!-- SideNavBar -->
 <nav id="sidebar" class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col py-6 px-4 z-50">
@@ -298,11 +300,27 @@ gap: 8px;
 </li>
 
 <li class="mt-auto">
+<li class="border-t border-border-subtle pt-2 mt-2">
+<div id="sidebar-user" class="hidden flex items-center gap-2 px-4 py-2 text-sm text-text-secondary">
+<span class="material-symbols-outlined text-[18px]">account_circle</span>
+<span id="sidebar-email" class="truncate flex-1"></span>
+</div>
+<button id="sidebar-dark-toggle" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg w-full text-left">
+<span class="material-symbols-outlined" id="dark-icon">dark_mode</span>
+<span class="">Modo Oscuro</span>
+</button>
+</li>
 <li class="">
 <a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="configuracion">
 <span class="material-symbols-outlined">settings</span>
 <span class="">Configuración</span>
 </a>
+</li>
+<li class="" id="sidebar-logout-li">
+<button id="sidebar-logout" class="flex items-center gap-3 px-4 py-3 hover:bg-danger-bg hover:text-danger-text transition-colors rounded-lg w-full text-left">
+<span class="material-symbols-outlined">logout</span>
+<span class="">Cerrar Sesión</span>
+</button>
 </li></ul>
 </nav>
 <!-- Backdrop for mobile sidebar -->
@@ -313,7 +331,7 @@ gap: 8px;
     <header class="fixed top-0 right-0 w-full lg:w-[calc(100%-260px)] h-header-height bg-surface border-b border-outline-variant z-40 flex justify-between items-center px-4 lg:px-margin-canvas">
 <!-- Hamburger + Search -->
 <div class="flex items-center gap-3 flex-1 max-w-xl">
-<button id="menu-toggle" class="p-2 text-text-secondary hover:text-primary hover:bg-hover-state rounded-lg transition-all lg:hidden">
+<button id="menu-toggle" class="p-2 text-text-secondary hover:text-primary hover:bg-hover-state rounded-lg transition-all lg:hidden" title="Abrir menú">
 <span class="material-symbols-outlined">menu</span>
 </button>
 <div class="relative group flex-1">
@@ -808,7 +826,7 @@ Cancelar
 <section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm overflow-x-auto">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Solicitudes Registradas</h3>
-<span id="solicitud-count" class="text-sm text-text-secondary">0 solicitudes</span>
+<span id="oc-count" class="text-sm text-text-secondary">0 solicitudes</span>
 </div>
 <table class="w-full text-left border-collapse min-w-[1000px]">
 <thead>
@@ -1176,16 +1194,28 @@ btn.innerHTML = btn._origHtml || originalHtml;
 // --- Pagination ---
 var pagState = {};
 function paginate(tableId, arr, pageSize) {
+var q = arr._filter;
+var fields = arr._filterFields;
+var filtered = arr;
+if (q && fields && fields.length) {
+filtered = arr.filter(function(item) {
+return fields.some(function(f) {
+var val = item[f];
+return val && val.toString().toLowerCase().indexOf(q) !== -1;
+});
+});
+}
 if (!pagState[tableId]) pagState[tableId] = { page: 1, pageSize: pageSize || 25 };
 var ps = pagState[tableId];
 ps.pageSize = pageSize || 25;
 if (ps.page < 1) ps.page = 1;
-var total = arr.length;
+var total = filtered.length;
 var totalPages = Math.ceil(total / ps.pageSize) || 1;
 if (ps.page > totalPages) ps.page = totalPages;
 var start = (ps.page - 1) * ps.pageSize;
 var end = Math.min(start + ps.pageSize, total);
-return { data: arr.slice(start, end), page: ps.page, totalPages: totalPages, start: start + 1, end: end, total: total };
+ps.start = start + 1; ps.end = end; ps.total = total; ps.totalPages = totalPages;
+return { data: filtered.slice(start, end), page: ps.page, totalPages: totalPages, start: start + 1, end: end, total: total };
 }
 function pagControls(tableId, renderFn) {
 var ps = pagState[tableId];
@@ -1225,6 +1255,69 @@ if (e.key === 'r') { e.preventDefault(); showPage('reporte'); }
 }
 });
 
+// --- Dark Mode ---
+var darkEnabled = localStorage.getItem('darkMode') === 'true';
+if (darkEnabled) document.documentElement.classList.add('dark');
+function toggleDark() {
+darkEnabled = !darkEnabled;
+document.documentElement.classList.toggle('dark', darkEnabled);
+localStorage.setItem('darkMode', darkEnabled);
+document.getElementById('dark-icon').textContent = darkEnabled ? 'light_mode' : 'dark_mode';
+}
+document.getElementById('sidebar-dark-toggle').addEventListener('click', toggleDark);
+document.getElementById('dark-icon').textContent = darkEnabled ? 'light_mode' : 'dark_mode';
+
+// --- User Profile in Sidebar ---
+function updateSidebarUser(email) {
+var container = document.getElementById('sidebar-user');
+var emailEl = document.getElementById('sidebar-email');
+if (email) {
+container.classList.remove('hidden');
+emailEl.textContent = email;
+} else {
+container.classList.add('hidden');
+}
+}
+document.getElementById('sidebar-logout').addEventListener('click', function() {
+logout();
+});
+// Initial user check
+if (currentUser) updateSidebarUser(currentUser.email);
+
+// Patch auth to also update sidebar
+if (supabaseClient) {
+supabaseClient.auth.onAuthStateChange(function(event, session) {
+if (event === 'SIGNED_IN' && session) {
+updateSidebarUser(session.user.email);
+}
+});
+}
+
+// --- Date Validations ---
+document.querySelectorAll('input[type="date"]').forEach(function(el) {
+el.addEventListener('change', function() {
+var form = this.closest('form');
+if (!form) return;
+var dates = form.querySelectorAll('input[type="date"]');
+var vals = [];
+dates.forEach(function(d) { if (d.value) vals.push({ el: d, val: d.value }); });
+for (var i = 0; i < vals.length; i++) {
+for (var j = i + 1; j < vals.length; j++) {
+if (vals[i].val > vals[j].val) {
+vals[j].el.setCustomValidity('Debe ser posterior o igual a ' + vals[i].el.value);
+vals[j].el.reportValidity();
+return;
+}
+}
+}
+dates.forEach(function(d) { d.setCustomValidity(''); });
+});
+});
+
+// --- Cancel Edit Confirmation ---
+var _cancelHandlers = {};
+function setCancelHandler(btnId, fn) { _cancelHandlers[btnId] = fn; }
+
 function irAPagina(page) {
 showPage(page);
 var sidebar = document.getElementById('sidebar');
@@ -1233,17 +1326,6 @@ if (window.innerWidth < 1024) { sidebar.classList.remove('open'); document.getEl
 
 function showLoginError(msg) { loginError.textContent = msg; loginError.classList.remove('hidden'); }
 function hideLoginError() { loginError.classList.add('hidden'); }
-
-async function loginWithGithub() {
-hideLoginError();
-if (!supabaseClient) { showLoginError('Supabase no configurado.'); return; }
-loginLoading.classList.remove('hidden');
-try {
-var { error } = await supabaseClient.auth.signInWithOAuth({ provider: 'github' });
-if (error) showLoginError(error.message);
-} catch(e) { showLoginError('Error: ' + e.message); }
-loginLoading.classList.add('hidden');
-}
 
 async function logout() {
 if (!supabaseClient) return;
@@ -1765,7 +1847,8 @@ if (!seguimientos.length) {
 tbody.innerHTML = '<tr><td colspan="11" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">track_changes</span>No hay seguimientos registrados</td></tr>';
 count.textContent = '0 registro(s)';
 var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
-renderAgrupamiento();
+var segPage = document.getElementById('page-seguimiento-sa-envios');
+if (segPage && segPage.style.display !== 'none') renderAgrupamiento();
 return;
 }
 var p = paginate('segs', seguimientos, 25);
@@ -1794,7 +1877,8 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + s.dni + '</td
 tbody.appendChild(tr);
 });
 count.textContent = seguimientos.length + ' registro(s)';
-renderAgrupamiento();
+var segPage = document.getElementById('page-seguimiento-sa-envios');
+if (segPage && segPage.style.display !== 'none') renderAgrupamiento();
 var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 var pagDiv = document.createElement('div');
 pagDiv.className = 'pag-controls';
@@ -2849,6 +2933,43 @@ makeSortable('tabla-solicitudes', solicitudes, renderSolicitudes);
 makeSortable('tabla-expedientes', expedientes, renderExpedientes);
 makeSortable('tabla-seguimiento', seguimientos, renderSeguimientos);
 makeSortable('tabla-envios-direccion', enviosDireccion, renderEnviosDireccion);
+// Add filter inputs to each table section
+var _filterRenderMap = {
+'tabla-solicitudes': renderSolicitudes,
+'tabla-expedientes': renderExpedientes,
+'tabla-seguimiento': renderSeguimientos,
+'tabla-envios-direccion': renderEnviosDireccion,
+'tabla-ocracc': renderOcracc
+};
+function addFilterInput(tableId, placeholder, fields) {
+var table = document.getElementById(tableId);
+if (!table) return;
+var container = table.closest('.overflow-x-auto') || table.parentNode;
+var existing = container.querySelector('.table-filter');
+if (existing) existing.remove();
+var div = document.createElement('div');
+div.className = 'table-filter px-4 py-2 border-b border-border-subtle bg-surface-bg/30';
+var inputId = 'filter-' + tableId;
+div.innerHTML = '<input id="' + inputId + '" type="text" placeholder="' + placeholder + '" class="w-full max-w-xs px-3 py-1.5 text-sm bg-surface-card border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20">';
+container.insertBefore(div, table);
+document.getElementById(inputId).addEventListener('input', function() {
+var q = this.value.trim().toLowerCase();
+var dataKey = tableId.replace('tabla-','');
+var arr = dataKey === 'solicitudes' ? solicitudes : dataKey === 'expedientes' ? expedientes : dataKey === 'seguimiento' ? seguimientos : dataKey === 'envios-direccion' ? enviosDireccion : ocraccRegistros;
+arr._filter = q;
+arr._filterFields = fields;
+var ps = pagState[tableId.replace('tabla-','sols').replace('tabla-','exps').replace('tabla-','segs').replace('tabla-','eds').replace('tabla-','ocs')];
+if (ps) ps.page = 1;
+(_filterRenderMap[tableId] || renderSolicitudes)();
+});
+}
+
+addFilterInput('tabla-solicitudes', 'Filtrar por NT, fecha, estado...', ['nt','fecha','estado','comentario']);
+addFilterInput('tabla-expedientes', 'Filtrar por código, nombre, grado...', ['dni','apellidosNombres','tipoGrado','area','calificacion']);
+addFilterInput('tabla-seguimiento', 'Filtrar por código, NT, nombre...', ['dni','nt','nombres','programa','estado']);
+addFilterInput('tabla-envios-direccion', 'Filtrar por NT OGT, oficio, estado...', ['ntOgt','oficio','resolucion','estado']);
+addFilterInput('tabla-ocracc', 'Filtrar por oficio, NT, estado...', ['oficio','nt','estado']);
+
 makeSortable('tabla-ocracc', ocraccRegistros, renderOcracc);
 
 document.getElementById('btn-export-json').addEventListener('click', exportJSON);
