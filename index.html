@@ -985,6 +985,17 @@ Cancelar
 <div id="oc-modal-lista" class="overflow-y-auto flex-1 p-2"></div>
 </div>
 </div>
+<!-- Confirm Modal -->
+<div id="confirm-modal" class="fixed inset-0 z-[9998] bg-black/40 flex items-center justify-center hidden">
+  <div class="bg-surface-card rounded-xl shadow-xl w-full max-w-sm mx-4 p-6">
+    <h3 id="confirm-title" class="font-semibold text-lg text-on-surface mb-2"></h3>
+    <p id="confirm-msg" class="text-sm text-text-secondary mb-6"></p>
+    <div class="flex justify-end gap-3">
+      <button id="confirm-cancel" class="px-4 py-2 text-sm font-semibold text-text-secondary hover:bg-surface-container-high rounded-lg transition-colors">Cancelar</button>
+      <button id="confirm-ok" class="px-4 py-2 text-sm font-semibold bg-danger-text text-white rounded-lg hover:bg-red-700 transition-colors shadow-sm">Eliminar</button>
+    </div>
+  </div>
+</div>
 <!-- Login Overlay -->
 <div id="login-overlay" class="fixed inset-0 z-[9999] flex items-center justify-center bg-surface-bg" style="display:flex">
 <div class="bg-surface-card rounded-2xl shadow-xl w-full max-w-sm mx-4 p-8 text-center border border-outline-variant">
@@ -1096,6 +1107,123 @@ el.innerHTML = msg;
 container.appendChild(el);
 setTimeout(function() { if (el.parentNode) el.remove(); }, 3000);
 }
+
+// --- Custom Confirm Modal ---
+var _confirmResolve = null;
+document.getElementById('confirm-ok').addEventListener('click', function() {
+if (_confirmResolve) _confirmResolve(true);
+document.getElementById('confirm-modal').classList.add('hidden');
+});
+document.getElementById('confirm-cancel').addEventListener('click', function() {
+if (_confirmResolve) _confirmResolve(false);
+document.getElementById('confirm-modal').classList.add('hidden');
+});
+function showConfirm(title, msg) {
+return new Promise(function(resolve) {
+_confirmResolve = resolve;
+document.getElementById('confirm-title').textContent = title;
+document.getElementById('confirm-msg').textContent = msg;
+document.getElementById('confirm-modal').classList.remove('hidden');
+});
+}
+
+// --- Undo Manager ---
+var _undoTimeout = null;
+var _undoAction = null;
+function deleteWithUndo(arr, index, saveFn, renderFn, label) {
+var item = arr[index];
+arr.splice(index, 1);
+saveFn();
+renderFn();
+if (_undoTimeout) { clearTimeout(_undoTimeout); _undoTimeout = null; }
+var container = document.getElementById('toast-container');
+var el = document.createElement('div');
+el.className = 'toast toast-warning';
+el.innerHTML = '<span>Eliminado: ' + label + '</span> <button class="ml-3 px-2 py-0.5 bg-white/20 rounded text-xs font-bold hover:bg-white/30 transition-colors" onclick="undoDelete()">Deshacer</button>';
+container.appendChild(el);
+_undoAction = function() {
+arr.splice(index, 0, item);
+saveFn();
+renderFn();
+if (el.parentNode) el.remove();
+};
+_undoTimeout = setTimeout(function() {
+_undoAction = null;
+_undoTimeout = null;
+if (el.parentNode) el.remove();
+}, 5000);
+}
+function undoDelete() {
+if (_undoTimeout) clearTimeout(_undoTimeout);
+_undoTimeout = null;
+if (_undoAction) { _undoAction(); _undoAction = null; }
+}
+
+// --- Loading Spinner ---
+function setLoading(btn, loading, originalHtml) {
+if (loading) {
+btn._origHtml = btn.innerHTML;
+btn.disabled = true;
+btn.classList.add('opacity-70', 'cursor-not-allowed');
+btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span> Procesando...';
+} else {
+btn.disabled = false;
+btn.classList.remove('opacity-70', 'cursor-not-allowed');
+btn.innerHTML = btn._origHtml || originalHtml;
+}
+}
+
+// --- Pagination ---
+var pagState = {};
+function paginate(tableId, arr, pageSize) {
+if (!pagState[tableId]) pagState[tableId] = { page: 1, pageSize: pageSize || 25 };
+var ps = pagState[tableId];
+ps.pageSize = pageSize || 25;
+if (ps.page < 1) ps.page = 1;
+var total = arr.length;
+var totalPages = Math.ceil(total / ps.pageSize) || 1;
+if (ps.page > totalPages) ps.page = totalPages;
+var start = (ps.page - 1) * ps.pageSize;
+var end = Math.min(start + ps.pageSize, total);
+return { data: arr.slice(start, end), page: ps.page, totalPages: totalPages, start: start + 1, end: end, total: total };
+}
+function pagControls(tableId, renderFn) {
+var ps = pagState[tableId];
+if (!ps) return '';
+return '<div class="flex items-center justify-between px-4 py-3 border-t border-border-subtle bg-surface-bg/50 text-sm text-text-secondary">' +
+'<span>' + (ps.total === 0 ? '0 registros' : (ps.start + '-' + ps.end + ' de ' + ps.total)) + '</span>' +
+'<div class="flex gap-2">' +
+'<button class="px-3 py-1 rounded bg-surface-card border border-border-subtle hover:bg-surface-container-high disabled:opacity-30 disabled:cursor-not-allowed" onclick="pagPrev(\'' + tableId + '\')" ' + (ps.page <= 1 ? 'disabled' : '') + '>Anterior</button>' +
+'<button class="px-3 py-1 rounded bg-surface-card border border-border-subtle hover:bg-surface-container-high disabled:opacity-30 disabled:cursor-not-allowed" onclick="pagNext(\'' + tableId + '\')" ' + (ps.page >= ps.totalPages ? 'disabled' : '') + '>Siguiente</button>' +
+'</div></div>';
+}
+function pagPrev(tableId) { if (pagState[tableId] && pagState[tableId].page > 1) { pagState[tableId].page--; callRender(tableId); } }
+function pagNext(tableId) { if (pagState[tableId] && pagState[tableId].page < pagState[tableId].totalPages) { pagState[tableId].page++; callRender(tableId); } }
+var _renderMap = {};
+function callRender(tableId) { if (_renderMap[tableId]) _renderMap[tableId](); }
+
+// --- Keyboard Shortcuts ---
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') {
+var cm = document.getElementById('confirm-modal');
+if (!cm.classList.contains('hidden')) { cm.classList.add('hidden'); if (_confirmResolve) _confirmResolve(false); return; }
+var modals = ['nota-modal', 'oc-modal-overlay'];
+modals.forEach(function(id) {
+var el = document.getElementById(id);
+if (el && !el.classList.contains('hidden')) {
+if (id === 'nota-modal') cerrarModalNota();
+else el.classList.add('hidden');
+}
+});
+if (m.id && m.id !== 'confirm-modal' && m.id !== 'toast-container' && !m.classList.contains('hidden')) m.classList.add('hidden');
+});
+}
+if (e.ctrlKey || e.metaKey) {
+if (e.key === 'b') { e.preventDefault(); showPage('solicitud'); }
+if (e.key === 'e') { e.preventDefault(); showPage('expediente'); }
+if (e.key === 'r') { e.preventDefault(); showPage('reporte'); }
+}
+});
 
 function irAPagina(page) {
 showPage(page);
@@ -1278,8 +1406,18 @@ saveToSupabase();
 function renderSolicitudes() {
 const tbody = document.getElementById('tabla-solicitudes');
 const count = document.getElementById('solicitud-count');
+var table = tbody.closest('.overflow-x-auto');
 tbody.innerHTML = '';
-solicitudes.forEach((s, i) => {
+if (!solicitudes.length) {
+tbody.innerHTML = '<tr><td colspan="5" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">note_add</span>No hay solicitudes registradas</td></tr>';
+count.textContent = '0 registros';
+var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+return;
+}
+var p = paginate('sols', solicitudes, 25);
+_renderMap['sols'] = renderSolicitudes;
+p.data.forEach(function(s) {
+var i = solicitudes.indexOf(s);
 const tr = document.createElement('tr');
 tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
 tr.onclick = function() { editarSolicitud(i); };
@@ -1296,13 +1434,18 @@ tr.innerHTML = '<td class="py-4 px-6 font-medium text-primary">' + s.nt + '</td>
 tbody.appendChild(tr);
 });
 count.textContent = solicitudes.length + ' registros';
+var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var pagDiv = document.createElement('div');
+pagDiv.className = 'pag-controls';
+pagDiv.innerHTML = pagControls('sols');
+table.appendChild(pagDiv);
 }
 
-function eliminarSolicitud(index) {
-if (!confirm('¿Eliminar la solicitud NT ' + solicitudes[index].nt + '?')) return;
-solicitudes.splice(index, 1);
-guardarSolicitudes();
-renderSolicitudes();
+async function eliminarSolicitud(index) {
+var nt = solicitudes[index].nt;
+var ok = await showConfirm('Eliminar solicitud', '¿Eliminar la solicitud NT ' + nt + '?');
+if (!ok) return;
+deleteWithUndo(solicitudes, index, guardarSolicitudes, renderSolicitudes, 'NT ' + nt);
 }
 
 // --- Form Solicitud (Crear / Actualizar) ---
@@ -1313,17 +1456,20 @@ container.style.display = this.value === 'Observado' ? 'flex' : 'none';
 
 document.getElementById('form-solicitud').addEventListener('submit', function(e) {
 e.preventDefault();
+var btn = document.getElementById('sol-submit-btn');
 const nt = document.getElementById('input-nt').value.trim();
 const fecha = document.getElementById('input-fecha').value;
 const estado = document.getElementById('input-estado').value;
 const comentario = document.getElementById('input-comentario').value.trim();
 if (!nt || !fecha) return;
+setLoading(btn, true);
 if (editSolIndex !== -1) {
 solicitudes[editSolIndex] = { nt, fecha, estado, comentario: estado === 'Observado' ? comentario : '' };
 editSolIndex = -1;
 } else {
 if (solicitudes.some(s => s.nt === nt)) {
 showToast('El NT ' + nt + ' ya está registrado.', 'warning');
+setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">add</span> Registrar');
 return;
 }
 solicitudes.push({ nt, fecha, estado, comentario: estado === 'Observado' ? comentario : '' });
@@ -1332,6 +1478,7 @@ guardarSolicitudes();
 renderSolicitudes();
 cancelarEdicionSol();
 document.getElementById('input-nt').focus();
+setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">add</span> Registrar');
 });
 
 function editarSolicitud(index) {
@@ -1445,8 +1592,18 @@ saveToSupabase();
 function renderExpedientes() {
 const tbody = document.getElementById('tabla-expedientes');
 const count = document.getElementById('expediente-count');
+var table = tbody.closest('.overflow-x-auto');
 tbody.innerHTML = '';
-expedientes.forEach((e, i) => {
+if (!expedientes.length) {
+tbody.innerHTML = '<tr><td colspan="9" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">folder</span>No hay expedientes registrados</td></tr>';
+count.textContent = '0 registros';
+var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+return;
+}
+var p = paginate('exps', expedientes, 25);
+_renderMap['exps'] = renderExpedientes;
+p.data.forEach(function(e) {
+var i = expedientes.indexOf(e);
 const tr = document.createElement('tr');
 tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
 tr.onclick = function() { editarExpediente(i); };
@@ -1468,13 +1625,18 @@ tr.innerHTML = '<td class="py-4 px-4 font-medium text-primary">' + e.dni + '</td
 tbody.appendChild(tr);
 });
 count.textContent = expedientes.length + ' registros';
+var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var pagDiv = document.createElement('div');
+pagDiv.className = 'pag-controls';
+pagDiv.innerHTML = pagControls('exps');
+table.appendChild(pagDiv);
 }
 
-function eliminarExpediente(index) {
-if (!confirm('¿Está seguro de eliminar el expediente con Código de estudiante ' + expedientes[index].dni + '? Esta acción no se puede deshacer.')) return;
-expedientes.splice(index, 1);
-guardarExpedientes();
-renderExpedientes();
+async function eliminarExpediente(index) {
+var dni = expedientes[index].dni;
+var ok = await showConfirm('Eliminar expediente', '¿Eliminar el expediente con código ' + dni + '?');
+if (!ok) return;
+deleteWithUndo(expedientes, index, guardarExpedientes, renderExpedientes, dni);
 }
 
 function editarExpediente(index) {
@@ -1517,6 +1679,7 @@ document.getElementById('exp-cancel-btn').addEventListener('click', cancelarEdic
 // --- Form Expediente (Crear / Actualizar) ---
 document.getElementById('form-expediente').addEventListener('submit', function(e) {
 e.preventDefault();
+var btn = document.getElementById('exp-submit-btn');
 const dni = document.getElementById('exp-dni').value.trim();
 const apellidosNombres = document.getElementById('exp-nombres').value.trim();
 const tipoGrado = document.getElementById('exp-tipo-grado').value;
@@ -1535,6 +1698,7 @@ if (ntsSeleccionados.length === 0) {
 showToast('Debe seleccionar al menos un NT asociado.', 'warning');
 return;
 }
+setLoading(btn, true);
 const data = { dni, apellidosNombres, tipoGrado, nombreGrado, area, fechaMatricula, fechaEgreso, totalCreditos, fechaSustentacion, calificacion, estadoDatos, obsComentario: estadoDatos === 'Observado' ? obsComentario : '', nts: ntsSeleccionados };
 if (editExpedienteIndex !== -1) {
 if (dni !== expedientes[editExpedienteIndex].dni && expedientes.some((ex, idx) => ex.dni === dni && idx !== editExpedienteIndex)) {
@@ -1556,6 +1720,7 @@ expNtsSeleccionados.clear();
 renderNtsChips();
 cancelarEdicion();
 document.getElementById('exp-dni').focus();
+setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">assignment</span> Registrar Expediente');
 });
 
 // --- Mostrar/ocultar comentario de observación en Expediente ---
@@ -1594,8 +1759,19 @@ saveToSupabase();
 function renderSeguimientos() {
 const tbody = document.getElementById('tabla-seguimiento');
 const count = document.getElementById('seg-count');
+var table = tbody.closest('.overflow-x-auto') || tbody.parentNode;
 tbody.innerHTML = '';
-seguimientos.forEach((s, i) => {
+if (!seguimientos.length) {
+tbody.innerHTML = '<tr><td colspan="11" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">track_changes</span>No hay seguimientos registrados</td></tr>';
+count.textContent = '0 registro(s)';
+var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+renderAgrupamiento();
+return;
+}
+var p = paginate('segs', seguimientos, 25);
+_renderMap['segs'] = renderSeguimientos;
+p.data.forEach(function(s) {
+var i = seguimientos.indexOf(s);
 const tr = document.createElement('tr');
 tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
 tr.onclick = function() { editarSeguimiento(i); };
@@ -1619,13 +1795,18 @@ tbody.appendChild(tr);
 });
 count.textContent = seguimientos.length + ' registro(s)';
 renderAgrupamiento();
+var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var pagDiv = document.createElement('div');
+pagDiv.className = 'pag-controls';
+pagDiv.innerHTML = pagControls('segs');
+table.appendChild(pagDiv);
 }
 
-function eliminarSeguimiento(index) {
-if (!confirm('¿Eliminar el seguimiento de NT ' + seguimientos[index].nt + '?')) return;
-seguimientos.splice(index, 1);
-guardarSeguimientos();
-renderSeguimientos();
+async function eliminarSeguimiento(index) {
+var nt = seguimientos[index].nt;
+var ok = await showConfirm('Eliminar seguimiento', '¿Eliminar el seguimiento de NT ' + nt + '?');
+if (!ok) return;
+deleteWithUndo(seguimientos, index, guardarSeguimientos, renderSeguimientos, 'NT ' + nt);
 }
 
 function renderAgrupamiento() {
@@ -1838,6 +2019,7 @@ document.getElementById('seg-nombre-programa').value = '';
 // --- Form Seguimiento (Crear / Actualizar) ---
 document.getElementById('form-seguimiento').addEventListener('submit', function(e) {
 e.preventDefault();
+var btn = document.getElementById('seg-submit-btn');
 const dni = document.getElementById('seg-dni').value.trim();
 const nombres = document.getElementById('seg-nombres').value.trim();
 const ntsSeleccionados = Array.from(segNtsSeleccionados);
@@ -1852,6 +2034,7 @@ if (ntsSeleccionados.length === 0) {
 showToast('Debe seleccionar al menos un NT.', 'warning');
 return;
 }
+setLoading(btn, true);
 const tipo = document.getElementById('seg-tipo').value;
 const nombrePrograma = document.getElementById('seg-nombre-programa').value.trim();
 const programa = tipo && nombrePrograma ? tipo + ' en ' + nombrePrograma : (tipo || nombrePrograma || '');
@@ -1880,6 +2063,7 @@ segNtsSeleccionados.clear();
 renderSegNtsChips();
 cancelarEdicionSeg();
 document.getElementById('seg-dni').focus();
+setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">add</span> Registrar Seguimiento');
 });
 
 function editarSeguimiento(index) {
@@ -2010,8 +2194,18 @@ document.getElementById('ed-resolucion').addEventListener('input', renderEgresad
 function renderEnviosDireccion() {
 const tbody = document.getElementById('tabla-envios-direccion');
 const count = document.getElementById('ed-count');
+var table = tbody.closest('.overflow-x-auto') || tbody.parentNode;
 tbody.innerHTML = '';
-enviosDireccion.forEach(function(e, i) {
+if (!enviosDireccion.length) {
+tbody.innerHTML = '<tr><td colspan="8" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">assignment</span>No hay envíos registrados</td></tr>';
+count.textContent = '0 registro(s)';
+var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+return;
+}
+var p = paginate('eds', enviosDireccion, 25);
+_renderMap['eds'] = renderEnviosDireccion;
+p.data.forEach(function(e) {
+var i = enviosDireccion.indexOf(e);
 const tr = document.createElement('tr');
 tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
 tr.onclick = function() { editarEnvioDireccion(i); };
@@ -2032,10 +2226,16 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (e.ntOgt || '
 tbody.appendChild(tr);
 });
 count.textContent = enviosDireccion.length + ' registro(s)';
+var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var pagDiv = document.createElement('div');
+pagDiv.className = 'pag-controls';
+pagDiv.innerHTML = pagControls('eds');
+table.appendChild(pagDiv);
 }
 
 document.getElementById('form-envio-direccion').addEventListener('submit', function(e) {
 e.preventDefault();
+var btn = document.getElementById('form-envio-direccion').querySelector('button[type="submit"]');
 const ntOgt = document.getElementById('ed-nt-ogt').value.trim();
 const oficio = document.getElementById('ed-oficio').value.trim();
 const resolucion = document.getElementById('ed-resolucion').value.trim();
@@ -2044,6 +2244,7 @@ const fechaRecepcion = document.getElementById('ed-fecha-recepcion').value;
 const estado = document.getElementById('ed-estado').value;
 const fechaSg = document.getElementById('ed-fecha-sg').value;
 if (!ntOgt || !resolucion) return;
+setLoading(btn, true);
 if (editEdIndex !== -1) {
 enviosDireccion[editEdIndex].ntOgt = ntOgt;
 enviosDireccion[editEdIndex].oficio = oficio;
@@ -2060,6 +2261,7 @@ guardarEnviosDireccion();
 renderEnviosDireccion();
 cancelarEdicionEnvioDireccion();
 document.getElementById('ed-nt-ogt').focus();
+setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">add</span> Registrar Envío');
 });
 
 function editarEnvioDireccion(index) {
@@ -2102,11 +2304,11 @@ document.getElementById('ed-estado').addEventListener('change', function() {
 document.getElementById('ed-fecha-sg-container').style.display = this.value === 'Enviado a SG-OGT' ? 'flex' : 'none';
 });
 
-function eliminarEnvioDireccion(index) {
-if (!confirm('¿Eliminar el envío NT OGT ' + enviosDireccion[index].ntOgt + '?')) return;
-enviosDireccion.splice(index, 1);
-guardarEnviosDireccion();
-renderEnviosDireccion();
+async function eliminarEnvioDireccion(index) {
+var nt = enviosDireccion[index].ntOgt;
+var ok = await showConfirm('Eliminar envío', '¿Eliminar el envío NT OGT ' + nt + '?');
+if (!ok) return;
+deleteWithUndo(enviosDireccion, index, guardarEnviosDireccion, renderEnviosDireccion, 'NT OGT ' + nt);
 }
 
 // --- OCRACC State ---
@@ -2148,12 +2350,11 @@ div.style.cssText = 'background:' + color + ';transform:rotate(' + rot + ');';
 div.innerHTML = '<div class="nota-titulo">' + escHtml(n.titulo || 'Sin título') + '</div>' +
 '<div class="nota-cuerpo">' + escHtml(n.cuerpo || '') + '</div>' +
 '<button class="nota-delete material-symbols-outlined" title="Eliminar">delete</button>';
-div.querySelector('.nota-delete').addEventListener('click', function(e) {
+div.querySelector('.nota-delete').addEventListener('click', async function(e) {
 e.stopPropagation();
-if (!confirm('¿Eliminar esta nota?')) return;
-notas.splice(i, 1);
-guardarNotas();
-renderNotas();
+var ok = await showConfirm('Eliminar nota', '¿Eliminar esta nota?');
+if (!ok) return;
+deleteWithUndo(notas, i, guardarNotas, renderNotas, notas[i].titulo || 'nota');
 });
 div.addEventListener('dblclick', function() {
 editarNota(i);
@@ -2221,9 +2422,19 @@ return exp ? exp.apellidosNombres : codigo;
 function renderOcracc() {
 const tbody = document.getElementById('tabla-ocracc');
 const count = document.getElementById('oc-count');
+var table = tbody.closest('.overflow-x-auto') || tbody.parentNode;
 tbody.innerHTML = '';
+if (!ocraccRegistros.length) {
+tbody.innerHTML = '<tr><td colspan="8" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">document_scanner</span>No hay solicitudes OCRACC registradas</td></tr>';
+count.textContent = '0 registro(s)';
+var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+return;
+}
+var p = paginate('ocs', ocraccRegistros, 25);
+_renderMap['ocs'] = renderOcracc;
 const now = new Date();
-ocraccRegistros.forEach(function(r, i) {
+p.data.forEach(function(r) {
+var i = ocraccRegistros.indexOf(r);
 const tr = document.createElement('tr');
 tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
 tr.onclick = function() { editarOcracc(i); };
@@ -2249,6 +2460,11 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (r.oficio || 
 tbody.appendChild(tr);
 });
 count.textContent = ocraccRegistros.length + ' registro(s)';
+var oldPag = table.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
+var pagDiv = document.createElement('div');
+pagDiv.className = 'pag-controls';
+pagDiv.innerHTML = pagControls('ocs');
+table.appendChild(pagDiv);
 }
 
 function renderOcEgresadosChips() {
@@ -2309,6 +2525,7 @@ document.getElementById('oc-egresados-dropdown').classList.add('hidden');
 
 document.getElementById('form-ocracc').addEventListener('submit', function(e) {
 e.preventDefault();
+var btn = document.getElementById('oc-submit-btn');
 const oficio = document.getElementById('oc-oficio').value.trim();
 const nt = document.getElementById('oc-nt').value.trim();
 const fechaEnvio = document.getElementById('oc-fecha-envio').value;
@@ -2320,6 +2537,7 @@ if (ocEgresadosTemp.length === 0) {
 showToast('Debe agregar al menos un egresado.', 'warning');
 return;
 }
+setLoading(btn, true);
 const data = { oficio, nt, fechaEnvio, fechaRecepcion, estado, alerta, egresados: ocEgresadosTemp.slice() };
 if (ocEditIndex !== -1) {
 ocraccRegistros[ocEditIndex] = data;
@@ -2332,9 +2550,9 @@ renderOcracc();
 document.getElementById('form-ocracc').reset();
 ocEgresadosTemp = [];
 renderOcEgresadosChips();
-document.getElementById('oc-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span> Registrar Solicitud';
 document.getElementById('oc-cancel-btn').classList.add('hidden');
 document.getElementById('oc-alerta').value = '30';
+setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">add</span> Registrar Solicitud');
 });
 
 function editarOcracc(index) {
@@ -2363,11 +2581,11 @@ document.getElementById('oc-cancel-btn').classList.add('hidden');
 document.getElementById('oc-alerta').value = '30';
 });
 
-function eliminarOcracc(index) {
-if (!confirm('¿Eliminar solicitud NT ' + ocraccRegistros[index].nt + '?')) return;
-ocraccRegistros.splice(index, 1);
-guardarOcracc();
-renderOcracc();
+async function eliminarOcracc(index) {
+var nt = ocraccRegistros[index].nt;
+var ok = await showConfirm('Eliminar solicitud OCRACC', '¿Eliminar solicitud NT ' + nt + '?');
+if (!ok) return;
+deleteWithUndo(ocraccRegistros, index, guardarOcracc, renderOcracc, 'NT ' + nt);
 }
 
 function verOcraccEgresados(index) {
@@ -2679,6 +2897,7 @@ if (va < vb) return state.asc ? -1 : 1;
 if (va > vb) return state.asc ? 1 : -1;
 return 0;
 });
+if (pagState[tableId]) pagState[tableId].page = 1;
 renderFn();
 // Update visual indicator
 table.querySelectorAll('th').forEach(function(h) { h.classList.remove('text-primary'); });
