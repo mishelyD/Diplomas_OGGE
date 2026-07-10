@@ -275,21 +275,37 @@ background: #d9cdbc;
 box-shadow: 4px 0 12px rgba(0,0,0,0.08);
 border: none;
 }
-.clay-badge {
-background: #d9cdbc;
-border-radius: 50px;
-box-shadow: inset 2px 2px 4px #c4b8aa, inset -1px -1px 3px #fff8ee;
+.clay-sidebar-item {
+display: flex; align-items: center; gap: 0.75rem;
+padding: 0.75rem 1rem;
+border-radius: 12px;
+color: #6b5d4f;
+transition: all 0.15s ease;
+border-left: 3px solid transparent;
+cursor: pointer;
 }
+.clay-sidebar-item:hover { background: rgba(0,0,0,0.04); color: #3d3229; }
+.clay-sidebar-item-active {
+background: #e8ddd0;
+color: #3d3229;
+border-left: 3px solid #7a6b5a;
+box-shadow: 2px 2px 6px #c4b8aa, -1px -1px 4px #fff8ee;
+}
+.clay-icon-btn {
+display: inline-flex; align-items: center; justify-content: center;
+width: 28px; height: 28px; border-radius: 8px;
+color: #6b5d4f; transition: all 0.15s ease;
+}
+.clay-icon-btn:hover { background: rgba(0,0,0,0.06); color: #3d3229; }
+.clay-icon-btn.danger:hover { background: #f5d6d6; color: #b91c1c; }
+.clay-table tbody tr { border-bottom: 1px solid #d0c4b6; transition: background 0.15s; }
+.clay-table tbody tr:nth-child(even) { background: rgba(0,0,0,0.015); }
+.clay-table tbody tr:hover { background: rgba(0,0,0,0.05); }
 .clay-table thead th {
 background: #d9cdbc;
 color: #3d3229;
 border-bottom: 2px solid #c4b8aa;
 }
-.clay-table tbody tr {
-border-bottom: 1px solid #d0c4b6;
-transition: background 0.15s;
-}
-.clay-table tbody tr:hover { background: rgba(0,0,0,0.04); }
 .clay-modal {
 background: #e8ddd0;
 border-radius: 24px;
@@ -300,6 +316,14 @@ border: none;
 border-radius: 50px;
 box-shadow: 4px 4px 8px rgba(0,0,0,0.15);
 }
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #ede5d9; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #c4b8aa; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #b8ac9e; }
+.table-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.table-scroll::-webkit-scrollbar-track { background: transparent; }
+.table-scroll::-webkit-scrollbar-thumb { background: #c4b8aa; border-radius: 4px; }
 </style></head><body class="bg-[#f0e8dc] text-[#3d3229] font-body-md text-body-md overflow-x-hidden min-h-screen">
 <!-- SideNavBar -->
 <nav id="sidebar" class="fixed left-0 top-0 h-full w-[260px] clay-sidebar flex flex-col py-6 px-4 z-50">
@@ -311,51 +335,51 @@ box-shadow: 4px 4px 8px rgba(0,0,0,0.15);
 </div>
 </div>
 </div>
-<ul class="flex flex-col gap-2 flex-grow text-on-surface-variant">
+<ul class="flex flex-col gap-1 flex-grow text-on-surface-variant">
 <li class="">
-<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="reporte">
+<a class="clay-sidebar-item" href="#" data-page="reporte">
 <span class="material-symbols-outlined">assessment</span>
 <span class="">Reporte</span>
 </a>
 </li>
 <li class="">
-<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="solicitud">
+<a class="clay-sidebar-item" href="#" data-page="solicitud">
 <span class="material-symbols-outlined">note_add</span>
 <span class="">Solicitud</span>
 </a>
 </li>
 <li class="">
-<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="expediente">
+<a class="clay-sidebar-item" href="#" data-page="expediente">
 <span class="material-symbols-outlined">folder</span>
 <span class="">Expediente</span>
 </a>
 </li>
 <li class="">
-<button id="seg-sa-toggle" class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg w-full text-left">
+<button id="seg-sa-toggle" class="clay-sidebar-item w-full text-left">
 <span class="material-symbols-outlined">track_changes</span>
 <span class="flex-grow">Seguimiento SA</span>
 <span class="material-symbols-outlined text-text-secondary transition-transform" id="seg-sa-arrow">expand_more</span>
 </button>
 <ul id="seg-sa-submenu" class="ml-4 flex flex-col gap-0.5 border-l border-outline-variant pl-2 hidden">
-<li><a class="flex items-center gap-3 px-4 py-2 text-sm bg-surface-container-low text-text-secondary hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="seguimiento-sa-envios"><span class="material-symbols-outlined text-[18px]">send</span>Envíos</a></li>
-<li><a class="flex items-center gap-3 px-4 py-2 text-sm bg-surface-container-low text-text-secondary hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="seguimiento-sa-agrupamiento"><span class="material-symbols-outlined text-[18px]">group_work</span>Agrupamiento</a></li>
+<li><a class="clay-sidebar-item text-sm gap-2 py-2" href="#" data-page="seguimiento-sa-envios"><span class="material-symbols-outlined text-[18px]">send</span>Envíos</a></li>
+<li><a class="clay-sidebar-item text-sm gap-2 py-2" href="#" data-page="seguimiento-sa-agrupamiento"><span class="material-symbols-outlined text-[18px]">group_work</span>Agrupamiento</a></li>
 </ul>
 </li>
 <li class="">
-<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="seguimiento-sg-ogt">
+<a class="clay-sidebar-item" href="#" data-page="seguimiento-sg-ogt">
 <span class="material-symbols-outlined">assignment</span>
 <span class="">Envio a Direccion</span>
 </a>
 </li>
 <li class="">
-<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="ocracc">
+<a class="clay-sidebar-item" href="#" data-page="ocracc">
 <span class="material-symbols-outlined">document_scanner</span>
 <span class="">OCRACC</span>
 </a>
 </li>
 <li class="">
 <li class="">
-<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="notas">
+<a class="clay-sidebar-item" href="#" data-page="notas">
 <span class="material-symbols-outlined">sticky_note_2</span>
 <span class="">Notas</span>
 </a>
@@ -369,13 +393,13 @@ box-shadow: 4px 4px 8px rgba(0,0,0,0.15);
 </div>
 </li>
 <li class="">
-<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="configuracion">
+<a class="clay-sidebar-item" href="#" data-page="configuracion">
 <span class="material-symbols-outlined">settings</span>
 <span class="">Configuración</span>
 </a>
 </li>
 <li class="" id="sidebar-logout-li">
-<button id="sidebar-logout" class="flex items-center gap-3 px-4 py-3 hover:bg-danger-bg hover:text-danger-text transition-colors rounded-lg w-full text-left">
+<button id="sidebar-logout" class="clay-sidebar-item w-full text-left hover:bg-danger-bg hover:text-danger-text">
 <span class="material-symbols-outlined">logout</span>
 <span class="">Cerrar Sesión</span>
 </button>
@@ -415,7 +439,7 @@ box-shadow: 4px 4px 8px rgba(0,0,0,0.15);
 </div>
 </section>
 <!-- Form -->
-<section class="bg-surface-card rounded-lg border border-border-subtle p-6 shadow-sm">
+<section class="clay-card p-6">
 <form id="form-solicitud" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT (N° Trámite)</label>
@@ -448,7 +472,7 @@ Cancelar
 </form>
 </section>
 <!-- Solicitudes Table -->
-<section class="bg-surface-card rounded-lg border border-border-subtle flex flex-col flex-grow overflow-hidden shadow-sm">
+<section class="clay-card flex flex-col flex-grow overflow-hidden">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Solicitudes Registradas</h3>
 <span id="solicitud-count" class="text-sm text-text-secondary">0 registros</span>
@@ -481,7 +505,7 @@ Cancelar
 </div>
 </section>
 <!-- Form -->
-<section class="bg-surface-card rounded-lg border border-border-subtle p-6 shadow-sm">
+<section class="clay-card p-6">
 <form id="form-expediente" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 items-end">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Código de estudiante</label>
@@ -567,7 +591,7 @@ Cancelar
 </form>
 </section>
 <!-- Expedientes Table -->
-<section class="bg-surface-card rounded-lg border border-border-subtle flex flex-col flex-grow overflow-hidden shadow-sm">
+<section class="clay-card flex flex-col flex-grow overflow-hidden">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Expedientes Registrados</h3>
 <span id="expediente-count" class="text-sm text-text-secondary">0 registros</span>
@@ -604,7 +628,7 @@ Cancelar
 </div>
 </section>
 <!-- Form Registro / Edicion -->
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
+<section class="clay-card">
 <button id="seg-toggle-form" class="w-full flex items-center justify-between px-6 py-4 text-left cursor-pointer hover:bg-hover-state transition-colors">
 <h3 class="font-semibold text-primary">Registrar Seguimiento</h3>
 <span id="seg-toggle-icon" class="material-symbols-outlined text-text-secondary transition-transform">expand_more</span>
@@ -694,7 +718,7 @@ Cancelar
 </div>
 </section>
 <!-- Tabla de Seguimiento -->
-<section class="bg-surface-card rounded-lg border border-border-subtle flex flex-col overflow-hidden shadow-sm">
+<section class="clay-card flex flex-col overflow-hidden">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Trámites en Seguimiento</h3>
 <span id="seg-count" class="text-sm text-text-secondary">0 registros</span>
@@ -745,7 +769,7 @@ Cancelar
 <p class="text-text-secondary text-sm mt-1">Registro y seguimiento de envíos a Dirección.</p>
 </div>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
+<section class="clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Registrar Envío</h3>
 </div>
@@ -790,7 +814,7 @@ Cancelar
 </div>
 </form>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
+<section class="clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Egresados de la Resolución</h3>
 <span id="ed-egresados-count" class="text-sm text-text-secondary">0 egresados</span>
@@ -799,7 +823,7 @@ Cancelar
 <p class="text-center text-text-secondary py-4">Ingrese un número de resolución para ver los egresados.</p>
 </div>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
+<section class="clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Envíos Registrados</h3>
 <span id="ed-count" class="text-sm text-text-secondary">0 registros</span>
@@ -833,7 +857,7 @@ Cancelar
 <p class="text-text-secondary text-sm mt-1">Registro de solicitudes y recepción de certificados.</p>
 </div>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
+<section class="clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Registrar Solicitud OCRACC</h3>
 </div>
@@ -881,7 +905,7 @@ Cancelar
 </div>
 </form>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card overflow-x-auto table-scroll">
+<section class="clay-card overflow-x-auto table-scroll">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Solicitudes Registradas</h3>
 <span id="oc-count" class="text-sm text-text-secondary">0 solicitudes</span>
@@ -916,7 +940,7 @@ Cancelar
 <span class="material-symbols-outlined text-[18px]">add</span> + Nueva Nota
 </button>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card p-5">
+<section class="clay-card p-5">
 <div id="nt-grid" class="grid gap-5" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
 </section>
 </div>
@@ -947,41 +971,41 @@ Cancelar
 </section>
 <!-- KPI Cards -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="clay-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">note_add</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Solicitudes</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-solicitudes">0</div>
 </div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="clay-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">folder</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Expedientes</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-expedientes">0</div>
 </div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="clay-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">track_changes</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Seguimientos SA</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-seguimientos">0</div>
 </div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="clay-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">assignment</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Envíos Dirección</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-envios">0</div>
 </div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="clay-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">document_scanner</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">OCRACC</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-ocracc">0</div>
 </div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="clay-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">sticky_note_2</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Notas</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-notas">0</div>
 </div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm md:col-span-2">
+<div class="clay-card p-5 md:col-span-2">
 <div class="flex items-center gap-3 text-primary mb-3"><span class="material-symbols-outlined text-[28px]">bar_chart</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Seguimientos SA por Estado</span></div>
 <div id="kpi-sa-chart" class="flex items-end gap-2 h-20"></div>
 </div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm md:col-span-2">
+<div class="clay-card p-5 md:col-span-2">
 <div class="flex items-center gap-3 text-primary mb-3"><span class="material-symbols-outlined text-[28px]">warning</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Alertas OCRACC</span></div>
 <div class="text-sm text-text-secondary" id="kpi-alertas">Sin alertas</div>
 </div>
 </div>
 <!-- Matriz de Envios -->
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card overflow-x-auto table-scroll">
+<section class="clay-card overflow-x-auto table-scroll">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Matriz de Envíos SG-OGT</h3>
 <button onclick="renderReporte()" class="text-sm font-semibold text-primary hover:text-primary-container transition-colors flex items-center gap-1">
@@ -1021,7 +1045,7 @@ Cancelar
 <p class="text-text-secondary text-sm mt-1">Exportar e importar datos.</p>
 </div>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
+<section class="clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Exportar Datos</h3>
 </div>
@@ -1034,7 +1058,7 @@ Cancelar
 </button>
 </div>
 </section>
-<section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card">
+<section class="clay-card">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50">
 <h3 class="font-semibold text-primary">Importar Datos</h3>
 </div>
@@ -1485,14 +1509,14 @@ const target = document.getElementById('page-' + pageId);
 if (target) target.style.display = 'flex';
 navLinks.forEach(link => {
 if (link.dataset.page === pageId) {
-link.className = 'flex items-center gap-3 px-4 py-3 clay-btn rounded-lg transition-colors duration-150';
+link.className = 'clay-sidebar-item clay-sidebar-item-active';
 } else if (link.closest && link.closest('#seg-sa-submenu')) {
-link.className = 'flex items-center gap-3 px-4 py-2 text-sm bg-surface-container-low text-text-secondary hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg';
+link.className = 'clay-sidebar-item text-sm gap-2 py-2';
 if (link.dataset.page === pageId) {
-link.className = 'flex items-center gap-3 px-4 py-2 text-sm bg-primary-fixed-dim text-on-primary-fixed rounded-lg transition-colors duration-150';
+link.className = 'clay-sidebar-item text-sm gap-2 py-2 clay-sidebar-item-active';
 }
 } else {
-link.className = 'flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg';
+link.className = 'clay-sidebar-item';
 }
 });
 if (pageId === 'seguimiento-sa-envios' || pageId === 'seguimiento-sa-agrupamiento') {
@@ -1557,8 +1581,8 @@ tr.innerHTML = '<td class="py-4 px-6 font-medium text-primary">' + s.nt + '</td>
 '<td class="py-4 px-6"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + estadoClass + '">' + s.estado + '</span></td>' +
 '<td class="py-4 px-6 text-sm text-text-secondary">' + (s.comentario || '—') + '</td>' +
 '<td class="py-4 px-6 text-right flex items-center justify-end gap-1">' +
-'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarSolicitud(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="event.stopPropagation();eliminarSolicitud(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="clay-icon-btn" onclick="editarSolicitud(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="clay-icon-btn danger" onclick="event.stopPropagation();eliminarSolicitud(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = solicitudes.length + ' registros';
@@ -1748,8 +1772,8 @@ tr.innerHTML = '<td class="py-4 px-4 font-medium text-primary">' + e.dni + '</td
 '<td class="py-4 px-4 text-sm">' + (e.nts && e.nts.length ? e.nts.join(', ') : '—') + '</td>' +
 '<td class="py-4 px-4 text-sm">' + (e.estadoDatos === 'Correcto' ? '<span class="material-symbols-outlined text-success-text text-[18px]">check_circle</span>' : '<span class="text-xs text-warning-text font-medium">Observado</span>') + '</td>' +
 '<td class="py-4 px-4 text-right flex items-center justify-end gap-1">' +
-'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarExpediente(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="event.stopPropagation();eliminarExpediente(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="clay-icon-btn" onclick="editarExpediente(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="clay-icon-btn danger" onclick="event.stopPropagation();eliminarExpediente(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = expedientes.length + ' registros';
@@ -1918,8 +1942,8 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + s.dni + '</td
 '<td class="py-3 px-3 text-sm">' + (s.resolucion || '—') + '</td>' +
 '<td class="py-3 px-3">' + (s.estado ? '<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + s.estado + '</span>' : '<span class="text-xs text-text-secondary">—</span>') + '</td>' +
 '<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
-'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarSeguimiento(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="event.stopPropagation();eliminarSeguimiento(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="clay-icon-btn" onclick="editarSeguimiento(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="clay-icon-btn danger" onclick="event.stopPropagation();eliminarSeguimiento(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = seguimientos.length + ' registro(s)';
@@ -1972,7 +1996,7 @@ const porTipo = grupos[res];
 const tiposPresentes = [];
 ['MAESTRIA', 'DOCTORADO', 'OTROS'].forEach(t => { if (porTipo[t] && porTipo[t].length) tiposPresentes.push(t); });
 const item = document.createElement('div');
-item.className = 'bg-surface-card rounded-lg border border-border-subtle shadow-sm clay-card overflow-hidden';
+item.className = 'clay-card overflow-hidden';
 let headerHtml = '<div class="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-hover-state transition-colors agrup-toggle" data-res="' + res.replace(/"/g, '&quot;') + '">' +
 '<div class="flex items-center gap-3">' +
 '<span class="material-symbols-outlined text-text-secondary transition-transform agrup-arrow">chevron_right</span>' +
@@ -2351,8 +2375,8 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (e.ntOgt || '
 '<td class="py-3 px-3 text-sm">' + (e.fechaSg || '—') + '</td>' +
 '<td class="py-3 px-3"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + e.estado + '</span></td>' +
 '<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
-'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarEnvioDireccion(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="event.stopPropagation();eliminarEnvioDireccion(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="clay-icon-btn" onclick="editarEnvioDireccion(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="clay-icon-btn danger" onclick="event.stopPropagation();eliminarEnvioDireccion(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = enviosDireccion.length + ' registro(s)';
@@ -2584,9 +2608,9 @@ tr.innerHTML = '<td class="py-3 px-3 font-medium text-primary">' + (r.oficio || 
 '<td class="py-3 px-3 text-sm">' + (r.fechaRecepcion || '—') + '</td>' +
 '<td class="py-3 px-3"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + claseEstado + '">' + r.estado + '</span></td>' +
 '<td class="py-3 px-3 text-right flex items-center justify-end gap-1">' +
-'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="verOcraccEgresados(' + i + ')" title="Ver egresados"><span class="material-symbols-outlined text-[18px]">visibility</span></button>' +
-'<button class="text-text-secondary hover:text-primary p-1 rounded hover:bg-surface-dim transition-colors" onclick="editarOcracc(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="text-text-secondary hover:text-danger-text p-1 rounded hover:bg-surface-dim transition-colors" onclick="event.stopPropagation();eliminarOcracc(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
+'<button class="clay-icon-btn" onclick="verOcraccEgresados(' + i + ')" title="Ver egresados"><span class="material-symbols-outlined text-[18px]">visibility</span></button>' +
+'<button class="clay-icon-btn" onclick="editarOcracc(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
+'<button class="clay-icon-btn danger" onclick="event.stopPropagation();eliminarOcracc(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
 tbody.appendChild(tr);
 });
 count.textContent = ocraccRegistros.length + ' registro(s)';
