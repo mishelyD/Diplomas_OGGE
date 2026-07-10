@@ -3,18 +3,17 @@
 ## Índice
 1. [Acceso a la Aplicación](#1-acceso-a-la-aplicación)
 2. [Estructura General](#2-estructura-general)
-3. [Resumen (Dashboard)](#3-resumen-dashboard)
-4. [Solicitud](#4-solicitud)
-5. [Expediente](#5-expediente)
-6. [Seguimiento SA](#6-seguimiento-sa)
-   - 6.1 Envíos
-   - 6.2 Agrupamiento
-7. [Envio a Direccion](#7-envio-a-direccion)
-8. [OCRACC](#8-ocracc)
-9. [Notas](#9-notas)
-10. [Reporte](#10-reporte)
-11. [Configuración](#11-configuración)
-12. [Búsqueda Global](#12-búsqueda-global)
+3. [Solicitud](#3-solicitud)
+4. [Expediente](#4-expediente)
+5. [Seguimiento SA](#5-seguimiento-sa)
+   - 5.1 Envíos
+   - 5.2 Agrupamiento
+6. [Envio a Direccion](#6-envio-a-direccion)
+7. [OCRACC](#7-ocracc)
+8. [Notas](#8-notas)
+9. [Reporte](#9-reporte)
+10. [Configuración](#10-configuración)
+11. [Búsqueda Global](#11-búsqueda-global)
 
 ---
 
@@ -48,26 +47,7 @@ La aplicación tiene:
 
 ---
 
-## 3. Resumen (Dashboard)
-
-**¿Para qué sirve?** Muestra una vista general del estado del sistema con indicadores clave.
-
-### Qué muestra
-- **KPI Cards**: tarjetas con el número total de:
-  - Solicitudes
-  - Expedientes
-  - Seguimientos SA
-  - Envíos a Dirección
-  - OCRACC
-  - Notas
-- **Gráfico de barras**: muestra el estado de los Seguimientos SA (Completo, Observado, Otros).
-- **Alertas OCRACC**: lista los registros de OCRACC que tienen alertas activas.
-
-**No requiere ninguna acción del usuario** — se actualiza automáticamente al cargar los datos.
-
----
-
-## 4. Solicitud
+## 3. Solicitud
 
 **¿Para qué sirve?** Registrar y dar seguimiento a las solicitudes de trámite de diplomas.
 
@@ -90,7 +70,7 @@ La aplicación tiene:
 
 ---
 
-## 5. Expediente
+## 4. Expediente
 
 **¿Para qué sirve?** Gestionar los expedientes académicos de los egresados.
 
@@ -117,22 +97,22 @@ La aplicación tiene:
 
 ---
 
-## 6. Seguimiento SA
+## 5. Seguimiento SA
 
 **¿Para qué sirve?** Realizar el seguimiento de las actas de sustentación (SA) de los egresados.
 
-### 6.1 Envíos
+### 5.1 Envíos
 Registro de envíos de documentación al SA.
 - **Campos:** DNI, Nombres, N° de Trámites (NTs), Tipo, Nombre del Programa, NT SA, Fecha de Entrega, Oficio, Fecha de Recepción, Resolución, Estado, Obs./Comentario.
 - **Estado:** COMPLETO, Observado, Pendiente.
 - **Botón "Agregar Egresado"** en la tabla para añadir más egresados a un mismo seguimiento.
 
-### 6.2 Agrupamiento
+### 5.2 Agrupamiento
 Agrupa los seguimientos por resolución para verlos de forma consolidada.
 
 ---
 
-## 7. Envio a Direccion
+## 6. Envio a Direccion
 
 **¿Para qué sirve?** Registrar y dar seguimiento a los envíos de documentos a la Dirección.
 
@@ -153,7 +133,7 @@ Agrupa los seguimientos por resolución para verlos de forma consolidada.
 
 ---
 
-## 8. OCRACC
+## 7. OCRACC
 
 **¿Para qué sirve?** Gestionar registros de la Oficina de Control de Riesgos y Calidad.
 
@@ -169,11 +149,11 @@ Agrupa los seguimientos por resolución para verlos de forma consolidada.
 ### Cómo usar
 1. Completa el formulario y haz clic en **"Registrar"**.
 2. Cada registro tiene un **color de alerta** que se puede personalizar en Configuración.
-3. Las alertas activas aparecen también en la sección **Resumen**.
+3. Las alertas activas aparecen también en la sección **Reporte**.
 
 ---
 
-## 9. Notas
+## 8. Notas
 
 **¿Para qué sirve?** Notas adhesivas tipo Post-it para apuntes rápidos.
 
@@ -191,20 +171,21 @@ Agrupa los seguimientos por resolución para verlos de forma consolidada.
 
 ---
 
-## 10. Reporte
+## 9. Reporte
 
-**¿Para qué sirve?** Generar un resumen estadístico de todos los datos del sistema.
+**¿Para qué sirve?** Generar un resumen estadístico de todos los datos del sistema. Es la página principal al iniciar sesión.
 
 ### Qué muestra
-- Tabla resumen con conteos totales.
-- Totales por tipo de grado (Maestría / Doctorado).
-- Distribución de estados por sección.
+- **KPIs**: tarjetas con el número total de Solicitudes, Expedientes, Seguimientos SA, Envíos a Dirección, OCRACC y Notas.
+- **Gráfico de barras**: muestra el estado de los Seguimientos SA (Completo, Observado, Pendiente).
+- **Alertas OCRACC**: lista los registros de OCRACC que tienen alertas activas.
+- **Tabla resumen** con conteos totales y distribución por tipo de grado (Maestría / Doctorado).
 
 **No requiere acción** — se genera automáticamente con los datos actuales.
 
 ---
 
-## 11. Configuración
+## 10. Configuración
 
 **¿Para qué sirve?** Gestionar datos, exportar/importar respaldo y personalizar colores.
 
@@ -223,7 +204,7 @@ Agrupa los seguimientos por resolución para verlos de forma consolidada.
 
 ---
 
-## 12. Búsqueda Global
+## 11. Búsqueda Global
 
 **¿Para qué sirve?** Encontrar rápidamente cualquier registro desde la barra superior.
 

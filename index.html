@@ -218,6 +218,24 @@ box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 #sidebar { transform: none !important; }
 #sidebar-backdrop { display: none !important; }
 }
+/* Toast */
+.toast {
+pointer-events: auto;
+padding: 10px 18px;
+border-radius: 8px;
+font-size: 13px;
+font-weight: 500;
+box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.toast-success { background: #16a34a; color: #fff; }
+.toast-error { background: #dc2626; color: #fff; }
+.toast-warning { background: #f59e0b; color: #fff; }
+@keyframes toastIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes toastOut { from { opacity:1; } to { opacity:0; transform:translateY(-8px); } }
 </style></head><body class="bg-surface-bg text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
 <!-- SideNavBar -->
 <nav id="sidebar" class="fixed left-0 top-0 h-full w-[260px] bg-surface-container border-r border-outline-variant flex flex-col py-6 px-4 z-50">
@@ -231,9 +249,9 @@ box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 </div>
 <ul class="flex flex-col gap-2 flex-grow text-on-surface-variant">
 <li class="">
-<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="dashboard">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="">Resumen</span>
+<a class="flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-lg" href="#" data-page="reporte">
+<span class="material-symbols-outlined">assessment</span>
+<span class="">Reporte</span>
 </a>
 </li>
 <li class="">
@@ -318,46 +336,6 @@ box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 <!-- Canvas Body -->
 <div class="mt-header-height px-4 lg:px-margin-canvas py-4 lg:py-margin-canvas flex-grow flex flex-col gap-stack-lg justify-start">
 <!-- Page: Dashboard -->
-<div id="page-dashboard" class="page flex flex-col gap-stack-lg">
-<section>
-<h2 class="font-section-title text-section-title text-primary tracking-tight">Resumen</h2>
-<p class="text-text-secondary text-sm mt-1">Resumen del sistema.</p>
-</section>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
-<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">note_add</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Solicitudes</span></div>
-<div class="text-3xl font-bold text-on-surface" id="kpi-solicitudes">0</div>
-</div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
-<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">folder</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Expedientes</span></div>
-<div class="text-3xl font-bold text-on-surface" id="kpi-expedientes">0</div>
-</div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
-<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">track_changes</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Seguimientos SA</span></div>
-<div class="text-3xl font-bold text-on-surface" id="kpi-seguimientos">0</div>
-</div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
-<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">assignment</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Envíos Dirección</span></div>
-<div class="text-3xl font-bold text-on-surface" id="kpi-envios">0</div>
-</div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
-<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">document_scanner</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">OCRACC</span></div>
-<div class="text-3xl font-bold text-on-surface" id="kpi-ocracc">0</div>
-</div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
-<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">sticky_note_2</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Notas</span></div>
-<div class="text-3xl font-bold text-on-surface" id="kpi-notas">0</div>
-</div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm md:col-span-2">
-<div class="flex items-center gap-3 text-primary mb-3"><span class="material-symbols-outlined text-[28px]">bar_chart</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Seguimientos SA por Estado</span></div>
-<div id="kpi-sa-chart" class="flex items-end gap-2 h-20"></div>
-</div>
-<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm md:col-span-2">
-<div class="flex items-center gap-3 text-primary mb-3"><span class="material-symbols-outlined text-[28px]">warning</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Alertas OCRACC</span></div>
-<div class="text-sm text-text-secondary" id="kpi-alertas">Sin alertas</div>
-</div>
-</div>
-</div>
 <!-- Page: Solicitud -->
 <div id="page-solicitud" class="page flex flex-col gap-stack-lg" style="display:none">
 <section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
@@ -894,9 +872,45 @@ Cancelar
 <section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
 <div>
 <h2 class="font-section-title text-section-title text-primary tracking-tight">Reporte</h2>
-<p class="text-text-secondary text-sm mt-1">Expedientes enviados a SG-OGT por área y mes.</p>
+<p class="text-text-secondary text-sm mt-1">Resumen general del sistema.</p>
 </div>
 </section>
+<!-- KPI Cards -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">note_add</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Solicitudes</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-solicitudes">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">folder</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Expedientes</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-expedientes">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">track_changes</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Seguimientos SA</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-seguimientos">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">assignment</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Envíos Dirección</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-envios">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">document_scanner</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">OCRACC</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-ocracc">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm">
+<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">sticky_note_2</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Notas</span></div>
+<div class="text-3xl font-bold text-on-surface" id="kpi-notas">0</div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm md:col-span-2">
+<div class="flex items-center gap-3 text-primary mb-3"><span class="material-symbols-outlined text-[28px]">bar_chart</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Seguimientos SA por Estado</span></div>
+<div id="kpi-sa-chart" class="flex items-end gap-2 h-20"></div>
+</div>
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm md:col-span-2">
+<div class="flex items-center gap-3 text-primary mb-3"><span class="material-symbols-outlined text-[28px]">warning</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Alertas OCRACC</span></div>
+<div class="text-sm text-text-secondary" id="kpi-alertas">Sin alertas</div>
+</div>
+</div>
+<!-- Matriz de Envios -->
 <section class="bg-surface-card rounded-lg border border-border-subtle shadow-sm overflow-x-auto">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Matriz de Envíos SG-OGT</h3>
@@ -1003,16 +1017,12 @@ Entrar
 ¿No tienes cuenta? <a href="#" onclick="showSignup(event)" class="text-primary hover:underline">Regístrate</a>
 </div>
 </form>
-<hr class="my-4 border-border-subtle">
-<button onclick="loginWithGithub()" class="w-full flex items-center justify-center gap-3 px-5 py-2.5 bg-[#24292e] hover:bg-[#1b1f23] text-white rounded-lg font-semibold text-sm transition-colors shadow-sm">
-<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-<span>Iniciar sesión con GitHub</span>
-</button>
 <p id="login-loading" class="text-sm text-text-secondary mt-4 hidden">
 <span class="material-symbols-outlined animate-spin align-middle text-[18px]">sync</span> Conectando...
 </p>
 </div>
 <!-- Signup Form -->
+<div id="toast-container" class="fixed bottom-4 right-4 z-[99999] flex flex-col gap-2 pointer-events-none"></div>
 <div id="signup-form" class="hidden">
 <div class="mb-6">
 <h1 class="font-headline text-xl font-bold text-primary">Crear cuenta</h1>
@@ -1080,6 +1090,23 @@ if (error) showSignupError(error.message);
 else showSignupError('Cuenta creada. Revisa tu correo para confirmar.');
 } catch(e) { showSignupError('Error: ' + e.message); }
 loginLoading.classList.add('hidden');
+}
+
+function showToast(msg, type) {
+type = type || 'success';
+var container = document.getElementById('toast-container');
+if (!container) return;
+var el = document.createElement('div');
+el.className = 'toast toast-' + type;
+el.innerHTML = msg;
+container.appendChild(el);
+setTimeout(function() { if (el.parentNode) el.remove(); }, 3000);
+}
+
+function irAPagina(page) {
+showPage(page);
+var sidebar = document.getElementById('sidebar');
+if (window.innerWidth < 1024) { sidebar.classList.remove('open'); document.getElementById('sidebar-backdrop').classList.remove('open'); }
 }
 
 function showLoginError(msg) { loginError.textContent = msg; loginError.classList.remove('hidden'); }
@@ -1162,7 +1189,7 @@ currentUser = session.user;
 loginOverlay.style.display = 'none';
 loadFromSupabase().then(function() {
 renderSolicitudes(); renderExpedientes(); renderSeguimientos();
-renderEnviosDireccion(); renderOcracc(); renderNotas(); renderDashboard();
+renderEnviosDireccion(); renderOcracc(); renderNotas();
 });
 } else if (event === 'SIGNED_OUT') {
 currentUser = null;
@@ -1301,7 +1328,7 @@ solicitudes[editSolIndex] = { nt, fecha, estado, comentario: estado === 'Observa
 editSolIndex = -1;
 } else {
 if (solicitudes.some(s => s.nt === nt)) {
-alert('El NT ' + nt + ' ya está registrado.');
+showToast('El NT ' + nt + ' ya está registrado.', 'warning');
 return;
 }
 solicitudes.push({ nt, fecha, estado, comentario: estado === 'Observado' ? comentario : '' });
@@ -1509,20 +1536,20 @@ const obsComentario = document.getElementById('exp-obs-comentario').value.trim()
 const ntsSeleccionados = Array.from(expNtsSeleccionados);
 if (!dni || !apellidosNombres || !nombreGrado || !fechaMatricula || !fechaEgreso || !totalCreditos || !fechaSustentacion) return;
 if (ntsSeleccionados.length === 0) {
-alert('Debe seleccionar al menos un NT asociado.');
+showToast('Debe seleccionar al menos un NT asociado.', 'warning');
 return;
 }
 const data = { dni, apellidosNombres, tipoGrado, nombreGrado, area, fechaMatricula, fechaEgreso, totalCreditos, fechaSustentacion, calificacion, estadoDatos, obsComentario: estadoDatos === 'Observado' ? obsComentario : '', nts: ntsSeleccionados };
 if (editExpedienteIndex !== -1) {
 if (dni !== expedientes[editExpedienteIndex].dni && expedientes.some((ex, idx) => ex.dni === dni && idx !== editExpedienteIndex)) {
-alert('El Código de estudiante ' + dni + ' ya pertenece a otro expediente.');
+showToast('El Código de estudiante ' + dni + ' ya pertenece a otro expediente.', 'error');
 return;
 }
 expedientes[editExpedienteIndex] = data;
 editExpedienteIndex = -1;
 } else {
 if (expedientes.some(e => e.dni === dni)) {
-alert('El Código de estudiante ' + dni + ' ya tiene un expediente registrado.');
+showToast('El Código de estudiante ' + dni + ' ya tiene un expediente registrado.', 'error');
 return;
 }
 expedientes.push(data);
@@ -1696,7 +1723,7 @@ btn.classList.remove('text-success-text');
 btn.classList.add('text-text-secondary', 'hover:text-primary');
 }, 2000);
 }).catch(function() {
-alert('No se pudo copiar. Seleccione manualmente los datos.');
+showToast('No se pudo copiar. Seleccione manualmente los datos.', 'error');
 });
 }
 document.getElementById('page-seguimiento-sa-agrupamiento').addEventListener('click', function(e) {
@@ -1825,7 +1852,7 @@ const estado = document.getElementById('seg-estado').value;
 const observacion = document.getElementById('seg-obs-comentario').value.trim();
 if (!dni || !nombres) return;
 if (ntsSeleccionados.length === 0) {
-alert('Debe seleccionar al menos un NT.');
+showToast('Debe seleccionar al menos un NT.', 'warning');
 return;
 }
 const tipo = document.getElementById('seg-tipo').value;
@@ -2176,7 +2203,7 @@ if (e.target === document.getElementById('nota-modal')) cerrarModalNota();
 document.getElementById('nt-save-btn').addEventListener('click', function() {
 var titulo = document.getElementById('nt-input-titulo').value.trim();
 var cuerpo = document.getElementById('nt-input-cuerpo').value.trim();
-if (!titulo && !cuerpo) { alert('Escribe al menos un título o contenido.'); return; }
+if (!titulo && !cuerpo) { showToast('Escribe al menos un título o contenido.', 'warning'); return; }
 var data = { titulo: titulo || 'Sin título', cuerpo: cuerpo || '' };
 if (ntEditIndex >= 0) {
 notas[ntEditIndex] = data;
@@ -2291,7 +2318,7 @@ const estado = document.getElementById('oc-estado').value;
 const alerta = document.getElementById('oc-alerta').value || '30';
 if (!oficio || !nt || !fechaEnvio) return;
 if (ocEgresadosTemp.length === 0) {
-alert('Debe agregar al menos un egresado.');
+showToast('Debe agregar al menos un egresado.', 'warning');
 return;
 }
 const data = { oficio, nt, fechaEnvio, fechaRecepcion, estado, alerta, egresados: ocEgresadosTemp.slice() };
@@ -2373,6 +2400,44 @@ if (e.target === this) this.classList.add('hidden');
 
 // --- Reporte ---
 function renderReporte() {
+// KPIs
+document.getElementById('kpi-solicitudes').textContent = solicitudes.length;
+document.getElementById('kpi-expedientes').textContent = expedientes.length;
+document.getElementById('kpi-seguimientos').textContent = seguimientos.length;
+document.getElementById('kpi-envios').textContent = enviosDireccion.length;
+document.getElementById('kpi-ocracc').textContent = ocraccRegistros.length;
+document.getElementById('kpi-notas').textContent = notas.length;
+// Mini gráfico SA por estado
+var estados = {}; seguimientos.forEach(function(s) { estados[s.estado] = (estados[s.estado]||0) + 1; });
+var chart = document.getElementById('kpi-sa-chart');
+if (chart) {
+chart.innerHTML = '';
+var coloresEstado = { Entregado: '#4caf50', 'En Proceso': '#ff9800', Observado: '#f44336', Pendiente: '#9e9e9e', COMPLETO: '#4caf50' };
+var maxVal = Math.max(1, ...Object.values(estados));
+Object.keys(estados).forEach(function(est) {
+var pct = (estados[est] / maxVal) * 100;
+var bar = document.createElement('div');
+bar.className = 'flex-1 rounded-t flex flex-col items-center justify-end gap-1 relative';
+bar.innerHTML = '<span class="text-[10px] font-semibold text-text-secondary">' + estados[est] + '</span><div class="w-full rounded-t" style="height:' + pct + '%;background:' + (coloresEstado[est]||'#9e9e9e') + ';min-height:4px"></div><span class="text-[9px] text-text-secondary truncate w-full text-center">' + est + '</span>';
+chart.appendChild(bar);
+});
+}
+// Alertas OCRACC
+var alertas = document.getElementById('kpi-alertas');
+if (alertas) {
+var now = new Date();
+var alertasList = ocraccRegistros.filter(function(r) {
+if (r.estado === 'CERTIFICADOS RECEPCIONADOS' || !r.fechaEnvio) return false;
+var dias = Math.floor((now - new Date(r.fechaEnvio + 'T00:00:00')) / (1000*60*60*24));
+return dias > (parseInt(r.alerta) || 30);
+});
+if (alertasList.length) {
+alertas.innerHTML = alertasList.map(function(r) { return '<div class="flex items-center gap-2 text-danger-text"><span class="material-symbols-outlined text-[16px]">warning</span>' + (r.oficio||'—') + ' (' + r.nt + ')</div>'; }).join('');
+} else {
+alertas.innerHTML = '<span class="text-success-text flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">check_circle</span>Sin alertas pendientes</span>';
+}
+}
+// Matriz de envíos
 const areas = [
 'Ciencias de la Empresa',
 'Humanidades y Ciencias Basicas',
@@ -2438,41 +2503,6 @@ tbody.appendChild(totalRow);
 }
 
 // --- Dashboard ---
-function renderDashboard() {
-document.getElementById('kpi-solicitudes').textContent = solicitudes.length;
-document.getElementById('kpi-expedientes').textContent = expedientes.length;
-document.getElementById('kpi-seguimientos').textContent = seguimientos.length;
-document.getElementById('kpi-envios').textContent = enviosDireccion.length;
-document.getElementById('kpi-ocracc').textContent = ocraccRegistros.length;
-document.getElementById('kpi-notas').textContent = notas.length;
-// Mini gráfico SA por estado
-var estados = {}; seguimientos.forEach(function(s) { estados[s.estado] = (estados[s.estado]||0) + 1; });
-var chart = document.getElementById('kpi-sa-chart');
-chart.innerHTML = '';
-var coloresEstado = { Entregado: '#4caf50', 'En Proceso': '#ff9800', Observado: '#f44336', Pendiente: '#9e9e9e' };
-var maxVal = Math.max(1, ...Object.values(estados));
-Object.keys(estados).forEach(function(est) {
-var pct = (estados[est] / maxVal) * 100;
-var bar = document.createElement('div');
-bar.className = 'flex-1 rounded-t flex flex-col items-center justify-end gap-1 relative';
-bar.innerHTML = '<span class="text-[10px] font-semibold text-text-secondary">' + estados[est] + '</span><div class="w-full rounded-t" style="height:' + pct + '%;background:' + (coloresEstado[est]||'#9e9e9e') + ';min-height:4px"></div><span class="text-[9px] text-text-secondary truncate w-full text-center">' + est + '</span>';
-chart.appendChild(bar);
-});
-// Alertas OCRACC
-var alertas = document.getElementById('kpi-alertas');
-var now = new Date();
-var alertasList = ocraccRegistros.filter(function(r) {
-if (r.estado === 'CERTIFICADOS RECEPCIONADOS' || !r.fechaEnvio) return false;
-var dias = Math.floor((now - new Date(r.fechaEnvio + 'T00:00:00')) / (1000*60*60*24));
-return dias > (parseInt(r.alerta) || 30);
-});
-if (alertasList.length) {
-alertas.innerHTML = alertasList.map(function(r) { return '<div class="flex items-center gap-2 text-danger-text"><span class="material-symbols-outlined text-[16px]">warning</span>' + (r.oficio||'—') + ' (' + r.nt + ')</div>'; }).join('');
-} else {
-alertas.innerHTML = '<span class="text-success-text flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">check_circle</span>Sin alertas pendientes</span>';
-}
-}
-
 // --- Búsqueda Global ---
 function initSearch() {
 var input = document.querySelector('header input[type="text"]');
@@ -2554,9 +2584,9 @@ if (data.ocraccRegistros) { ocraccRegistros.length = 0; ocraccRegistros.push.app
 if (data.notas) { notas.length = 0; notas.push.apply(notas, data.notas); localStorage.setItem('notas', JSON.stringify(notas)); }
 if (data.categoriasCorreo) localStorage.setItem('categoriasCorreo', JSON.stringify(data.categoriasCorreo));
 saveToSupabase();
-alert('Datos importados correctamente. Recargando...');
+showToast('Datos importados correctamente. Recargando...', 'success');
 location.reload();
-} catch(err) { alert('Error al importar: ' + err.message); }
+} catch(err) { showToast('Error al importar: ' + err.message, 'error'); }
 };
 reader.readAsText(file);
 }
@@ -2570,7 +2600,6 @@ renderEnviosDireccion();
 renderOcracc();
 renderNotas();
 renderReporte();
-renderDashboard();
 } catch(e) { console.error('Init error:', e); }
 
 initSearch();
@@ -2599,7 +2628,7 @@ document.getElementById('btn-import-json').addEventListener('change', function(e
 if (e.target.files.length) importJSON(e.target.files[0]);
 });
 
-showPage('dashboard');
+showPage('reporte');
 
 // --- Live reload ---
 (function() {
