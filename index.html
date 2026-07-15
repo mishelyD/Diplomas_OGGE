@@ -387,12 +387,6 @@ body {
 </a>
 </li>
 <li class="">
-<a class="glass-sidebar-item" href="#" data-page="solicitud">
-<span class="material-symbols-outlined">note_add</span>
-<span class="">Solicitud</span>
-</a>
-</li>
-<li class="">
 <a class="glass-sidebar-item" href="#" data-page="expediente">
 <span class="material-symbols-outlined">folder</span>
 <span class="">Expediente</span>
@@ -474,72 +468,6 @@ body {
 <!-- Canvas Body -->
 <div class="mt-header-height px-4 lg:px-margin-canvas py-4 lg:py-margin-canvas flex-grow flex flex-col gap-stack-lg justify-start">
 <!-- Page: Dashboard -->
-<!-- Page: Solicitud -->
-<div id="page-solicitud" class="page flex flex-col gap-stack-lg" style="display:none">
-<section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
-<div>
-<h2 class="font-section-title text-section-title text-primary tracking-tight">Registrar Solicitud</h2>
-<p class="text-text-secondary text-sm mt-1">Ingrese los datos del nuevo trámite académico.</p>
-</div>
-</section>
-<!-- Form -->
-<section class="glass-card p-6">
-<form id="form-solicitud" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
-<div class="flex flex-col gap-1.5">
-<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT (N° Trámite)</label>
-<input id="input-nt" type="number" class="glass-input text-sm" placeholder="Ej: 456778" required>
-</div>
-<div class="flex flex-col gap-1.5">
-<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
-<input id="input-fecha" type="date" class="glass-input text-sm" required>
-</div>
-<div class="flex flex-col gap-1.5">
-<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
-<select id="input-estado" class="glass-input text-sm">
-<option value="Completo">Completo</option>
-<option value="Observado">Observado</option>
-<option value="Pendiente">Pendiente</option>
-</select>
-</div>
-<div class="flex flex-col gap-1.5" id="comentario-container" style="display:none">
-<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Comentario</label>
-<textarea id="input-comentario" class="glass-input text-sm resize-none" rows="2" placeholder="Describa la observación..."></textarea>
-</div>
-<div class="flex items-end gap-3">
-<button type="submit" id="sol-submit-btn" class="glass-btn glass-btn-primary">
-<span class="material-symbols-outlined text-[18px]">add</span> Registrar
-</button>
-<button type="button" id="sol-cancel-btn" class="glass-btn glass-btn-sm hidden">
-Cancelar
-</button>
-</div>
-</form>
-</section>
-<!-- Solicitudes Table -->
-<section class="glass-card flex flex-col flex-grow overflow-hidden">
-<div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
-<h3 class="font-semibold text-primary">Solicitudes Registradas</h3>
-<span id="solicitud-count" class="text-sm text-text-secondary">0 registros</span>
-</div>
-<div class="overflow-x-auto table-scroll">
-<table class="glass-table w-full text-left border-collapse min-w-[700px]">
-<thead>
-<tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider" data-sort-key="nt">NT</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider" data-sort-key="fecha">Fecha Recepción</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider" data-sort-key="estado">Estado</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-6 uppercase tracking-wider" data-sort-key="comentario">Comentario</th>
-<th class="py-3 px-6"></th>
-</tr>
-</thead>
-<tbody id="tabla-solicitudes" class="font-table-data text-table-data text-text-table divide-y divide-border-subtle">
-</tbody>
-</table>
-</div>
-</section>
-</div>
-<!-- End Page: Solicitud -->
-
 <!-- Page: Expediente -->
 <div id="page-expediente" class="page flex flex-col gap-stack-lg" style="display:none">
 <section class="flex flex-col gap-stack-md lg:flex-row lg:items-end lg:justify-between">
@@ -551,6 +479,26 @@ Cancelar
 <!-- Form -->
 <section class="glass-card p-6">
 <form id="form-expediente" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 items-end">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT (N° Trámite)</label>
+<input id="exp-nt" type="text" class="glass-input text-sm" placeholder="Ej: 456778" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
+<input id="exp-fecha-recep" type="date" class="glass-input text-sm" required>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado del Trámite</label>
+<select id="exp-estado-tramite" class="glass-input text-sm">
+<option value="Completo">Completo</option>
+<option value="Observado">Observado</option>
+<option value="Pendiente">Pendiente</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5" id="exp-comentario-container" style="display:none">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Comentario</label>
+<textarea id="exp-comentario" class="glass-input text-sm resize-none" rows="2" placeholder="Describa la observación..."></textarea>
+</div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Código de estudiante</label>
 <input id="exp-dni" type="text" class="glass-input text-sm" placeholder="12345678" required>
@@ -606,14 +554,6 @@ Cancelar
 </select>
 </div>
 <div class="flex flex-col gap-1.5">
-<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NTs Asociados</label>
-<div class="relative">
-<input id="exp-nts-buscar" type="text" class="glass-input text-sm" placeholder="Buscar NT para asociar..." autocomplete="off">
-<div id="exp-nts-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
-</div>
-<div id="exp-nts-seleccionados" class="flex flex-wrap gap-1.5 min-h-[28px]"></div>
-</div>
-<div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado de Datos en el SD</label>
 <select id="exp-estado-datos" class="glass-input text-sm">
 <option value="Correcto">Correcto</option>
@@ -641,16 +581,18 @@ Cancelar
 <span id="expediente-count" class="text-sm text-text-secondary">0 registros</span>
 </div>
 <div class="overflow-x-auto table-scroll">
-<table class="glass-table w-full text-left border-collapse min-w-[900px]">
+<table class="glass-table w-full text-left border-collapse min-w-[1200px]">
 <thead>
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="dni">Código de estudiante</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="nt">NT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="fechaRecep">Fecha Recep.</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="estadoTramite">Estado Trámite</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="dni">Código</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="apellidosNombres">Apellidos y Nombres</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="tipoGrado">Grado</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="area">Área</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="fechaSustentacion">Sustentación</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider" data-sort-key="calificacion">Calificación</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">NTs</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-4 uppercase tracking-wider">Check</th>
 <th class="py-3 px-4"></th>
 </tr>
@@ -688,12 +630,8 @@ Cancelar
 <input id="seg-nombres" type="text" class="glass-input text-sm" placeholder="Pérez López, Juan Carlos" required>
 </div>
 <div class="flex flex-col gap-1.5">
-<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NTs Asociados</label>
-<div class="relative">
-<input id="seg-nts-buscar" type="text" class="glass-input text-sm" placeholder="Buscar NT para asociar..." autocomplete="off">
-<div id="seg-nts-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
-</div>
-<div id="seg-nts-seleccionados" class="flex flex-wrap gap-1.5 min-h-[28px]"></div>
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT (N° Trámite)</label>
+<input id="seg-nt" type="text" class="glass-input text-sm" placeholder="Se autocompleta al escribir el código" readonly>
 </div>
 <div class="flex flex-col gap-1.5 md:col-span-2 lg:col-span-2">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Programa</label>
@@ -952,7 +890,7 @@ Cancelar
 <section class="glass-card overflow-x-auto table-scroll">
 <div class="p-4 border-b border-border-subtle bg-surface-bg/50 flex justify-between items-center">
 <h3 class="font-semibold text-primary">Solicitudes Registradas</h3>
-<span id="oc-count" class="text-sm text-text-secondary">0 solicitudes</span>
+<span id="oc-count" class="text-sm text-text-secondary">0 registros</span>
 </div>
 <table class="glass-table w-full text-left border-collapse min-w-[1000px]">
 <thead>
@@ -1015,11 +953,7 @@ Cancelar
 </section>
 <!-- KPI Cards -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="glass-card p-5">
-<div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">note_add</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Solicitudes</span></div>
-<div class="text-3xl font-bold text-on-surface" id="kpi-solicitudes">0</div>
-</div>
-<div class="glass-card p-5">
+    <div class="glass-card p-5">
 <div class="flex items-center gap-3 text-primary mb-2"><span class="material-symbols-outlined text-[28px]">folder</span><span class="text-xs uppercase tracking-wider font-semibold text-text-secondary">Expedientes</span></div>
 <div class="text-3xl font-bold text-on-surface" id="kpi-expedientes">0</div>
 </div>
@@ -1375,7 +1309,7 @@ else el.classList.add('hidden');
 });
 }
 if (e.ctrlKey || e.metaKey) {
-if (e.key === 'b') { e.preventDefault(); showPage('solicitud'); }
+
 if (e.key === 'e') { e.preventDefault(); showPage('expediente'); }
 if (e.key === 'r') { e.preventDefault(); showPage('reporte'); }
 }
@@ -1454,7 +1388,7 @@ try {
 var { data, error } = await supabaseClient.from('user_data').select('*').eq('user_id', currentUser.id).maybeSingle();
 if (error) return;
 if (data) {
-solicitudes.length = 0; (data.solicitudes||[]).forEach(function(r) { solicitudes.push(r); });
+
 expedientes.length = 0; (data.expedientes||[]).forEach(function(r) { expedientes.push(r); });
 seguimientos.length = 0; (data.seguimientos||[]).forEach(function(r) { seguimientos.push(r); });
 enviosDireccion.length = 0; (data.envios_direccion||[]).forEach(function(r) { enviosDireccion.push(r); });
@@ -1470,7 +1404,6 @@ if (!supabaseClient || !currentUser) return;
 try {
 await supabaseClient.from('user_data').upsert({
 user_id: currentUser.id,
-solicitudes: solicitudes,
 expedientes: expedientes,
 seguimientos: seguimientos,
 envios_direccion: enviosDireccion,
@@ -1482,7 +1415,6 @@ updated_at: new Date().toISOString()
 }
 
 function localSaveAll() {
-localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
 localStorage.setItem('expedientes', JSON.stringify(expedientes));
 localStorage.setItem('seguimientos', JSON.stringify(seguimientos));
 localStorage.setItem('enviosDireccion', JSON.stringify(enviosDireccion));
@@ -1506,7 +1438,7 @@ if (event === 'SIGNED_IN' && session) {
 currentUser = session.user;
 loginOverlay.style.display = 'none';
 loadFromSupabase().then(function() {
-renderSolicitudes(); renderExpedientes(); renderSeguimientos();
+renderExpedientes(); renderSeguimientos();
 renderEnviosDireccion(); renderOcracc(); renderNotas();
 });
 } else if (event === 'SIGNED_OUT') {
@@ -1590,194 +1522,18 @@ showPage(this.dataset.page);
 });
 });
 
-// --- Solicitud State ---
-let solicitudes = JSON.parse(localStorage.getItem('solicitudes') || '[]');
-let editSolIndex = -1;
-
-function guardarSolicitudes() {
-localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
-saveToSupabase();
-}
-
-function renderSolicitudes() {
-const tbody = document.getElementById('tabla-solicitudes');
-const count = document.getElementById('solicitud-count');
-var table = tbody.closest('.overflow-x-auto');
-tbody.innerHTML = '';
-if (!solicitudes.length) {
-tbody.innerHTML = '<tr><td colspan="5" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">note_add</span>No hay solicitudes registradas</td></tr>';
-count.textContent = '0 registros';
-var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
-return;
-}
-var p = paginate('sols', solicitudes, 25);
-_renderMap['sols'] = renderSolicitudes;
-p.data.forEach(function(s) {
-var i = solicitudes.indexOf(s);
-const tr = document.createElement('tr');
-tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
-tr.onclick = function() { editarSolicitud(i); };
-let estadoClass = 'bg-surface-container-high text-text-secondary';
-if (s.estado === 'Completo') estadoClass = 'bg-success-bg text-success-text';
-else if (s.estado === 'Observado') estadoClass = 'bg-warning-bg text-warning-text';
-tr.innerHTML = '<td class="py-4 px-6 font-medium text-primary">' + s.nt + '</td>' +
-'<td class="py-4 px-6">' + s.fecha + '</td>' +
-'<td class="py-4 px-6"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + estadoClass + '">' + s.estado + '</span></td>' +
-'<td class="py-4 px-6 text-sm text-text-secondary">' + (s.comentario || '—') + '</td>' +
-'<td class="py-4 px-6 text-right flex items-center justify-end gap-1">' +
-'<button class="glass-icon-btn" onclick="editarSolicitud(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
-'<button class="glass-icon-btn danger" onclick="event.stopPropagation();eliminarSolicitud(' + i + ')" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button></td>';
-tbody.appendChild(tr);
-});
-count.textContent = solicitudes.length + ' registros';
-var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
-var pagDiv = document.createElement('div');
-pagDiv.className = 'pag-controls';
-pagDiv.innerHTML = pagControls('sols');
-table.parentNode.insertBefore(pagDiv, table.nextSibling);
-}
-
-async function eliminarSolicitud(index) {
-var nt = solicitudes[index].nt;
-var ok = await showConfirm('Eliminar solicitud', '¿Eliminar la solicitud NT ' + nt + '?');
-if (!ok) return;
-deleteWithUndo(solicitudes, index, guardarSolicitudes, renderSolicitudes, 'NT ' + nt);
-}
-
-// --- Form Solicitud (Crear / Actualizar) ---
-document.getElementById('input-estado').addEventListener('change', function() {
-const container = document.getElementById('comentario-container');
-container.style.display = this.value === 'Observado' ? 'flex' : 'none';
-});
-
-document.getElementById('form-solicitud').addEventListener('submit', function(e) {
-e.preventDefault();
-var btn = document.getElementById('sol-submit-btn');
-const nt = document.getElementById('input-nt').value.trim();
-const fecha = document.getElementById('input-fecha').value;
-const estado = document.getElementById('input-estado').value;
-const comentario = document.getElementById('input-comentario').value.trim();
-if (!nt || !fecha) return;
-setLoading(btn, true);
-if (editSolIndex !== -1) {
-solicitudes[editSolIndex] = { nt, fecha, estado, comentario: estado === 'Observado' ? comentario : '' };
-editSolIndex = -1;
-} else {
-if (solicitudes.some(s => s.nt === nt)) {
-showToast('El NT ' + nt + ' ya está registrado.', 'warning');
-setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">add</span> Registrar');
-return;
-}
-solicitudes.push({ nt, fecha, estado, comentario: estado === 'Observado' ? comentario : '' });
-}
-guardarSolicitudes();
-renderSolicitudes();
-cancelarEdicionSol();
-document.getElementById('input-nt').focus();
-setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">add</span> Registrar');
-});
-
-function editarSolicitud(index) {
-editSolIndex = index;
-const s = solicitudes[index];
-document.getElementById('input-nt').value = s.nt;
-document.getElementById('input-nt').disabled = true;
-document.getElementById('input-fecha').value = s.fecha;
-document.getElementById('input-estado').value = s.estado;
-document.getElementById('comentario-container').style.display = s.estado === 'Observado' ? 'flex' : 'none';
-document.getElementById('input-comentario').value = s.comentario || '';
-document.getElementById('sol-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span> Actualizar';
-document.getElementById('sol-cancel-btn').classList.remove('hidden');
-}
-
-function cancelarEdicionSol() {
-editSolIndex = -1;
-document.getElementById('form-solicitud').reset();
-document.getElementById('comentario-container').style.display = 'none';
-document.getElementById('input-nt').disabled = false;
-document.getElementById('sol-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span> Registrar';
-document.getElementById('sol-cancel-btn').classList.add('hidden');
-}
-
-document.getElementById('sol-cancel-btn').addEventListener('click', cancelarEdicionSol);
-
-// --- Helper: NTs asignados a algún expediente ---
-function ntsAsignados() {
-const asignados = new Set();
-expedientes.forEach(e => e.nts.forEach(nt => asignados.add(nt)));
-return asignados;
-}
-
-// --- Helper: obtener NTs disponibles (no asignados) ---
-function ntsDisponibles() {
-const asignados = ntsAsignados();
-return solicitudes.filter(s => !asignados.has(s.nt));
-}
-
-// --- Search + Chips para NTs ---
-const expNtsSeleccionados = new Set();
-
-function renderNtsChips() {
-const container = document.getElementById('exp-nts-seleccionados');
-container.innerHTML = '';
-if (expNtsSeleccionados.size === 0) {
-container.innerHTML = '<span class="text-xs text-text-secondary">Ningún NT seleccionado</span>';
-return;
-}
-expNtsSeleccionados.forEach(nt => {
-const chip = document.createElement('span');
-chip.className = 'inline-flex items-center gap-1 px-2 py-0.5 bg-primary-fixed text-primary text-xs font-medium rounded-full';
-chip.innerHTML = 'NT ' + nt + '<button type="button" class="hover:text-primary-container" data-nt="' + nt + '"><span class="material-symbols-outlined text-[14px]">close</span></button>';
-chip.querySelector('button').addEventListener('click', function() {
-expNtsSeleccionados.delete(this.dataset.nt);
-renderNtsChips();
-});
-container.appendChild(chip);
-});
-}
-
-function mostrarDropdown(filtro) {
-const dropdown = document.getElementById('exp-nts-dropdown');
-const disponibles = ntsDisponibles();
-const resultados = disponibles.filter(s => s.nt.includes(filtro) && !expNtsSeleccionados.has(s.nt));
-dropdown.innerHTML = '';
-if (resultados.length === 0 || filtro === '') {
-dropdown.classList.add('hidden');
-return;
-}
-dropdown.classList.remove('hidden');
-resultados.forEach(s => {
-const item = document.createElement('button');
-item.type = 'button';
-item.className = 'w-full text-left px-3 py-2 text-sm hover:bg-hover-state transition-colors flex justify-between items-center';
-item.innerHTML = '<span class="font-medium">NT ' + s.nt + '</span><span class="text-xs text-text-secondary">' + s.estado + '</span>';
-item.addEventListener('click', function() {
-expNtsSeleccionados.add(s.nt);
-renderNtsChips();
-document.getElementById('exp-nts-buscar').value = '';
-dropdown.classList.add('hidden');
-document.getElementById('exp-nts-buscar').focus();
-});
-dropdown.appendChild(item);
-});
-}
-
-const buscarInput = document.getElementById('exp-nts-buscar');
-buscarInput.addEventListener('input', function() {
-mostrarDropdown(this.value.trim());
-});
-buscarInput.addEventListener('focus', function() {
-if (this.value.trim()) mostrarDropdown(this.value.trim());
-});
-document.addEventListener('click', function(e) {
-const container = document.querySelector('#exp-nts-buscar').closest('.relative');
-if (!container.contains(e.target)) {
-document.getElementById('exp-nts-dropdown').classList.add('hidden');
-}
-});
-
 // --- Expediente State ---
 let expedientes = JSON.parse(localStorage.getItem('expedientes') || '[]');
+// Migrate old format (nts array -> nt, fechaRecep, estadoTramite, comentario)
+expedientes.forEach(function(e) {
+  if (e.nts && !e.nt) {
+    e.nt = e.nts[0] || '';
+    e.fechaRecep = e.fechaRecep || '';
+    e.estadoTramite = e.estadoTramite || 'Completo';
+    e.comentario = e.comentario || '';
+    delete e.nts;
+  }
+});
 let editExpedienteIndex = -1;
 
 function guardarExpedientes() {
@@ -1791,7 +1547,7 @@ const count = document.getElementById('expediente-count');
 var table = tbody.closest('.overflow-x-auto');
 tbody.innerHTML = '';
 if (!expedientes.length) {
-tbody.innerHTML = '<tr><td colspan="9" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">folder</span>No hay expedientes registrados</td></tr>';
+tbody.innerHTML = '<tr><td colspan="11" class="py-12 text-center text-text-secondary"><span class="material-symbols-outlined text-[40px] block mb-2 opacity-50">folder</span>No hay expedientes registrados</td></tr>';
 count.textContent = '0 registros';
 var oldPag = table.parentNode.querySelector('.pag-controls'); if (oldPag) oldPag.remove();
 return;
@@ -1806,14 +1562,19 @@ tr.onclick = function() { editarExpediente(i); };
 let califClass = 'bg-surface-container-high text-text-secondary';
 if (e.calificacion === 'Aprobado por excelencia') califClass = 'bg-success-bg text-success-text';
 else if (e.calificacion === 'Aprobado por Unanimidad') califClass = 'bg-primary-fixed text-primary';
+let tramiteClass = 'bg-surface-container-high text-text-secondary';
+if (e.estadoTramite === 'Completo') tramiteClass = 'bg-success-bg text-success-text';
+else if (e.estadoTramite === 'Observado') tramiteClass = 'bg-warning-bg text-warning-text';
 const gradoLabel = e.tipoGrado === 'Maestría' ? 'M.' : 'Doc.';
-tr.innerHTML = '<td class="py-4 px-4 font-medium text-primary">' + e.dni + '</td>' +
+tr.innerHTML = '<td class="py-4 px-4 font-medium text-primary">' + (e.nt || '—') + '</td>' +
+'<td class="py-4 px-4 text-sm">' + (e.fechaRecep || '—') + '</td>' +
+'<td class="py-4 px-4"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + tramiteClass + '">' + (e.estadoTramite || '—') + '</span></td>' +
+'<td class="py-4 px-4 font-medium text-primary">' + e.dni + '</td>' +
 '<td class="py-4 px-4">' + e.apellidosNombres + '</td>' +
 '<td class="py-4 px-4 text-sm">' + gradoLabel + ' ' + e.nombreGrado + '</td>' +
 '<td class="py-4 px-4 text-sm">' + (e.area || '—') + '</td>' +
 '<td class="py-4 px-4 text-sm">' + e.fechaSustentacion + '</td>' +
 '<td class="py-4 px-4"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + califClass + '">' + e.calificacion + '</span></td>' +
-'<td class="py-4 px-4 text-sm">' + (e.nts && e.nts.length ? e.nts.join(', ') : '—') + '</td>' +
 '<td class="py-4 px-4 text-sm">' + (e.estadoDatos === 'Correcto' ? '<span class="material-symbols-outlined text-success-text text-[18px]">check_circle</span>' : '<span class="text-xs text-warning-text font-medium">Observado</span>') + '</td>' +
 '<td class="py-4 px-4 text-right flex items-center justify-end gap-1">' +
 '<button class="glass-icon-btn" onclick="editarExpediente(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
@@ -1838,6 +1599,11 @@ deleteWithUndo(expedientes, index, guardarExpedientes, renderExpedientes, dni);
 function editarExpediente(index) {
 editExpedienteIndex = index;
 const e = expedientes[index];
+document.getElementById('exp-nt').value = e.nt || '';
+document.getElementById('exp-fecha-recep').value = e.fechaRecep || '';
+document.getElementById('exp-estado-tramite').value = e.estadoTramite || 'Completo';
+document.getElementById('exp-comentario-container').style.display = (e.estadoTramite || '') === 'Observado' ? 'flex' : 'none';
+document.getElementById('exp-comentario').value = e.comentario || '';
 document.getElementById('exp-dni').value = e.dni;
 document.getElementById('exp-nombres').value = e.apellidosNombres;
 document.getElementById('exp-tipo-grado').value = e.tipoGrado;
@@ -1851,21 +1617,17 @@ document.getElementById('exp-calificacion').value = e.calificacion;
 document.getElementById('exp-estado-datos').value = e.estadoDatos;
 document.getElementById('exp-obs-container').style.display = e.estadoDatos === 'Observado' ? 'flex' : 'none';
 document.getElementById('exp-obs-comentario').value = e.obsComentario || '';
-expNtsSeleccionados.clear();
-(e.nts || []).forEach(nt => expNtsSeleccionados.add(nt));
-renderNtsChips();
 document.getElementById('exp-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span> Actualizar Expediente';
 document.getElementById('exp-cancel-btn').classList.remove('hidden');
-document.getElementById('exp-dni').focus();
+document.getElementById('exp-nt').focus();
 showPage('expediente');
 }
 
 function cancelarEdicion() {
 editExpedienteIndex = -1;
 document.getElementById('form-expediente').reset();
+document.getElementById('exp-comentario-container').style.display = 'none';
 document.getElementById('exp-obs-container').style.display = 'none';
-expNtsSeleccionados.clear();
-renderNtsChips();
 document.getElementById('exp-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">assignment</span> Registrar Expediente';
 document.getElementById('exp-cancel-btn').classList.add('hidden');
 }
@@ -1876,6 +1638,10 @@ document.getElementById('exp-cancel-btn').addEventListener('click', cancelarEdic
 document.getElementById('form-expediente').addEventListener('submit', function(e) {
 e.preventDefault();
 var btn = document.getElementById('exp-submit-btn');
+const nt = document.getElementById('exp-nt').value.trim();
+const fechaRecep = document.getElementById('exp-fecha-recep').value;
+const estadoTramite = document.getElementById('exp-estado-tramite').value;
+const comentario = document.getElementById('exp-comentario').value.trim();
 const dni = document.getElementById('exp-dni').value.trim();
 const apellidosNombres = document.getElementById('exp-nombres').value.trim();
 const tipoGrado = document.getElementById('exp-tipo-grado').value;
@@ -1888,14 +1654,9 @@ const fechaSustentacion = document.getElementById('exp-fecha-sustentacion').valu
 const calificacion = document.getElementById('exp-calificacion').value;
 const estadoDatos = document.getElementById('exp-estado-datos').value;
 const obsComentario = document.getElementById('exp-obs-comentario').value.trim();
-const ntsSeleccionados = Array.from(expNtsSeleccionados);
-if (!dni || !apellidosNombres || !nombreGrado || !fechaMatricula || !fechaEgreso || !totalCreditos || !fechaSustentacion) return;
-if (ntsSeleccionados.length === 0) {
-showToast('Debe seleccionar al menos un NT asociado.', 'warning');
-return;
-}
+if (!nt || !fechaRecep || !dni || !apellidosNombres || !nombreGrado || !fechaMatricula || !fechaEgreso || !totalCreditos || !fechaSustentacion) return;
 setLoading(btn, true);
-const data = { dni, apellidosNombres, tipoGrado, nombreGrado, area, fechaMatricula, fechaEgreso, totalCreditos, fechaSustentacion, calificacion, estadoDatos, obsComentario: estadoDatos === 'Observado' ? obsComentario : '', nts: ntsSeleccionados };
+const data = { nt, fechaRecep, estadoTramite, comentario: estadoTramite === 'Observado' ? comentario : '', dni, apellidosNombres, tipoGrado, nombreGrado, area, fechaMatricula, fechaEgreso, totalCreditos, fechaSustentacion, calificacion, estadoDatos, obsComentario: estadoDatos === 'Observado' ? obsComentario : '' };
 if (editExpedienteIndex !== -1) {
 if (dni !== expedientes[editExpedienteIndex].dni && expedientes.some((ex, idx) => ex.dni === dni && idx !== editExpedienteIndex)) {
 showToast('El Código de estudiante ' + dni + ' ya pertenece a otro expediente.', 'error');
@@ -1912,23 +1673,19 @@ expedientes.push(data);
 }
 guardarExpedientes();
 renderExpedientes();
-expNtsSeleccionados.clear();
-renderNtsChips();
 cancelarEdicion();
-document.getElementById('exp-dni').focus();
+document.getElementById('exp-nt').focus();
 setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">assignment</span> Registrar Expediente');
+});
+
+// --- Mostrar/ocultar comentario de trámite según estado ---
+document.getElementById('exp-estado-tramite').addEventListener('change', function() {
+document.getElementById('exp-comentario-container').style.display = this.value === 'Observado' ? 'flex' : 'none';
 });
 
 // --- Mostrar/ocultar comentario de observación en Expediente ---
 document.getElementById('exp-estado-datos').addEventListener('change', function() {
 document.getElementById('exp-obs-container').style.display = this.value === 'Observado' ? 'flex' : 'none';
-});
-
-// --- Limpiar selección de NTs al mostrar página Expediente ---
-document.querySelector('[data-page="expediente"]').addEventListener('click', function() {
-setTimeout(function() {
-cancelarEdicion();
-}, 50);
 });
 
 // --- Seguimiento State ---
@@ -1944,7 +1701,6 @@ nuevos.push({ dni: s.dni, nombres: s.nombres, programa: s.programa || '', ntSa: 
 seguimientos = nuevos;
 guardarSeguimientos();
 }
-const segNtsSeleccionados = new Set();
 let editSegIndex = -1;
 
 function guardarSeguimientos() {
@@ -2117,82 +1873,6 @@ arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
 }
 });
 
-// --- NT search/chips for Seguimiento ---
-function segNtsDisponibles() {
-if (editSegIndex !== -1) {
-const editado = seguimientos[editSegIndex];
-const asignados = new Set();
-seguimientos.forEach((s, i) => { if (i !== editSegIndex) s.nts && s.nts.forEach(nt => asignados.add(nt)); });
-return solicitudes.filter(s => !asignados.has(s.nt) || s.nt === editado.nt);
-}
-const asignados = new Set();
-seguimientos.forEach(s => s.nts && s.nts.forEach(nt => asignados.add(nt)));
-return solicitudes.filter(s => !asignados.has(s.nt));
-}
-
-function renderSegNtsChips() {
-const container = document.getElementById('seg-nts-seleccionados');
-container.innerHTML = '';
-if (segNtsSeleccionados.size === 0) {
-container.innerHTML = '<span class="text-xs text-text-secondary">Ningún NT seleccionado</span>';
-return;
-}
-segNtsSeleccionados.forEach(nt => {
-const chip = document.createElement('span');
-chip.className = 'inline-flex items-center gap-1 px-2 py-0.5 bg-primary-fixed text-primary text-xs font-medium rounded-full';
-chip.innerHTML = 'NT ' + nt + '<button type="button" class="hover:text-primary-container" data-nt="' + nt + '"><span class="material-symbols-outlined text-[14px]">close</span></button>';
-chip.querySelector('button').addEventListener('click', function() {
-segNtsSeleccionados.delete(this.dataset.nt);
-renderSegNtsChips();
-});
-container.appendChild(chip);
-});
-}
-
-function mostrarSegDropdown(filtro) {
-const dropdown = document.getElementById('seg-nts-dropdown');
-const disponibles = segNtsDisponibles();
-const resultados = disponibles.filter(s => s.nt.includes(filtro) && !segNtsSeleccionados.has(s.nt));
-dropdown.innerHTML = '';
-if (resultados.length === 0 || filtro === '') {
-dropdown.classList.add('hidden');
-return;
-}
-dropdown.classList.remove('hidden');
-resultados.forEach(s => {
-const item = document.createElement('button');
-item.type = 'button';
-item.className = 'w-full text-left px-3 py-2 text-sm hover:bg-hover-state transition-colors flex justify-between items-center';
-item.innerHTML = '<span class="font-medium">NT ' + s.nt + '</span><span class="text-xs text-text-secondary">' + s.estado + '</span>';
-item.addEventListener('click', function() {
-segNtsSeleccionados.add(s.nt);
-renderSegNtsChips();
-document.getElementById('seg-nts-buscar').value = '';
-dropdown.classList.add('hidden');
-document.getElementById('seg-nts-buscar').focus();
-});
-dropdown.appendChild(item);
-});
-}
-
-document.getElementById('seg-nts-buscar').addEventListener('input', function() {
-mostrarSegDropdown(this.value.trim());
-});
-document.getElementById('seg-nts-buscar').addEventListener('focus', function() {
-if (this.value.trim()) mostrarSegDropdown(this.value.trim());
-});
-document.addEventListener('click', function(e) {
-const container = document.querySelector('#seg-nts-buscar')?.closest('.relative');
-if (container && !container.contains(e.target)) {
-document.getElementById('seg-nts-dropdown')?.classList.add('hidden');
-}
-});
-
-// --- Toggle observación en Seguimiento ---
-document.getElementById('seg-estado').addEventListener('change', function() {
-document.getElementById('seg-obs-container').style.display = this.value === 'Observado' ? 'flex' : 'none';
-});
-
 // --- Auto-completar al escribir Código de estudiante ---
 document.getElementById('seg-dni').addEventListener('input', function() {
 const dni = this.value.trim();
@@ -2202,15 +1882,12 @@ if (exp) {
 document.getElementById('seg-nombres').value = exp.apellidosNombres;
 document.getElementById('seg-tipo').value = exp.tipoGrado === 'Doctorado' ? 'Doctorado' : 'Maestría';
 document.getElementById('seg-nombre-programa').value = exp.nombreGrado || '';
-const asignados = new Set();
-seguimientos.forEach(s => s.nt && asignados.add(s.nt));
-segNtsSeleccionados.clear();
-(exp.nts || []).forEach(nt => { if (!asignados.has(nt)) segNtsSeleccionados.add(nt); });
-renderSegNtsChips();
+document.getElementById('seg-nt').value = exp.nt || '';
 } else {
 document.getElementById('seg-nombres').value = '';
 document.getElementById('seg-tipo').value = '';
 document.getElementById('seg-nombre-programa').value = '';
+document.getElementById('seg-nt').value = '';
 }
 });
 
@@ -2220,7 +1897,7 @@ e.preventDefault();
 var btn = document.getElementById('seg-submit-btn');
 const dni = document.getElementById('seg-dni').value.trim();
 const nombres = document.getElementById('seg-nombres').value.trim();
-const ntsSeleccionados = Array.from(segNtsSeleccionados);
+const nt = document.getElementById('seg-nt').value.trim();
 const fechaEntrega = document.getElementById('seg-fecha-entrega').value;
 const oficio = document.getElementById('seg-oficio').value.trim();
 const fechaRecepcion = document.getElementById('seg-fecha-recepcion').value;
@@ -2228,8 +1905,8 @@ const resolucion = document.getElementById('seg-resolucion').value.trim();
 const estado = document.getElementById('seg-estado').value;
 const observacion = document.getElementById('seg-obs-comentario').value.trim();
 if (!dni || !nombres) return;
-if (ntsSeleccionados.length === 0) {
-showToast('Debe seleccionar al menos un NT.', 'warning');
+if (!nt) {
+showToast('Debe ingresar un NT válido.', 'warning');
 return;
 }
 setLoading(btn, true);
@@ -2242,7 +1919,7 @@ seguimientos[editSegIndex].dni = dni;
 seguimientos[editSegIndex].nombres = nombres;
 seguimientos[editSegIndex].programa = programa;
 seguimientos[editSegIndex].ntSa = ntSa;
-seguimientos[editSegIndex].nt = ntsSeleccionados[0];
+seguimientos[editSegIndex].nt = nt;
 seguimientos[editSegIndex].fechaEntrega = fechaEntrega;
 seguimientos[editSegIndex].oficio = oficio;
 seguimientos[editSegIndex].fechaRecepcion = fechaRecepcion;
@@ -2251,14 +1928,10 @@ seguimientos[editSegIndex].estado = estado;
 seguimientos[editSegIndex].observacion = estado === 'Observado' ? observacion : '';
 editSegIndex = -1;
 } else {
-ntsSeleccionados.forEach(nt => {
 seguimientos.push({ dni, nombres, programa, ntSa, nt, fechaEntrega, oficio, fechaRecepcion, resolucion, estado, observacion: estado === 'Observado' ? observacion : '' });
-});
 }
 guardarSeguimientos();
 renderSeguimientos();
-segNtsSeleccionados.clear();
-renderSegNtsChips();
 cancelarEdicionSeg();
 document.getElementById('seg-dni').focus();
 setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">add</span> Registrar Seguimiento');
@@ -2269,6 +1942,7 @@ editSegIndex = index;
 const s = seguimientos[index];
 document.getElementById('seg-dni').value = s.dni;
 document.getElementById('seg-nombres').value = s.nombres;
+document.getElementById('seg-nt').value = s.nt || '';
 const prog = s.programa || '';
 const idxEn = prog.indexOf(' en ');
 if (idxEn > 0) {
@@ -2278,9 +1952,6 @@ document.getElementById('seg-nombre-programa').value = prog.substring(idxEn + 4)
 document.getElementById('seg-tipo').value = '';
 document.getElementById('seg-nombre-programa').value = prog;
 }
-segNtsSeleccionados.clear();
-segNtsSeleccionados.add(s.nt);
-renderSegNtsChips();
 document.getElementById('seg-fecha-entrega').value = s.fechaEntrega || '';
 document.getElementById('seg-nt-sa').value = s.ntSa || '';
 document.getElementById('seg-oficio').value = s.oficio || '';
@@ -2305,8 +1976,6 @@ document.getElementById('form-seguimiento').reset();
 document.getElementById('seg-tipo').value = '';
 document.getElementById('seg-nombre-programa').value = '';
 document.getElementById('seg-obs-container').style.display = 'none';
-segNtsSeleccionados.clear();
-renderSegNtsChips();
 document.getElementById('seg-submit-btn').innerHTML = '<span class="material-symbols-outlined text-[18px]">add</span> Registrar Seguimiento';
 document.getElementById('seg-cancel-btn').classList.add('hidden');
 }
@@ -2816,7 +2485,6 @@ if (e.target === this) this.classList.add('hidden');
 // --- Reporte ---
 function renderReporte() {
 // KPIs
-document.getElementById('kpi-solicitudes').textContent = solicitudes.length;
 document.getElementById('kpi-expedientes').textContent = expedientes.length;
 document.getElementById('kpi-seguimientos').textContent = seguimientos.length;
 document.getElementById('kpi-envios').textContent = enviosDireccion.length;
@@ -2935,11 +2603,6 @@ if ((e.dni && e.dni.toLowerCase().includes(q)) || (e.apellidosNombres && e.apell
 results.push({ tipo: 'Expediente', label: e.dni + ' - ' + (e.apellidosNombres||e.nombres||''), page: 'expediente' });
 }
 });
-solicitudes.forEach(function(s) {
-if ((s.nt && s.nt.toString().includes(q)) || (s.estudiante && s.estudiante.toLowerCase().includes(q)) || (s.programa && s.programa.toLowerCase().includes(q))) {
-results.push({ tipo: 'Solicitud', label: 'NT ' + s.nt + ' - ' + (s.estudiante||''), page: 'solicitud' });
-}
-});
 seguimientos.forEach(function(seg) {
 if ((seg.dni && seg.dni.toLowerCase().includes(q)) || (seg.nombres && seg.nombres.toLowerCase().includes(q)) || (seg.resolucion && seg.resolucion.toLowerCase().includes(q))) {
 results.push({ tipo: 'Seguimiento SA', label: seg.dni + ' - ' + (seg.nombres||'') + ' (Res. ' + seg.resolucion + ')', page: 'seguimiento-sa-envios' });
@@ -2985,7 +2648,6 @@ if (!input.parentNode.contains(e.target)) { dropdown.classList.add('hidden'); }
 // --- Export / Import ---
 function exportJSON() {
 var data = {
-solicitudes: solicitudes,
 expedientes: expedientes,
 seguimientos: seguimientos,
 enviosDireccion: enviosDireccion,
@@ -3006,7 +2668,6 @@ var reader = new FileReader();
 reader.onload = function(e) {
 try {
 var data = JSON.parse(e.target.result);
-if (data.solicitudes) { solicitudes.length = 0; solicitudes.push.apply(solicitudes, data.solicitudes); localStorage.setItem('solicitudes', JSON.stringify(solicitudes)); }
 if (data.expedientes) { expedientes.length = 0; expedientes.push.apply(expedientes, data.expedientes); localStorage.setItem('expedientes', JSON.stringify(expedientes)); }
 if (data.seguimientos) { seguimientos.length = 0; seguimientos.push.apply(seguimientos, data.seguimientos); localStorage.setItem('seguimientos', JSON.stringify(seguimientos)); }
 if (data.enviosDireccion) { enviosDireccion.length = 0; enviosDireccion.push.apply(enviosDireccion, data.enviosDireccion); localStorage.setItem('enviosDireccion', JSON.stringify(enviosDireccion)); }
@@ -3032,7 +2693,6 @@ if (ocModal && !ocModal.classList.contains('hidden')) ocModal.classList.add('hid
 
 // --- Init ---
 try {
-renderSolicitudes();
 renderExpedientes();
 renderSeguimientos();
 renderEnviosDireccion();
@@ -3043,13 +2703,11 @@ renderReporte();
 
 initSearch();
 
-makeSortable('tabla-solicitudes', solicitudes, renderSolicitudes);
 makeSortable('tabla-expedientes', expedientes, renderExpedientes);
 makeSortable('tabla-seguimiento', seguimientos, renderSeguimientos);
 makeSortable('tabla-envios-direccion', enviosDireccion, renderEnviosDireccion);
 // Add filter inputs to each table section
 var _filterRenderMap = {
-'tabla-solicitudes': renderSolicitudes,
 'tabla-expedientes': renderExpedientes,
 'tabla-seguimiento': renderSeguimientos,
 'tabla-envios-direccion': renderEnviosDireccion,
@@ -3069,16 +2727,16 @@ container.insertBefore(div, table);
 document.getElementById(inputId).addEventListener('input', function() {
 var q = this.value.trim().toLowerCase();
 var dataKey = tableId.replace('tabla-','');
-var arr = dataKey === 'solicitudes' ? solicitudes : dataKey === 'expedientes' ? expedientes : dataKey === 'seguimiento' ? seguimientos : dataKey === 'envios-direccion' ? enviosDireccion : ocraccRegistros;
+var arr = dataKey === 'expedientes' ? expedientes : dataKey === 'seguimiento' ? seguimientos : dataKey === 'envios-direccion' ? enviosDireccion : ocraccRegistros;
 arr._filter = q;
 arr._filterFields = fields;
-var ps = pagState[tableId.replace('tabla-','sols').replace('tabla-','exps').replace('tabla-','segs').replace('tabla-','eds').replace('tabla-','ocs')];
+var keyMap = { 'tabla-expedientes': 'exps', 'tabla-seguimiento': 'segs', 'tabla-envios-direccion': 'eds', 'tabla-ocracc': 'ocs' };
+var ps = pagState[keyMap[tableId]];
 if (ps) ps.page = 1;
-(_filterRenderMap[tableId] || renderSolicitudes)();
+(_filterRenderMap[tableId] || renderExpedientes)();
 });
 }
 
-addFilterInput('tabla-solicitudes', 'Filtrar por NT, fecha, estado...', ['nt','fecha','estado','comentario']);
 addFilterInput('tabla-expedientes', 'Filtrar por código, nombre, grado...', ['dni','apellidosNombres','tipoGrado','area','calificacion']);
 addFilterInput('tabla-seguimiento', 'Filtrar por código, NT, nombre...', ['dni','nt','nombres','programa','estado']);
 addFilterInput('tabla-envios-direccion', 'Filtrar por NT OGT, oficio, estado...', ['ntOgt','oficio','resolucion','estado']);
@@ -3094,7 +2752,6 @@ arr.forEach(function(item) {
 fields.forEach(function(f) { rows.push([name, f, item[f] || '']); });
 });
 }
-addSection('Solicitudes', solicitudes, ['nt','estudiante','grado','programa']);
 addSection('Expedientes', expedientes, ['dni','apellidosNombres','area','tipoGrado','nombreGrado']);
 addSection('Seguimientos SA', seguimientos, ['dni','nombres','nt','resolucion','estado']);
 addSection('Envios Direccion', enviosDireccion, ['resolucion','oficio','estado']);
