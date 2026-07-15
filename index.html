@@ -485,7 +485,7 @@ body {
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
-<input id="exp-fecha-recep" type="date" class="glass-input text-sm" required>
+<input id="exp-fecha-recep" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado del Trámite</label>
@@ -531,11 +531,11 @@ body {
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Matrícula</label>
-<input id="exp-fecha-matricula" type="date" class="glass-input text-sm" required>
+<input id="exp-fecha-matricula" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Egreso</label>
-<input id="exp-fecha-egreso" type="date" class="glass-input text-sm" required>
+<input id="exp-fecha-egreso" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Total de Créditos</label>
@@ -543,7 +543,7 @@ body {
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Sustentación</label>
-<input id="exp-fecha-sustentacion" type="date" class="glass-input text-sm" required>
+<input id="exp-fecha-sustentacion" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Calificación Sustentación</label>
@@ -662,7 +662,7 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Entrega Sec. Académica</label>
-<input id="seg-fecha-entrega" type="date" class="glass-input text-sm">
+<input id="seg-fecha-entrega" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Número de Oficio</label>
@@ -670,7 +670,7 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
-<input id="seg-fecha-recepcion" type="date" class="glass-input text-sm">
+<input id="seg-fecha-recepcion" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Nombre Resolución Directoral</label>
@@ -770,11 +770,11 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a Dirección</label>
-<input id="ed-fecha-envio" type="date" class="glass-input text-sm">
+<input id="ed-fecha-envio" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Recepción del Oficio</label>
-<input id="ed-fecha-recepcion" type="date" class="glass-input text-sm">
+<input id="ed-fecha-recepcion" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
@@ -786,7 +786,7 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5" id="ed-fecha-sg-container" style="display:none">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a SG-OGT</label>
-<input id="ed-fecha-sg" type="date" class="glass-input text-sm">
+<input id="ed-fecha-sg" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}">
 </div>
 <div class="flex items-end gap-3 md:col-span-2 lg:col-span-3">
 <button type="submit" class="glass-btn glass-btn-primary">
@@ -854,11 +854,11 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío de Solicitud</label>
-<input id="oc-fecha-envio" type="date" class="glass-input text-sm" required>
+<input id="oc-fecha-envio" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}" required>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Recepción Certificados</label>
-<input id="oc-fecha-recepcion" type="date" class="glass-input text-sm">
+<input id="oc-fecha-recepcion" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="AAAA-MM-DD" pattern="\d{4}-\d{2}-\d{2}">
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
@@ -1342,11 +1342,17 @@ updateSidebarUser(session.user.email);
 }
 
 // --- Date Validations ---
-document.querySelectorAll('input[type="date"]').forEach(function(el) {
+document.querySelectorAll('input[type="text"][pattern*="\\d{4}"]').forEach(function(el) {
+el.addEventListener('input', function() {
+var v = this.value.replace(/\D/g, '');
+if (v.length > 4 && v.length <= 6) v = v.slice(0,4) + '-' + v.slice(4);
+if (v.length > 7) v = v.slice(0,7) + '-' + v.slice(7,9);
+this.value = v;
+});
 el.addEventListener('change', function() {
 var form = this.closest('form');
 if (!form) return;
-var dates = form.querySelectorAll('input[type="date"]');
+var dates = form.querySelectorAll('input[type="text"][pattern*="\\d{4}"]');
 var vals = [];
 dates.forEach(function(d) { if (d.value) vals.push({ el: d, val: d.value }); });
 for (var i = 0; i < vals.length; i++) {
