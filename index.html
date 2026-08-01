@@ -1303,12 +1303,22 @@ var pagState = {};
 function paginate(tableId, arr, pageSize) {
 var q = arr._filter;
 var fields = arr._filterFields;
+var year = arr._filterYear;
+var dateFields = arr._filterDateFields;
 var filtered = arr;
 if (q && fields && fields.length) {
 filtered = arr.filter(function(item) {
 return fields.some(function(f) {
 var val = item[f];
 return val && val.toString().toLowerCase().indexOf(q) !== -1;
+});
+});
+}
+if (year && dateFields && dateFields.length) {
+filtered = filtered.filter(function(item) {
+return dateFields.some(function(f) {
+var d = parseFecha(item[f]);
+return d && d.getFullYear().toString() === year;
 });
 });
 }
@@ -2904,34 +2914,53 @@ var _filterRenderMap = {
 'tabla-envios-direccion': renderEnviosDireccion,
 'tabla-ocracc': renderOcracc
 };
-function addFilterInput(tableId, placeholder, fields) {
+function addFilterInput(tableId, placeholder, fields, dateFields) {
 var table = document.getElementById(tableId);
 if (!table) return;
 var container = table.closest('.overflow-x-auto') || table.parentNode;
 var existing = container.querySelector('.table-filter');
 if (existing) existing.remove();
-var div = document.createElement('div');
-div.className = 'table-filter px-4 py-2 border-b border-border-subtle bg-surface-bg/30';
-var inputId = 'filter-' + tableId;
-div.innerHTML = '<input id="' + inputId + '" type="text" placeholder="' + placeholder + '" class="glass-input text-sm w-full max-w-xs px-3 py-1.5">';
-container.insertBefore(div, table);
-document.getElementById(inputId).addEventListener('input', function() {
-var q = this.value.trim().toLowerCase();
 var dataKey = tableId.replace('tabla-','');
 var arr = dataKey === 'expedientes' ? expedientes : dataKey === 'seguimiento' ? seguimientos : dataKey === 'envios-direccion' ? enviosDireccion : ocraccRegistros;
-arr._filter = q;
-arr._filterFields = fields;
+var div = document.createElement('div');
+div.className = 'table-filter px-4 py-2 border-b border-border-subtle bg-surface-bg/30 flex flex-wrap items-center gap-2';
+var inputId = 'filter-' + tableId;
+var yearId = 'year-' + tableId;
+var years = new Set();
+(arr||[]).forEach(function(item) {
+(dateFields||[]).forEach(function(f) {
+var d = parseFecha(item[f]);
+if (d) years.add(d.getFullYear().toString());
+});
+});
+var yearOptions = Array.from(years).sort().reverse();
+var yearHtml = '<option value="">Todos los años</option>';
+yearOptions.forEach(function(y) { yearHtml += '<option value="' + y + '">' + y + '</option>'; });
+div.innerHTML = '<input id="' + inputId + '" type="text" placeholder="' + placeholder + '" class="glass-input text-sm w-full max-w-xs px-3 py-1.5">' +
+'<label class="flex items-center gap-1.5 text-xs font-semibold text-text-secondary"><span class="material-symbols-outlined text-[16px]">calendar_month</span><select id="' + yearId + '" class="glass-input text-sm px-3 py-1.5 w-auto">' + yearHtml + '</select></label>';
+container.insertBefore(div, table);
 var keyMap = { 'tabla-expedientes': 'exps', 'tabla-seguimiento': 'segs', 'tabla-envios-direccion': 'eds', 'tabla-ocracc': 'ocs' };
+function rerender() {
 var ps = pagState[keyMap[tableId]];
 if (ps) ps.page = 1;
 (_filterRenderMap[tableId] || renderExpedientes)();
+}
+document.getElementById(inputId).addEventListener('input', function() {
+arr._filter = this.value.trim().toLowerCase();
+arr._filterFields = fields;
+rerender();
+});
+document.getElementById(yearId).addEventListener('change', function() {
+arr._filterYear = this.value;
+arr._filterDateFields = dateFields;
+rerender();
 });
 }
 
-addFilterInput('tabla-expedientes', 'Filtrar por código, nombre, grado...', ['dni','apellidosNombres','tipoGrado','area','calificacion']);
-addFilterInput('tabla-seguimiento', 'Filtrar por código, NT, nombre...', ['dni','nt','nombres','programa','estado']);
-addFilterInput('tabla-envios-direccion', 'Filtrar por NT OGT, oficio, estado...', ['ntOgt','oficio','resolucion','estado']);
-addFilterInput('tabla-ocracc', 'Filtrar por oficio, NT, estado...', ['oficio','nt','estado']);
+addFilterInput('tabla-expedientes', 'Filtrar por código, nombre, grado...', ['dni','apellidosNombres','tipoGrado','area','calificacion'], ['fechaSustentacion','fechaRecep','fechaMatricula','fechaEgreso']);
+addFilterInput('tabla-seguimiento', 'Filtrar por código, NT, nombre...', ['dni','nt','nombres','programa','estado'], ['fechaEntrega','fechaRecepcion']);
+addFilterInput('tabla-envios-direccion', 'Filtrar por NT OGT, oficio, estado...', ['ntOgt','oficio','resolucion','estado'], ['fechaEnvio','fechaRecepcion','fechaSg']);
+addFilterInput('tabla-ocracc', 'Filtrar por oficio, NT, estado...', ['oficio','nt','estado'], ['fechaEnvio','fechaRecepcion']);
 
 makeSortable('tabla-ocracc', ocraccRegistros, renderOcracc);
 
