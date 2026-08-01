@@ -1432,18 +1432,25 @@ _dpEl = document.createElement('div');
 _dpEl.className = 'fixed z-[9999] hidden glass-card p-3 w-[260px] shadow-xl';
 _dpEl.innerHTML =
 '<div class="flex items-center justify-between mb-2">' +
+'<div class="flex items-center gap-0.5">' +
+'<button type="button" class="dp-nav w-7 h-7 flex items-center justify-center rounded hover:bg-hover-state text-primary" title="Año anterior"><span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_left</span></button>' +
 '<button type="button" class="dp-nav w-7 h-7 flex items-center justify-center rounded hover:bg-hover-state text-primary" title="Mes anterior"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>' +
+'</div>' +
 '<span class="dp-label text-sm font-semibold text-primary"></span>' +
+'<div class="flex items-center gap-0.5">' +
 '<button type="button" class="dp-nav w-7 h-7 flex items-center justify-center rounded hover:bg-hover-state text-primary" title="Mes siguiente"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>' +
+'<button type="button" class="dp-nav w-7 h-7 flex items-center justify-center rounded hover:bg-hover-state text-primary" title="Año siguiente"><span class="material-symbols-outlined text-[18px]">keyboard_double_arrow_right</span></button>' +
+'</div>' +
 '</div>' +
 '<div class="grid grid-cols-7 text-center mb-1">' + _DIAS_SEMANA.map(function(d) { return '<span class="text-[11px] font-semibold text-text-secondary py-1">' + d + '</span>'; }).join('') + '</div>' +
 '<div class="grid grid-cols-7 text-center gap-y-0.5 dp-days"></div>';
 _dpEl.querySelectorAll('.dp-nav').forEach(function(btn, idx) {
 btn.addEventListener('click', function(e) {
 e.stopPropagation();
-if (idx === 0) _dpMonth--; else _dpMonth++;
-if (_dpMonth < 0) { _dpMonth = 11; _dpYear--; }
-if (_dpMonth > 11) { _dpMonth = 0; _dpYear++; }
+if (idx === 0) _dpYear--;
+else if (idx === 1) { _dpMonth--; if (_dpMonth < 0) { _dpMonth = 11; _dpYear--; } }
+else if (idx === 2) { _dpMonth++; if (_dpMonth > 11) { _dpMonth = 0; _dpYear++; } }
+else _dpYear++;
 datePickerRender();
 });
 });
