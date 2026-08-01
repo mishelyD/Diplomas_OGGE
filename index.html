@@ -485,7 +485,10 @@ body {
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
-<input id="exp-fecha-recep" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}" required>
+<div class="relative">
+<input id="exp-fecha-recep" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-recep" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado del Trámite</label>
@@ -531,11 +534,17 @@ body {
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Matrícula</label>
-<input id="exp-fecha-matricula" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}" required>
+<div class="relative">
+<input id="exp-fecha-matricula" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-matricula" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Egreso</label>
-<input id="exp-fecha-egreso" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}" required>
+<div class="relative">
+<input id="exp-fecha-egreso" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-egreso" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Total de Créditos</label>
@@ -543,7 +552,10 @@ body {
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Sustentación</label>
-<input id="exp-fecha-sustentacion" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}" required>
+<div class="relative">
+<input id="exp-fecha-sustentacion" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-sustentacion" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Calificación Sustentación</label>
@@ -665,7 +677,10 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Entrega Sec. Académica</label>
-<input id="seg-fecha-entrega" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}">
+<div class="relative">
+<input id="seg-fecha-entrega" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}">
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="seg-fecha-entrega" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Número de Oficio</label>
@@ -673,7 +688,10 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
-<input id="seg-fecha-recepcion" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}">
+<div class="relative">
+<input id="seg-fecha-recepcion" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}">
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="seg-fecha-recepcion" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Nombre Resolución Directoral</label>
@@ -776,11 +794,17 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a Dirección</label>
-<input id="ed-fecha-envio" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}">
+<div class="relative">
+<input id="ed-fecha-envio" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}">
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="ed-fecha-envio" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Recepción del Oficio</label>
-<input id="ed-fecha-recepcion" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}">
+<div class="relative">
+<input id="ed-fecha-recepcion" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}">
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="ed-fecha-recepcion" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
@@ -792,7 +816,10 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5" id="ed-fecha-sg-container" style="display:none">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a SG-OGT</label>
-<input id="ed-fecha-sg" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}">
+<div class="relative">
+<input id="ed-fecha-sg" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}">
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="ed-fecha-sg" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex items-end gap-3 md:col-span-2 lg:col-span-3">
 <button type="submit" class="glass-btn glass-btn-primary">
@@ -863,11 +890,17 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío de Solicitud</label>
-<input id="oc-fecha-envio" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}" required>
+<div class="relative">
+<input id="oc-fecha-envio" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="oc-fecha-envio" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Recepción Certificados</label>
-<input id="oc-fecha-recepcion" type="text" inputmode="numeric" class="glass-input text-sm" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}">
+<div class="relative">
+<input id="oc-fecha-recepcion" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}">
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="oc-fecha-recepcion" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado</label>
@@ -1353,6 +1386,127 @@ updateSidebarUser(session.user.email);
 });
 }
 
+// --- Date Helpers ---
+function parseFecha(str) {
+if (!str) return null;
+var m = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+if (m) { var d = new Date(+m[3], +m[2]-1, +m[1]); return isNaN(d) ? null : d; }
+var m2 = str.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+if (m2) { var d2 = new Date(+m2[1], +m2[2]-1, +m2[3]); return isNaN(d2) ? null : d2; }
+var d3 = new Date(str);
+return isNaN(d3) ? null : d3;
+}
+function formatFechaDDMMAAAA(d) {
+return ('0'+d.getDate()).slice(-2) + '/' + ('0'+(d.getMonth()+1)).slice(-2) + '/' + d.getFullYear();
+}
+function normalizarFechas() {
+[expedientes, seguimientos, enviosDireccion, ocraccRegistros, notas].forEach(function(arr) {
+(arr||[]).forEach(function(item) {
+for (var k in item) {
+if (typeof item[k] === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(item[k])) {
+item[k] = item[k].slice(8,10) + '/' + item[k].slice(5,7) + '/' + item[k].slice(0,4);
+}
+}
+});
+});
+}
+
+// --- Mini Calendar (Date Picker) ---
+var _MESES_CORTOS = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+var _DIAS_SEMANA = ['Lu','Ma','Mi','Ju','Vi','Sa','Do'];
+var _dpEl = null, _dpTarget = null, _dpMonth = 0, _dpYear = 0;
+
+function datePickerInit() {
+if (_dpEl) return;
+_dpEl = document.createElement('div');
+_dpEl.className = 'fixed z-[9999] hidden glass-card p-3 w-[260px] shadow-xl';
+_dpEl.innerHTML =
+'<div class="flex items-center justify-between mb-2">' +
+'<button type="button" class="dp-nav w-7 h-7 flex items-center justify-center rounded hover:bg-hover-state text-primary" title="Mes anterior"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>' +
+'<span class="dp-label text-sm font-semibold text-primary"></span>' +
+'<button type="button" class="dp-nav w-7 h-7 flex items-center justify-center rounded hover:bg-hover-state text-primary" title="Mes siguiente"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>' +
+'</div>' +
+'<div class="grid grid-cols-7 text-center mb-1">' + _DIAS_SEMANA.map(function(d) { return '<span class="text-[11px] font-semibold text-text-secondary py-1">' + d + '</span>'; }).join('') + '</div>' +
+'<div class="grid grid-cols-7 text-center gap-y-0.5 dp-days"></div>';
+_dpEl.querySelectorAll('.dp-nav').forEach(function(btn, idx) {
+btn.addEventListener('click', function(e) {
+e.stopPropagation();
+if (idx === 0) _dpMonth--; else _dpMonth++;
+if (_dpMonth < 0) { _dpMonth = 11; _dpYear--; }
+if (_dpMonth > 11) { _dpMonth = 0; _dpYear++; }
+datePickerRender();
+});
+});
+document.body.appendChild(_dpEl);
+}
+
+function datePickerRender() {
+_dpEl.querySelector('.dp-label').textContent = _MESES_CORTOS[_dpMonth] + ' ' + _dpYear;
+var grid = _dpEl.querySelector('.dp-days');
+grid.innerHTML = '';
+var first = new Date(_dpYear, _dpMonth, 1);
+var offset = (first.getDay() + 6) % 7;
+var daysInMonth = new Date(_dpYear, _dpMonth + 1, 0).getDate();
+var today = new Date();
+var todayStr = formatFechaDDMMAAAA(today);
+for (var i = 0; i < offset; i++) grid.appendChild(document.createElement('span'));
+for (var d = 1; d <= daysInMonth; d++) {
+(function(dayStr) {
+var cell = document.createElement('button');
+cell.type = 'button';
+cell.className = 'h-8 rounded text-sm hover:bg-primary-fixed hover:text-primary transition-colors';
+if (dayStr === todayStr) cell.className += ' font-bold text-primary underline underline-offset-2';
+cell.textContent = dayStr.slice(0,2).replace(/^0/,'');
+cell.addEventListener('click', function() {
+if (_dpTarget) {
+_dpTarget.value = dayStr;
+_dpTarget.dispatchEvent(new Event('change', { bubbles: true }));
+}
+datePickerClose();
+});
+grid.appendChild(cell);
+})(('0'+d).slice(-2) + '/' + ('0'+( _dpMonth+1)).slice(-2) + '/' + _dpYear);
+}
+}
+
+function datePickerOpen(input) {
+datePickerInit();
+var current = parseFecha(input.value);
+_dpTarget = input;
+if (current) { _dpYear = current.getFullYear(); _dpMonth = current.getMonth(); }
+else { var n = new Date(); _dpYear = n.getFullYear(); _dpMonth = n.getMonth(); }
+datePickerRender();
+var rect = input.getBoundingClientRect();
+var w = 260, h = 310;
+var left = Math.max(4, Math.min(rect.left, window.innerWidth - w - 8));
+var top = rect.bottom + 6;
+if (top + h > window.innerHeight) top = Math.max(4, rect.top - h - 6);
+_dpEl.style.left = left + 'px';
+_dpEl.style.top = top + 'px';
+_dpEl.classList.remove('hidden');
+}
+
+function datePickerClose() {
+if (_dpEl) _dpEl.classList.add('hidden');
+_dpTarget = null;
+}
+
+document.addEventListener('click', function(e) {
+if (_dpEl && !_dpEl.classList.contains('hidden') && !_dpEl.contains(e.target) && !e.target.closest('.datepicker-btn')) {
+datePickerClose();
+}
+});
+
+document.querySelectorAll('.datepicker-btn').forEach(function(btn) {
+btn.addEventListener('click', function(e) {
+e.stopPropagation();
+var input = document.getElementById(btn.dataset.target);
+if (!input) return;
+if (_dpEl && !_dpEl.classList.contains('hidden') && _dpTarget === input) datePickerClose();
+else datePickerOpen(input);
+});
+});
+
 // --- Date Validations ---
 document.querySelectorAll('input[type="text"][inputmode="numeric"]').forEach(function(el) {
 el.addEventListener('input', function() {
@@ -1362,6 +1516,8 @@ if (v.length > 5) v = v.slice(0,5) + '/' + v.slice(5,9);
 this.value = v;
 });
 el.addEventListener('change', function() {
+var mv = this.value.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+if (mv) this.value = ('0'+mv[1]).slice(-2) + '/' + ('0'+mv[2]).slice(-2) + '/' + mv[3];
 var form = this.closest('form');
 if (!form) return;
 var dates = form.querySelectorAll('input[type="text"][inputmode="numeric"]');
@@ -1369,7 +1525,8 @@ var vals = [];
 dates.forEach(function(d) { if (d.value) vals.push({ el: d, val: d.value }); });
 for (var i = 0; i < vals.length; i++) {
 for (var j = i + 1; j < vals.length; j++) {
-if (vals[i].val > vals[j].val) {
+var a = parseFecha(vals[i].val), b = parseFecha(vals[j].val);
+if (a && b && a > b) {
 vals[j].el.setCustomValidity('Debe ser posterior o igual a ' + vals[i].el.value);
 vals[j].el.reportValidity();
 return;
@@ -1412,6 +1569,7 @@ seguimientos.length = 0; (data.seguimientos||[]).forEach(function(r) { seguimien
 enviosDireccion.length = 0; (data.envios_direccion||[]).forEach(function(r) { enviosDireccion.push(r); });
 ocraccRegistros.length = 0; (data.ocracc_registros||[]).forEach(function(r) { ocraccRegistros.push(r); });
 notas.length = 0; (data.notas||[]).forEach(function(r) { notas.push(r); });
+normalizarFechas();
 localSaveAll();
 }
 } catch(e) { console.warn('Supabase load error', e); }
@@ -2323,7 +2481,7 @@ var i = ocraccRegistros.indexOf(r);
 const tr = document.createElement('tr');
 tr.className = 'hover:bg-hover-state transition-colors group cursor-pointer';
 tr.onclick = function() { editarOcracc(i); };
-const fechaEnvio = new Date(r.fechaEnvio + 'T00:00:00');
+const fechaEnvio = parseFecha(r.fechaEnvio) || new Date();
 const diasTrans = Math.floor((now - fechaEnvio) / (1000 * 60 * 60 * 24));
 const alerta = parseInt(r.alerta) || 30;
 let claseDias = 'text-success-text';
@@ -2529,7 +2687,7 @@ if (alertas) {
 var now = new Date();
 var alertasList = ocraccRegistros.filter(function(r) {
 if (r.estado === 'CERTIFICADOS RECEPCIONADOS' || !r.fechaEnvio) return false;
-var dias = Math.floor((now - new Date(r.fechaEnvio + 'T00:00:00')) / (1000*60*60*24));
+var dias = Math.floor((now - (parseFecha(r.fechaEnvio) || now)) / (1000*60*60*24));
 return dias > (parseInt(r.alerta) || 30);
 });
 if (alertasList.length) {
@@ -2559,7 +2717,7 @@ var granTotal = 0;
 
 enviosDireccion.forEach(function(env) {
 if (env.estado !== 'Enviado a SG-OGT' || !env.fechaSg) return;
-const mesIdx = new Date(env.fechaSg + 'T00:00:00').getMonth();
+const mesIdx = (parseFecha(env.fechaSg) || new Date()).getMonth();
 var dnisEnResolucion = new Set();
 seguimientos.forEach(function(seg) {
 if (seg.resolucion === env.resolucion && seg.dni) {
@@ -2725,6 +2883,7 @@ if (ocModal && !ocModal.classList.contains('hidden')) ocModal.classList.add('hid
 
 // --- Init ---
 try {
+normalizarFechas();
 renderExpedientes();
 renderSeguimientos();
 renderEnviosDireccion();
