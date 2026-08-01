@@ -484,13 +484,6 @@ body {
 <input id="exp-nt" type="text" class="glass-input text-sm" placeholder="Ej: 456778" required>
 </div>
 <div class="flex flex-col gap-1.5">
-<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
-<div class="relative">
-<input id="exp-fecha-recep" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
-<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-recep" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
-</div>
-</div>
-<div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado del Trámite</label>
 <select id="exp-estado-tramite" class="glass-input text-sm">
 <option value="Completo">Completo</option>
@@ -555,6 +548,13 @@ body {
 <div class="relative">
 <input id="exp-fecha-sustentacion" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
 <button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-sustentacion" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
+<div class="relative">
+<input id="exp-fecha-recep" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-recep" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
 </div>
 </div>
 <div class="flex flex-col gap-1.5">
@@ -738,7 +738,7 @@ Cancelar
 <tr class="border-b border-border-subtle bg-surface-bg/80 backdrop-blur-sm">
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider">Código de estudiante</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="nt">NT</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="apellidosNombres">Apellidos y Nombres</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="nombres">Apellidos y Nombres</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="programa">Programa</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="ntSa">NT SA</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaEntrega">Fecha Entrega Sec. Acad.</th>
@@ -858,7 +858,7 @@ Cancelar
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="resolucion">Resolución</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaEnvio">Fecha Envío</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaRecepcion">Fecha Recepción</th>
-<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaEnvioSg">Fecha Envío SG-OGT</th>
+<th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="fechaSg">Fecha Envío SG-OGT</th>
 <th class="font-label-caps text-label-caps text-text-secondary py-3 px-3 uppercase tracking-wider" data-sort-key="estado">Estado</th>
 <th class="py-3 px-3"></th>
 </tr>
@@ -1537,7 +1537,16 @@ this.value = v;
 });
 el.addEventListener('change', function() {
 var mv = this.value.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
-if (mv) this.value = ('0'+mv[1]).slice(-2) + '/' + ('0'+mv[2]).slice(-2) + '/' + mv[3];
+if (mv) {
+var dd = +mv[1], mm = +mv[2], yy = +mv[3];
+var chk = new Date(yy, mm - 1, dd);
+if (chk.getFullYear() !== yy || chk.getMonth() !== mm - 1 || chk.getDate() !== dd) {
+this.setCustomValidity('Fecha no válida');
+this.reportValidity();
+return;
+}
+this.value = ('0'+dd).slice(-2) + '/' + ('0'+mm).slice(-2) + '/' + yy;
+}
 var form = this.closest('form');
 if (!form) return;
 var dates = form.querySelectorAll('input[type="text"][inputmode="numeric"]');
@@ -1700,6 +1709,9 @@ arrow.style.transform = 'rotate(180deg)';
 if (pageId === 'reporte' && typeof renderReporte === 'function') {
 renderReporte();
 }
+if (pageId === 'seguimiento-sa-agrupamiento' && typeof renderAgrupamiento === 'function') {
+renderAgrupamiento();
+}
 }
 
 // --- Submenu Seguimiento SA ---
@@ -1765,12 +1777,12 @@ const gradoLabel = e.tipoGrado === 'Maestría' ? 'M.' : 'Doc.';
 tr.innerHTML = '<td class="py-4 px-4 font-medium text-primary">' + (e.nt || '—') + '</td>' +
 '<td class="py-4 px-4 text-sm">' + (e.fechaRecep || '—') + '</td>' +
 '<td class="py-4 px-4"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + tramiteClass + '">' + (e.estadoTramite || '—') + '</span></td>' +
-'<td class="py-4 px-4 font-medium text-primary">' + e.dni + '</td>' +
-'<td class="py-4 px-4">' + e.apellidosNombres + '</td>' +
-'<td class="py-4 px-4 text-sm">' + gradoLabel + ' ' + e.nombreGrado + '</td>' +
+'<td class="py-4 px-4 font-medium text-primary">' + (e.dni || '—') + '</td>' +
+'<td class="py-4 px-4">' + (e.apellidosNombres || '—') + '</td>' +
+'<td class="py-4 px-4 text-sm">' + gradoLabel + ' ' + (e.nombreGrado || '—') + '</td>' +
 '<td class="py-4 px-4 text-sm">' + (e.area || '—') + '</td>' +
-'<td class="py-4 px-4 text-sm">' + e.fechaSustentacion + '</td>' +
-'<td class="py-4 px-4"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + califClass + '">' + e.calificacion + '</span></td>' +
+'<td class="py-4 px-4 text-sm">' + (e.fechaSustentacion || '—') + '</td>' +
+'<td class="py-4 px-4"><span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide ' + califClass + '">' + (e.calificacion || '—') + '</span></td>' +
 '<td class="py-4 px-4 text-sm">' + (e.estadoDatos === 'Correcto' ? '<span class="material-symbols-outlined text-success-text text-[18px]">check_circle</span>' : '<span class="text-xs text-warning-text font-medium">Observado</span>') + '</td>' +
 '<td class="py-4 px-4 text-right flex items-center justify-end gap-1">' +
 '<button class="glass-icon-btn" onclick="editarExpediente(' + i + ')" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>' +
@@ -3060,11 +3072,15 @@ if (state.key === key) state.asc = !state.asc; else { state.key = key; state.asc
 sortStates[tableId] = state;
 // Re-sort the data and re-render
 dataArr.sort(function(a, b) {
-var va = (a[key]||'').toString().toLowerCase();
-var vb = (b[key]||'').toString().toLowerCase();
-if (!isNaN(va) && !isNaN(vb)) { va = parseFloat(va); vb = parseFloat(vb); }
-if (va < vb) return state.asc ? -1 : 1;
-if (va > vb) return state.asc ? 1 : -1;
+var va = (a[key] === undefined || a[key] === null) ? '' : a[key];
+var vb = (b[key] === undefined || b[key] === null) ? '' : b[key];
+var sa = String(va), sb = String(vb);
+var da = parseFecha(sa), db = parseFecha(sb);
+if (da && db) return (da - db) * (state.asc ? 1 : -1);
+var la = sa.toLowerCase(), lb = sb.toLowerCase();
+if (!isNaN(la) && !isNaN(lb)) { la = parseFloat(la); lb = parseFloat(lb); }
+if (la < lb) return state.asc ? -1 : 1;
+if (la > lb) return state.asc ? 1 : -1;
 return 0;
 });
 if (pagState[tableId]) pagState[tableId].page = 1;
