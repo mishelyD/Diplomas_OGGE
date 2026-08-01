@@ -1598,8 +1598,15 @@ seguimientos.length = 0; (data.seguimientos||[]).forEach(function(r) { seguimien
 enviosDireccion.length = 0; (data.envios_direccion||[]).forEach(function(r) { enviosDireccion.push(r); });
 ocraccRegistros.length = 0; (data.ocracc_registros||[]).forEach(function(r) { ocraccRegistros.push(r); });
 notas.length = 0; (data.notas||[]).forEach(function(r) { notas.push(r); });
+migrarExpedientes();
 normalizarFechas();
 localSaveAll();
+renderExpedientes();
+renderSeguimientos();
+renderEnviosDireccion();
+renderOcracc();
+renderNotas();
+if (typeof renderReporte === 'function') renderReporte();
 }
 } catch(e) { console.warn('Supabase load error', e); }
 }
@@ -1642,10 +1649,7 @@ supabaseClient.auth.onAuthStateChange(function(event, session) {
 if (event === 'SIGNED_IN' && session) {
 currentUser = session.user;
 loginOverlay.style.display = 'none';
-loadFromSupabase().then(function() {
-renderExpedientes(); renderSeguimientos();
-renderEnviosDireccion(); renderOcracc(); renderNotas();
-});
+loadFromSupabase();
 } else if (event === 'SIGNED_OUT') {
 currentUser = null;
 loginOverlay.style.display = 'flex';
@@ -1732,16 +1736,18 @@ showPage(this.dataset.page);
 
 // --- Expediente State ---
 let expedientes = JSON.parse(localStorage.getItem('expedientes') || '[]');
-// Migrate old format (nts array -> nt, fechaRecep, estadoTramite, comentario)
+// Migrate old format (nts array -> nt) and guarantee NT, fechaRecep and estadoTramite always exist
+function migrarExpedientes() {
 expedientes.forEach(function(e) {
-  if (e.nts && !e.nt) {
-    e.nt = e.nts[0] || '';
-    e.fechaRecep = e.fechaRecep || '';
-    e.estadoTramite = e.estadoTramite || 'Completo';
-    e.comentario = e.comentario || '';
-    delete e.nts;
-  }
+if (e.nts && !e.nt) e.nt = (e.nts && e.nts.length) ? e.nts[0] : '';
+e.nt = e.nt || '';
+e.fechaRecep = e.fechaRecep || '';
+e.estadoTramite = e.estadoTramite || 'Completo';
+e.comentario = e.comentario || '';
+delete e.nts;
 });
+}
+migrarExpedientes();
 let editExpedienteIndex = -1;
 
 function guardarExpedientes() {
