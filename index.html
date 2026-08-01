@@ -308,26 +308,30 @@ body {
 }
 .glass-input::placeholder { color: #8a9aaa; }
 .glass-sidebar {
-  background: rgba(255,255,255,0.45);
+  background: linear-gradient(180deg, #1e3a8a 0%, #1d4ed8 100%);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-right: 1px solid rgba(255,255,255,0.3);
+  border-right: 1px solid rgba(255,255,255,0.15);
 }
 .glass-sidebar-item {
   display: flex; align-items: center; gap: 0.75rem;
   padding: 0.75rem 1rem;
   border-radius: 12px;
-  color: #5a6a7a;
+  color: #ffffff;
   transition: all 0.15s ease;
   border-left: 3px solid transparent;
   cursor: pointer;
 }
-.glass-sidebar-item:hover { background: rgba(255,255,255,0.3); color: #1a2a3a; }
+.glass-sidebar-item:hover { background: rgba(255,255,255,0.15); color: #ffffff; }
 .glass-sidebar-item-active {
-  background: rgba(255,255,255,0.5);
-  color: #1a2a3a;
-  border-left: 3px solid #4a6a9a;
+  background: rgba(255,255,255,0.2);
+  color: #ffffff;
+  border-left: 3px solid #ffffff;
 }
+#sidebar .text-on-surface-variant,
+#sidebar .text-text-secondary,
+#sidebar .text-text-secondary span { color: #e0e7ff; }
+#sidebar .border-outline-variant { border-color: rgba(255,255,255,0.3); }
 .glass-icon-btn {
   display: inline-flex; align-items: center; justify-content: center;
   width: 28px; height: 28px; border-radius: 8px;
