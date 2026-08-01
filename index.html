@@ -646,7 +646,10 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT (N° Trámite)</label>
-<input id="seg-nt" type="text" class="glass-input text-sm" placeholder="Se autocompleta al escribir el código" readonly>
+<div class="relative">
+<input id="seg-nt" type="text" class="glass-input text-sm" placeholder="Escriba o seleccione el NT" autocomplete="off">
+<div id="seg-nt-dropdown" class="absolute z-20 top-full left-0 right-0 mt-1 bg-surface-card border border-border-subtle rounded-lg shadow-sm max-h-40 overflow-y-auto hidden"></div>
+</div>
 </div>
 <div class="flex flex-col gap-1.5 md:col-span-2 lg:col-span-2">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Programa</label>
@@ -2067,20 +2070,68 @@ arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
 });
 
 // --- Auto-completar al escribir Código de estudiante ---
+function segRellenarPorExpediente(exp) {
+document.getElementById('seg-dni').value = exp.dni || '';
+document.getElementById('seg-nombres').value = exp.apellidosNombres || '';
+document.getElementById('seg-tipo').value = exp.tipoGrado === 'Doctorado' ? 'Doctorado' : 'Maestría';
+document.getElementById('seg-nombre-programa').value = exp.nombreGrado || '';
+document.getElementById('seg-nt').value = exp.nt || '';
+}
 document.getElementById('seg-dni').addEventListener('input', function() {
 const dni = this.value.trim();
 if (dni.length < 8) return;
 const exp = expedientes.find(e => e.dni === dni);
-if (exp) {
-document.getElementById('seg-nombres').value = exp.apellidosNombres;
-document.getElementById('seg-tipo').value = exp.tipoGrado === 'Doctorado' ? 'Doctorado' : 'Maestría';
-document.getElementById('seg-nombre-programa').value = exp.nombreGrado || '';
-document.getElementById('seg-nt').value = exp.nt || '';
-} else {
+if (exp) segRellenarPorExpediente(exp);
+else {
 document.getElementById('seg-nombres').value = '';
 document.getElementById('seg-tipo').value = '';
 document.getElementById('seg-nombre-programa').value = '';
 document.getElementById('seg-nt').value = '';
+}
+});
+
+// --- Auto-completar NT (N° Trámite) ---
+const segNtInput = document.getElementById('seg-nt');
+const segNtDropdown = document.getElementById('seg-nt-dropdown');
+function segNtUsados() {
+const usados = new Set();
+seguimientos.forEach(s => { if (s.nt) usados.add(String(s.nt)); });
+if (editSegIndex !== -1 && seguimientos[editSegIndex]) usados.delete(String(seguimientos[editSegIndex].nt));
+return usados;
+}
+function mostrarSegNtDropdown(filtro) {
+const usados = segNtUsados();
+const resultados = expedientes.filter(e => e.nt && String(e.nt).toLowerCase().includes(filtro.toLowerCase()));
+segNtDropdown.innerHTML = '';
+if (!resultados.length || !filtro.trim()) {
+segNtDropdown.classList.add('hidden');
+return;
+}
+segNtDropdown.classList.remove('hidden');
+resultados.slice(0, 15).forEach(function(exp) {
+const yaUsado = usados.has(String(exp.nt));
+const item = document.createElement('button');
+item.type = 'button';
+item.className = 'w-full text-left px-3 py-2 text-sm hover:bg-hover-state transition-colors flex items-center justify-between gap-2';
+item.innerHTML = '<span class="font-medium">NT ' + exp.nt + '</span>' +
+'<span class="text-xs text-text-secondary truncate">' + (exp.apellidosNombres || exp.dni || '') + (yaUsado ? '<span class="text-warning-text ml-2">(ya registrado)</span>' : '') + '</span>';
+item.addEventListener('click', function() {
+segRellenarPorExpediente(exp);
+segNtDropdown.classList.add('hidden');
+document.getElementById('seg-fecha-entrega').focus();
+});
+segNtDropdown.appendChild(item);
+});
+}
+segNtInput.addEventListener('input', function() {
+mostrarSegNtDropdown(this.value);
+});
+segNtInput.addEventListener('focus', function() {
+if (this.value.trim()) mostrarSegNtDropdown(this.value);
+});
+document.addEventListener('click', function(e) {
+if (segNtDropdown && !segNtDropdown.classList.contains('hidden') && !segNtInput.parentNode.contains(e.target)) {
+segNtDropdown.classList.add('hidden');
 }
 });
 
