@@ -2953,15 +2953,6 @@ location.reload();
 reader.readAsText(file);
 }
 
-document.addEventListener('keydown', function(e) {
-if (e.key === 'Escape') {
-var notaModal = document.getElementById('nota-modal');
-var ocModal = document.getElementById('oc-modal-overlay');
-if (notaModal && !notaModal.classList.contains('hidden')) cerrarModalNota();
-if (ocModal && !ocModal.classList.contains('hidden')) ocModal.classList.add('hidden');
-}
-});
-
 // --- Init ---
 try {
 normalizarFechas();
@@ -3060,6 +3051,7 @@ if (e.target.files.length) importJSON(e.target.files[0]);
 
 // --- Sortable tables ---
 var sortStates = {};
+var _pagKeyByTable = { 'tabla-expedientes': 'exps', 'tabla-seguimiento': 'segs', 'tabla-envios-direccion': 'eds', 'tabla-ocracc': 'ocs' };
 function makeSortable(tableId, dataArr, renderFn) {
 var table = document.getElementById(tableId);
 if (!table) return;
@@ -3084,7 +3076,8 @@ if (la < lb) return state.asc ? -1 : 1;
 if (la > lb) return state.asc ? 1 : -1;
 return 0;
 });
-if (pagState[tableId]) pagState[tableId].page = 1;
+var pk = _pagKeyByTable[tableId];
+if (pk && pagState[pk]) pagState[pk].page = 1;
 renderFn();
 // Update visual indicator
 table.querySelectorAll('th').forEach(function(h) { h.classList.remove('text-primary'); });
