@@ -480,7 +480,7 @@ body {
 <form id="form-expediente" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 items-end">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT (N° Trámite)</label>
-<input id="exp-nt" type="text" class="glass-input text-sm" placeholder="Ej: 456778" required>
+<input id="exp-nt" type="text" class="glass-input text-sm" placeholder="Ej: 456778" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Estado del Trámite</label>
@@ -496,11 +496,11 @@ body {
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Código de estudiante</label>
-<input id="exp-dni" type="text" class="glass-input text-sm" placeholder="12345678" required>
+<input id="exp-dni" type="text" class="glass-input text-sm" placeholder="12345678" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Apellidos y Nombres</label>
-<input id="exp-nombres" type="text" class="glass-input text-sm" placeholder="Pérez López, Juan Carlos" required>
+<input id="exp-nombres" type="text" class="glass-input text-sm" placeholder="Pérez López, Juan Carlos" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Tipo de Grado</label>
@@ -511,7 +511,7 @@ body {
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Nombre del Grado</label>
-<input id="exp-nombre-grado" type="text" class="glass-input text-sm" placeholder="Ej: Educación con mención en Docencia" required>
+<input id="exp-nombre-grado" type="text" class="glass-input text-sm" placeholder="Ej: Educación con mención en Docencia" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Área</label>
@@ -527,32 +527,32 @@ body {
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Matrícula</label>
 <div class="relative">
-<input id="exp-fecha-matricula" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<input id="exp-fecha-matricula" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" >
 <button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-matricula" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
 </div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Egreso</label>
 <div class="relative">
-<input id="exp-fecha-egreso" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<input id="exp-fecha-egreso" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" >
 <button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-egreso" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
 </div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Total de Créditos</label>
-<input id="exp-creditos" type="number" class="glass-input text-sm" placeholder="Ej: 48" required>
+<input id="exp-creditos" type="number" class="glass-input text-sm" placeholder="Ej: 48" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Sustentación</label>
 <div class="relative">
-<input id="exp-fecha-sustentacion" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<input id="exp-fecha-sustentacion" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" >
 <button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-sustentacion" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
 </div>
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha de Recepción</label>
 <div class="relative">
-<input id="exp-fecha-recep" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<input id="exp-fecha-recep" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" >
 <button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="exp-fecha-recep" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
 </div>
 </div>
@@ -637,11 +637,11 @@ Cancelar
 <form id="form-seguimiento" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4 items-end">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Código de estudiante del Egresado</label>
-<input id="seg-dni" type="text" class="glass-input text-sm" placeholder="12345678" required>
+<input id="seg-dni" type="text" class="glass-input text-sm" placeholder="12345678" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Apellidos y Nombres</label>
-<input id="seg-nombres" type="text" class="glass-input text-sm" placeholder="Pérez López, Juan Carlos" required>
+<input id="seg-nombres" type="text" class="glass-input text-sm" placeholder="Pérez López, Juan Carlos" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT (N° Trámite)</label>
@@ -784,7 +784,7 @@ Cancelar
 <form id="form-envio-direccion" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT OGT</label>
-<input id="ed-nt-ogt" type="text" class="glass-input text-sm" placeholder="NT de OGT" required>
+<input id="ed-nt-ogt" type="text" class="glass-input text-sm" placeholder="NT de OGT" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Oficio</label>
@@ -792,7 +792,7 @@ Cancelar
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Resolución Directoral</label>
-<input id="ed-resolucion" type="text" class="glass-input text-sm" placeholder="Ej: RD-2024-001-UNFV" required>
+<input id="ed-resolucion" type="text" class="glass-input text-sm" placeholder="Ej: RD-2024-001-UNFV" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío a Dirección</label>
@@ -884,16 +884,16 @@ Cancelar
 <form id="form-ocracc" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">N° Oficio</label>
-<input id="oc-oficio" type="text" class="glass-input text-sm" placeholder="Ej: OFICIO-2024-001" required>
+<input id="oc-oficio" type="text" class="glass-input text-sm" placeholder="Ej: OFICIO-2024-001" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">NT OCRACC</label>
-<input id="oc-nt" type="text" class="glass-input text-sm" placeholder="NT de OCRACC" required>
+<input id="oc-nt" type="text" class="glass-input text-sm" placeholder="NT de OCRACC" >
 </div>
 <div class="flex flex-col gap-1.5">
 <label class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider">Fecha Envío de Solicitud</label>
 <div class="relative">
-<input id="oc-fecha-envio" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" required>
+<input id="oc-fecha-envio" type="text" inputmode="numeric" class="glass-input text-sm pr-10" placeholder="DD/MM/AAAA" pattern="\d{1,2}/\d{1,2}/\d{4}" >
 <button type="button" class="datepicker-btn absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-primary rounded-md" data-target="oc-fecha-envio" title="Seleccionar fecha"><span class="material-symbols-outlined text-[20px]">calendar_month</span></button>
 </div>
 </div>
@@ -1134,11 +1134,11 @@ Cancelar
 <form id="login-form" onsubmit="loginWithEmail(event)">
 <div class="mb-3 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Correo electrónico</label>
-<input id="login-email" type="email" required class="glass-input text-sm w-full" placeholder="tu@correo.com">
+<input id="login-email" type="email"  class="glass-input text-sm w-full" placeholder="tu@correo.com">
 </div>
 <div class="mb-4 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Contraseña</label>
-<input id="login-password" type="password" required class="glass-input text-sm w-full" placeholder="••••••••">
+<input id="login-password" type="password"  class="glass-input text-sm w-full" placeholder="••••••••">
 </div>
 <button type="submit" class="glass-btn glass-btn-primary w-full text-sm">
         Entrar
@@ -1163,11 +1163,11 @@ Cancelar
 <form onsubmit="signupWithEmail(event)">
 <div class="mb-3 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Correo electrónico</label>
-<input id="signup-email" type="email" required class="glass-input text-sm w-full" placeholder="tu@correo.com">
+<input id="signup-email" type="email"  class="glass-input text-sm w-full" placeholder="tu@correo.com">
 </div>
 <div class="mb-4 text-left">
 <label class="text-sm font-medium text-text-secondary block mb-1">Contraseña</label>
-<input id="signup-password" type="password" required minlength="6" class="glass-input text-sm w-full" placeholder="Mínimo 6 caracteres">
+<input id="signup-password" type="password"  minlength="6" class="glass-input text-sm w-full" placeholder="Mínimo 6 caracteres">
 </div>
 <button type="submit" class="glass-btn glass-btn-primary w-full text-sm">
         Crear cuenta
