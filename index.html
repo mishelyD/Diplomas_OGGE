@@ -1848,6 +1848,7 @@ document.getElementById('exp-cancel-btn').classList.add('hidden');
 document.getElementById('exp-cancel-btn').addEventListener('click', cancelarEdicion);
 
 // --- Form Expediente (Crear / Actualizar) ---
+// --- Form Expediente (Crear / Actualizar) ---
 document.getElementById('form-expediente').addEventListener('submit', function(e) {
 e.preventDefault();
 var btn = document.getElementById('exp-submit-btn');
@@ -1867,22 +1868,29 @@ const fechaSustentacion = document.getElementById('exp-fecha-sustentacion').valu
 const calificacion = document.getElementById('exp-calificacion').value;
 const estadoDatos = document.getElementById('exp-estado-datos').value;
 const obsComentario = document.getElementById('exp-obs-comentario').value.trim();
-if (!nt || !fechaRecep || !dni || !apellidosNombres || !nombreGrado) return;
+
+// Se eliminó la línea "if (!nt || !fechaRecep..." que bloqueaba el guardado
+
 setLoading(btn, true);
 const data = { nt, fechaRecep, estadoTramite, comentario: estadoTramite === 'Observado' ? comentario : '', dni, apellidosNombres, tipoGrado, nombreGrado, area, fechaMatricula, fechaEgreso, totalCreditos, fechaSustentacion, calificacion, estadoDatos, obsComentario: estadoDatos === 'Observado' ? obsComentario : '' };
+
 if (editExpedienteIndex !== -1) {
-if (dni !== expedientes[editExpedienteIndex].dni && expedientes.some((ex, idx) => ex.dni === dni && idx !== editExpedienteIndex)) {
-showToast('El Código de estudiante ' + dni + ' ya pertenece a otro expediente.', 'error');
-return;
-}
-expedientes[editExpedienteIndex] = data;
-editExpedienteIndex = -1;
+  // Se agregó "dni !== ''" para que no salte error de duplicado si el campo está vacío
+  if (dni !== '' && dni !== expedientes[editExpedienteIndex].dni && expedientes.some((ex, idx) => ex.dni === dni && idx !== editExpedienteIndex)) {
+    showToast('El Código de estudiante ' + dni + ' ya pertenece a otro expediente.', 'error');
+    setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">save</span> Actualizar Expediente');
+    return;
+  }
+  expedientes[editExpedienteIndex] = data;
+  editExpedienteIndex = -1;
 } else {
-if (expedientes.some(e => e.dni === dni)) {
-showToast('El Código de estudiante ' + dni + ' ya tiene un expediente registrado.', 'error');
-return;
-}
-expedientes.push(data);
+  // Se agregó "dni !== ''" para los nuevos registros
+  if (dni !== '' && expedientes.some(e => e.dni === dni)) {
+    showToast('El Código de estudiante ' + dni + ' ya tiene un expediente registrado.', 'error');
+    setLoading(btn, false, '<span class="material-symbols-outlined text-[18px]">assignment</span> Registrar Expediente');
+    return;
+  }
+  expedientes.push(data);
 }
 guardarExpedientes();
 renderExpedientes();
