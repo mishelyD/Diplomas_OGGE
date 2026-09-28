@@ -1867,7 +1867,7 @@ const fechaSustentacion = document.getElementById('exp-fecha-sustentacion').valu
 const calificacion = document.getElementById('exp-calificacion').value;
 const estadoDatos = document.getElementById('exp-estado-datos').value;
 const obsComentario = document.getElementById('exp-obs-comentario').value.trim();
-if (!nt || !fechaRecep || !dni || !apellidosNombres || !nombreGrado || !fechaMatricula || !fechaEgreso || !totalCreditos || !fechaSustentacion) return;
+if (!nt || !fechaRecep || !dni || !apellidosNombres || !nombreGrado) return;
 setLoading(btn, true);
 const data = { nt, fechaRecep, estadoTramite, comentario: estadoTramite === 'Observado' ? comentario : '', dni, apellidosNombres, tipoGrado, nombreGrado, area, fechaMatricula, fechaEgreso, totalCreditos, fechaSustentacion, calificacion, estadoDatos, obsComentario: estadoDatos === 'Observado' ? obsComentario : '' };
 if (editExpedienteIndex !== -1) {
